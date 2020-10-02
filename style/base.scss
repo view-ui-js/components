@@ -1,0 +1,129 @@
+@import "var.scss";
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+  color: #808080;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+}
+
+input,
+select,
+textarea {
+  padding: 10px 8px;
+  outline: none;
+  color: #555;
+}
+
+textarea {
+  border-radius: 2px;
+  border: 1px solid #eaeaea;
+  font-size: 14px;
+  line-height: 28px;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.scroll-y {
+  overflow-y: overlay;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.p10 {
+  padding: 10px;
+}
+
+.p10-tb {
+  padding: 10px 0;
+}
+
+.p10lr {
+  padding: 0 10px;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.disabled {
+  color: #f1f1f1;
+}
+
+input::-webkit-input-placeholder {
+  color: #c0c0c0;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #c0c0c0;
+}
+
+.block {
+  display: block;
+}
+
+.hidden {
+  display: none
+}
+
+.static {
+  position: static
+}
+
+.fixed {
+  position: fixed
+}
+
+.absolute {
+  position: absolute
+}
+
+.relative {
+  position: relative
+}
+
+.vicon {
+  user-select: none;
+}
+
+[class^="vicon-"],
+[class*=" vicon-"] {
+  font-family: "vicon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

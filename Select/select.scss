@@ -1,0 +1,30 @@
+.vi-select,
+.vi-selects,
+.vi-cascader {
+   position: relative;
+   display: flex;
+   border-radius: 2px;
+   background-color: #fff;
+   border: 1px solid #eaeaea;
+   input {
+      flex: 1;
+      font-size: 14px;
+      outline-style: none;
+      border: 0px;
+      cursor: pointer;
+      background: none;
+   }
+   .arrow {
+      position: absolute;
+      top: 11px;
+      right: 10px;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+      transition: all 0.15s ease;
+      color: #adadad;
+      &.arrow_up {
+         transform: rotate(180deg);
+      }
+   }
+}

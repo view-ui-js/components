@@ -1,0 +1,23 @@
+/*滚动条*/
+
+::-webkit-scrollbar, ::-webkit-scrollbar-thumb {
+   width: 6px;
+   height: 6px;
+   border-radius: 6px;
+}
+
+::-webkit-scrollbar{
+   background: rgba(160, 160, 160, 0.15);
+}
+
+// ::-webkit-scrollbar:hover {
+//    background-color: rgba(160, 160, 160, 0.20);
+// }
+
+::-webkit-scrollbar-thumb{
+   background-color: #dedede;
+}
+
+::-webkit-scrollbar-thumb:hover{
+   background-color: #b1b1b1;
+}

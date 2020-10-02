@@ -1,0 +1,9 @@
+.vi-menu {
+  flex: none;
+  user-select: none;
+  .vi-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

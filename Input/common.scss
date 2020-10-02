@@ -1,0 +1,51 @@
+.vi-input,
+.vi-input-range {
+  position: relative;
+  display: flex;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #eaeaea;
+  background-color: #fff;
+  input {
+    flex: 1;
+    font-size: 14px;
+    outline-style: none;
+    border: none;
+    background: none;
+    min-width: 120px;
+  }
+  i {
+    margin: 10px;
+  }
+  .vi-input-unit {
+    padding: 8px;
+    color: #969696;
+  }
+}
+
+.vi-input {
+  justify-content: space-between;
+  overflow: hidden;
+  .vi-input-before,
+  .vi-input-after {
+    display: flex;
+    align-items: center;
+    color: #888;
+    background-color: #e8e8e8;
+  }
+}
+
+//  .vi-input {
+//   margin-bottom: 6px;
+// }
+
+.vi-input-preview {
+  line-height: 45px;
+  width: 50%;
+  i {
+    margin-right: 5px;
+  }
+  .vi-input-preview-unit {
+    margin: 0 5px;
+  }
+}

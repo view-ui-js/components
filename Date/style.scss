@@ -1,0 +1,61 @@
+.vi-date {
+  width: 300px;
+  padding: 8px;
+  color: #777;
+  display: inline-block;
+  user-select: none;
+  .vi-date-show {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0 12px 0;
+    font-size: 16px;
+    i {
+      cursor: pointer;
+    }
+  }
+  .vi-date-week {
+    display: flex;
+    text-align: center;
+    padding: 2px 0 10px 0;
+    font-size: 13px;
+    border-bottom: 1px solid #ebeef5;
+    span {
+      flex: auto;
+    }
+  }
+  .vi-date-days {
+    padding-top: 3px;
+    font-size: 13px;
+    .vi-date-line {
+      display: flex;
+      text-align: center;
+      li {
+        flex: auto;
+        margin: 10px 5px;
+        height: 30px;
+        list-style-type: none;
+        cursor: pointer;
+        &.vi-date-prev-month,
+        &.vi-date-next-month {
+          color: #bbb;
+        }
+        span {
+          display: inline-block;
+          padding: 6px;
+          width: 28px;
+          height: 28px;
+          border-radius: 100%;
+        }
+        &.vi-date-prominent {
+          span {
+            color: #fff !important;
+            // background-color: #ccc !important;
+          }
+        }
+        span:hover {
+          background-color: #ccc;
+        }
+      }
+    }
+  }
+}

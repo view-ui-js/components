@@ -1,0 +1,28 @@
+{
+  "name": "view-ui",
+  "version": "3.0.0-beta.1",
+  "main": "index.js",
+  "description": "轻量化的vue ui组件库",
+  "dependencies": {
+    "dayjs": "^1.8.36"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/view-ui-js/view-ui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/view-ui-js/view-ui/issues"
+  },
+  "homepage": "https://github.com/view-ui-js/view-ui#readme"
+}

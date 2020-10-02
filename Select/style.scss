@@ -1,0 +1,49 @@
+.vi-select {
+  user-select: none;
+  height: 40px;
+  .show-current {
+    padding: 0 8px;
+    width: 100%;
+    line-height: 40px;
+  }
+  .placeholder {
+    color: #ddd;
+  }
+  ul {
+    width: 100%;
+    position: absolute;
+    top: 110%;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    li {
+      padding: 8px 8px;
+      list-style: none;
+      color: #989898;
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+  .select-drop-enter,
+  .select-drop-leave-to {
+    opacity: 0;
+    li {
+      padding: 0 8px;
+    }
+  }
+  .select-drop-enter-active,
+  .select-drop-leave-active {
+    transition: all 0.16s ease-out;
+    li {
+      transition: padding 0.16s ease-out;
+    }
+  }
+}
+
+.vi-select-preview {
+  line-height: 45px;
+  width: 50%;
+}

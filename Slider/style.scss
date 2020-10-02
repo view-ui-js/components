@@ -1,0 +1,23 @@
+.vi-slider {
+  position: relative;
+  width: 100%;
+  padding-top: 43px;
+  user-select: none;
+  .vi-slider-gauge {
+    display: flex;
+    width: 100%;
+    color: #888;
+    font-size: 13px;
+    span {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  .vi-slider-bubble {
+    .vi-bubble-content {
+      padding: 6px;
+      color: #ffffff;
+      font-size: 12px;
+    }
+  }
+}

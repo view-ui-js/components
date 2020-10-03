@@ -5,9 +5,8 @@ const prevent = () => import('../Page/Prevent.vue');
 /**
  * 递归路由配置项，根据权限过滤路由
  * @param {Array} routes 初始路由配置项
- * @param {Object} auth 授权规则
+ * @param {Object} auth 权限配置项
  * @param {Object} menu 经过权限验证后的导航菜单
- * @param {Object} parentsAuth 父级授权状态
  */
 function recursive(routes, auth, menu) {
 
@@ -15,15 +14,15 @@ function recursive(routes, auth, menu) {
 
       const { path, name, icon, children } = item;
 
-      let authChildren;
+      let authItem;
 
       const menuChildren = {};
 
       if (auth) {
 
-         authChildren = auth[path];
+         authItem = auth[path];
 
-         if (authChildren) {
+         if (authItem) {
 
             if (name) {
 
@@ -49,7 +48,7 @@ function recursive(routes, auth, menu) {
 
       if (children) {
 
-         recursive(children, authChildren, menuChildren);
+         recursive(children, authItem, menuChildren);
 
       }
 

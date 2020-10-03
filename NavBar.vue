@@ -1,6 +1,6 @@
 <template>
-  <nav class="vi-navbar vt-main">
-    <div class="vi-navbar-main">
+  <nav class="vi-navbar">
+    <div class="vi-navbar-main vt-main">
       <slot name="top"></slot>
       <nav class="vi-nav-menu-scroll">
         <template v-for="(value, path) in menu">
@@ -36,6 +36,7 @@
         </router-link>
       </div>
     </aside>
+    <slot></slot>
   </nav>
 </template>
 
@@ -90,14 +91,14 @@ export default {
 <style lang="scss">
 .vi-navbar {
   display: flex;
-  flex: none;
   height: 100%;
-  position: relative;
+  flex: none;
   .vi-navbar-main {
-    -webkit-app-region: drag; // electron 拖拽专用
-    position: relative;
+    // -webkit-app-region: drag; // electron 拖拽专用
     width: 50px;
     user-select: none;
+    position: relative;
+    z-index: 10000;
     .vi-nav-menu-scroll {
       .vi-nav-menu-item {
         height: 50px;
@@ -126,7 +127,7 @@ export default {
     display: flex;
     flex-direction: column;
     position: relative;
-    z-index: 100;
+    z-index: 1000;
     width: 170px;
     h3 {
       flex: none;

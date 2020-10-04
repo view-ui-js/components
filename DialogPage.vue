@@ -45,7 +45,7 @@ export default {
 <style lang="scss">
 .vi-float-mask {
   position: fixed;
-  z-index: 1000;
+  z-index: 50000;
   top: 0;
   left: 0;
   display: flex;

@@ -60,7 +60,7 @@ export default {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 10000;
+  z-index: 100000;
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -12,7 +12,7 @@ function recursive(routes, auth, menu) {
 
    for (const item of routes) {
 
-      const { path, name, icon, children } = item;
+      const { path, label, icon, children } = item;
 
       let authItem;
 
@@ -24,10 +24,10 @@ function recursive(routes, auth, menu) {
 
          if (authItem) {
 
-            if (name) {
+            if (label) {
 
                menu[path] = {
-                  name,
+                  name: label,
                   icon,
                   children: (children ? menuChildren : null)
                };

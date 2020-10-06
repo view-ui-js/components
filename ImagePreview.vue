@@ -66,7 +66,7 @@ export default {
 }
 .vi-image-preview {
   position: fixed;
-  z-index: 10000;
+  z-index: 100000;
   top: 0;
   left: 0;
   display: flex;

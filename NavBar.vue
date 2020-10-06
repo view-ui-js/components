@@ -148,6 +148,7 @@ export default {
       height: 100%;
       padding-bottom: 20px;
       overflow-y: overlay;
+      margin-left: 10px;
       a {
         display: block;
         padding: 12px 0 12px 15px;
@@ -159,6 +160,9 @@ export default {
           margin-right: 8px;
           font-size: 18px;
         }
+      }
+      a.router-link-active {
+        border-radius: 3px 0 0 3px;
       }
     }
   }

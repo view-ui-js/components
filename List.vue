@@ -39,6 +39,6 @@ export default {
 <style lang="scss">
 @import "./style/var.scss";
 .vi-list {
-  margin: 10px;
+  margin: 6px;
 }
 </style>

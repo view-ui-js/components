@@ -1,6 +1,6 @@
 const excludePath = ['', '*'];
 
-const prevent = () => import('../Page/Prevent.vue');
+const prevent = () => import(/* webpackChunkName: "page/prevent" */ '../Page/Prevent.vue');
 
 /**
  * 递归路由配置项，根据权限过滤路由

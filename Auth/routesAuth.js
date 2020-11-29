@@ -22,7 +22,7 @@ function recursive(routes, auth, menu) {
 
          authItem = auth[path];
 
-         if (authItem) {
+         if (authItem || item.open) {
 
             if (label) {
 

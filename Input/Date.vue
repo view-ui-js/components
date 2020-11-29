@@ -20,10 +20,11 @@
 import dayjs from "dayjs";
 import mixing from "./mixingDate.js";
 import Date from "../Date/Index.vue";
+import FormBox from "../FormBox.vue";
 import BubbleFixe from "../BubbleFixe.vue";
 export default {
   extends: mixing,
-  components: { BubbleFixe },
+  components: { FormBox, BubbleFixe },
   props: {
     value: {
       type: String,

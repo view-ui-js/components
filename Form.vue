@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import FormBox from "./FormBox.vue";
 export default {
   name: "Form",
   props: {
@@ -56,7 +55,6 @@ export default {
   },
   install(Vue) {
     Vue.component(this.name, this);
-    Vue.component(FormBox.name, FormBox);
   },
 };
 </script>

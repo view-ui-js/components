@@ -34,8 +34,10 @@
 </template>
 
 <script>
+import FormBox from "../FormBox.vue";
 export default {
   name: "NumberText",
+  components: { FormBox },
   props: {
     value: Number,
     readonly: Boolean,

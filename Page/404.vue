@@ -6,6 +6,7 @@
 
 <style lang="scss">
 ._404 {
+  height: 100%;
   color: #b2afb7;
   display: flex;
   align-items: center;

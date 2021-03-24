@@ -45,11 +45,11 @@ export default {
         // 左浮动
         this.style.left = 0;
         this.arrow = { left: left + width / 2 - 6 + "px" };
-      } else if (global.innerWidth < right + widthCenter) {
+      } else if (window.innerWidth < right + widthCenter) {
         // 右浮动
         this.style.right = 0;
         this.arrow = {
-          right: global.innerWidth - right + width / 2 + "px"
+          right: window.innerWidth - right + width / 2 + "px"
         };
       } else {
         // 居中
@@ -65,11 +65,11 @@ export default {
         // 上浮动
         this.style.top = 0;
         this.arrow = { top: top + height / 2 - 7 + "px" };
-      } else if (global.innerHeight < bottom + heightCenter) {
+      } else if (window.innerHeight < bottom + heightCenter) {
         // 下浮动
         this.style.bottom = 0;
         this.arrow = {
-          bottom: global.innerHeight - bottom + height / 2 + "px"
+          bottom: window.innerHeight - bottom + height / 2 + "px"
         };
       } else {
         // 垂直居中
@@ -91,7 +91,7 @@ export default {
     bottom() {
       this.level();
       const { top, bottom, height } = this.parentNode;
-      if (global.innerHeight - bottom > this.bubble.height) {
+      if (window.innerHeight - bottom > this.bubble.height) {
         this.direction = "bottom";
         this.style.top = bottom + this.gap + "px";
       } else {
@@ -102,7 +102,7 @@ export default {
     right() {
       this.vertical();
       const { right, left, width } = this.parentNode;
-      if (global.innerWidth - right > this.bubble.width) {
+      if (window.innerWidth - right > this.bubble.width) {
         this.direction = "right";
         this.style.left = right + this.gap + "px";
       } else {
@@ -130,7 +130,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.parentNode = this.$el.parentNode.getBoundingClientRect();
-      // Vue中在使用appendChild方法改变节点位置后，再次渲染时父节点parentNode位置不会被初始化。
+      // app中在使用appendChild方法改变节点位置后，再次渲染时父节点parentNode位置不会被初始化。
       // 暂时使用隐藏节点作为锚点，避免appendChild后再也回不去。
       this.childNode = this.$el.childNodes[0];
       document.body.appendChild(this.childNode);
@@ -139,12 +139,12 @@ export default {
     });
   },
   destroyed() {
-    // Vue不会自动销毁已移动至组件外部的子节点，需要开发者自行管理组件外部的子节点
+    // app不会自动销毁已移动至组件外部的子节点，需要开发者自行管理组件外部的子节点
     //  document.body.removeChild(this.childNode);
     this.childNode.remove();
   },
-  install(Vue) {
-    Vue.component(this.name, this);
+  install(app) {
+    app.component(this.name, this);
   }
 };
 </script>

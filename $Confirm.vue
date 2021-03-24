@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 export default {
   methods: {
     Confirm() {
@@ -29,10 +30,10 @@ export default {
     // 确保element已挂载完成，否则在初次显示时没有过渡动效
     this.open = true;
   },
-  install(Vue) {
-    const Component = Vue.extend(this);
+  install(app) {
+    const Component = defineComponent(this);
     let component;
-    Vue.mixin({
+    app.mixin({
       methods: {
         $confirm(options) {
           // 单实例组件在每次执行前需要初始化data中的所有参数，否则会因为状态共享而出现混乱

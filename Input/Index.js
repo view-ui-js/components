@@ -38,7 +38,7 @@ export default {
     }
     return createElement(Component, data, children);
   },
-  install(Vue) {
-    Vue.component("Input", this);
+  install(app) {
+    app.component("Input", this);
   }
 };

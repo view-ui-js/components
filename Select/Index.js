@@ -20,8 +20,8 @@ export default {
       return createElement(Select, data, children);
     }
   },
-  install(Vue) {
-    Vue.component("Select", this);
-    Vue.component(Option.name, Option);
+  install(app) {
+    app.component("Select", this);
+    app.component(Option.name, Option);
   }
 };

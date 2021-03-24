@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 export default {
   data() {
     return {
@@ -63,9 +64,9 @@ export default {
       this.open = true;
     },
   },
-  install(Vue) {
+  install(app) {
     let newComponent;
-    const Contextmenu = Vue.extend(this);
+    const Contextmenu = defineComponent(this);
 
     document.body.addEventListener("contextmenu", function (event) {
       if (newComponent) {
@@ -79,7 +80,7 @@ export default {
       event.preventDefault();
     });
 
-    Vue.mixin({
+    app.mixin({
       methods: {
         $contextmenu(context, menu) {
           if (newComponent) {

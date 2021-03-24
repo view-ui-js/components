@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 export default {
   data() {
     return {
@@ -26,9 +27,9 @@ export default {
       }
     });
   },
-  install(Vue) {
-    const Component = Vue.extend(this);
-    Vue.mixin({
+  install(app) {
+    const Component = defineComponent(this);
+    app.mixin({
       methods: {
         $ImgPreview(src) {
           if (src) {

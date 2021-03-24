@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import ImagePreview from "./ImagePreview.vue";
 export default {
   components: { ImagePreview },
@@ -14,9 +15,9 @@ export default {
       title: ''
     };
   },
-  install(Vue) {
-    const Preview = Vue.extend(this);
-    Vue.mixin({
+  install(app) {
+    const Preview = defineComponent(this);
+    app.mixin({
       methods: {
         $ImgPreview({ images, index, title }) {
           new Preview({ data: { images, index, title } }).$mount();

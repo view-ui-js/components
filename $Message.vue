@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 let messageContainer;
 export default {
   data() {
@@ -19,8 +20,8 @@ export default {
       this.status = false;
     }, this.time);
   },
-  install(Vue) {
-    const Message = Vue.extend(this);
+  install(app) {
+    const Message = defineComponent(this);
     function proxy(type, body = "", time = 1500) {
       if (!messageContainer) {
         messageContainer = document.createElement("div");
@@ -29,7 +30,7 @@ export default {
       }
       new Message({ data: { type, body, time } }).$mount();
     }
-    Vue.mixin({
+    app.mixin({
       methods: {
         $message(body, time) {
           proxy("info", body, time);

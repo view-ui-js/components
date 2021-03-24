@@ -102,9 +102,9 @@ export default {
       this.edit = value ? false : true;
     }
   },
-  install(Vue, network) {
+  install(app, network) {
     this.network = network;
-    Vue.component(this.name, this);
+    app.component(this.name, this);
   }
 };
 </script>

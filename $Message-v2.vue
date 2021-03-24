@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 export default {
   data() {
     return { queue: [] };
@@ -17,7 +18,7 @@ export default {
   mounted() {
     document.body.appendChild(this.$el);
   },
-  install(Vue) {
+  install(app) {
     let instance;
     let id = 0;
     const timer = () => {
@@ -36,7 +37,7 @@ export default {
     timer.status = false;
     const proxy = (type, body, time = 1500) => {
       if (!instance) {
-        const Message = Vue.extend(this);
+        const Message = defineComponent(this);
         instance = new Message().$mount();
       }
       instance.queue.push({
@@ -50,7 +51,7 @@ export default {
       }
     };
 
-    Vue.mixin({
+    app.mixin({
       methods: {
         $message(body, time) {
           proxy("info", body, time);

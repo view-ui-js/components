@@ -1,6 +1,6 @@
 {
   "name": "view-ui",
-  "version": "3.0.0-beta.3",
+  "version": "3.0.0-beta.4",
   "main": "index.js",
   "description": "轻量化的vue ui组件库",
   "dependencies": {

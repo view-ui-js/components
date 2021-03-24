@@ -53,8 +53,8 @@ export default {
   mounted() {
     this.setEdit(true);
   },
-  install(Vue) {
-    Vue.component(this.name, this);
+  install(app) {
+    app.component(this.name, this);
   },
 };
 </script>

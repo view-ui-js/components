@@ -82,8 +82,8 @@ export default {
       Object.assign(this, data);
     },
   },
-  install(Vue) {
-    Vue.component(this.name, this);
+  install(app) {
+    app.component(this.name, this);
   },
 };
 </script>

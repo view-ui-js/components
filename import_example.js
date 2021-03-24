@@ -7,19 +7,19 @@ import "view-ui/icon/vicon.css";
 import 'view-template/appbar/style.scss';
 import 'view-template/list/style.scss';
 
-import Vue from 'vue';
+import app from 'vue';
 
 // 按钮
 import button from 'view-ui/button.vue';
 
-Vue.use(button);
+app.use(button);
 
 // 弹层
 import dialog from 'view-ui/dialog.vue';
 import $confirm from 'view-ui/$confirm.vue';
 
-Vue.use(dialog);
-Vue.use($confirm);
+app.use(dialog);
+app.use($confirm);
 
 // 表单
 import cascader from 'view-ui/cascader/cascader.vue';
@@ -27,17 +27,17 @@ import select from 'view-ui/select/select.vue';
 import selectEdit from 'view-ui/select/select-edit.vue';
 import radio from 'view-ui/radio.vue';
 
-Vue.use(cascader);
-Vue.use(select);
-Vue.use(selectEdit);
-Vue.use(radio);
+app.use(cascader);
+app.use(select);
+app.use(selectEdit);
+app.use(radio);
 
 // 输入框
 import input from 'view-ui/input/index.vue';
 import inputRange from 'view-ui/input/range.vue';
 
-Vue.use(input);
-Vue.use(inputRange);
+app.use(input);
+app.use(inputRange);
 
 // 上传
 import upload from 'view-ui/Upload/upload.vue';
@@ -58,88 +58,88 @@ const uploadConfig = {
    },
 }
 
-Vue.use(upload, uploadConfig);
-Vue.use(uploadDrag, uploadConfig);
+app.use(upload, uploadConfig);
+app.use(uploadDrag, uploadConfig);
 
 // 图片
 import imageUpload from 'view-ui/image/upload.vue';
 import imagePreview from 'view-ui/image/preview.vue';
 import $imagePreview from 'view-ui/image/$preview.vue';
 
-Vue.use(imageUpload);
-Vue.use(imagePreview);
-Vue.use($imagePreview);
+app.use(imageUpload);
+app.use(imagePreview);
+app.use($imagePreview);
 
 // 气泡
 import bubble from 'view-ui/bubble/bubble.vue';
 
-Vue.use(bubble);
+app.use(bubble);
 
 // 滑块
 import slider from "view-ui/slider/slider.vue";
 import sliderRange from "view-ui/slider/slider-range.vue";
 
-Vue.use(slider);
-Vue.use(sliderRange);
+app.use(slider);
+app.use(sliderRange);
 
 // 消息框
 import $message from 'view-ui/$message.vue';
 
-Vue.use($message);
+app.use($message);
 
 // tab选项卡
 import tabs from 'view-ui/tabs.vue';
 
-Vue.use(tabs);
+app.use(tabs);
 
 // 加载进度条
 import loading from 'view-ui/loading.vue';
 
-Vue.use(loading);
+app.use(loading);
 
 // 侧栏抽屉
 import drawer from 'view-ui/drawer.vue';
 
-Vue.use(drawer);
+app.use(drawer);
 
 // tip提示框
 import Tip from 'view-ui/Tip.vue';
 
-Vue.use(Tip);
+app.use(Tip);
 
 // 浮动菜单
 import floatMenu from 'view-ui/float-menu.vue';
 
-Vue.use(floatMenu);
+app.use(floatMenu);
 
 // 下拉菜单
 import dropdown from 'view-ui/dropdown/';
 import dropdownMenu from 'view-ui/dropdown/menu.vue';
 import dropdownRange from 'view-ui/dropdown/range.vue';
 
-Vue.use(dropdown);
-Vue.use(dropdownMenu);
-Vue.use(dropdownRange);
+app.use(dropdown);
+app.use(dropdownMenu);
+app.use(dropdownRange);
 
 // 分页
 import paging from 'view-ui/paging.vue';
 
-Vue.use(paging);
+app.use(paging);
 
 // 主导航
 import navbar from 'view-ui/navbar.vue';
 
-Vue.use(navbar);
+app.use(navbar);
 
 // 子导航
 import subNav from 'view-ui/SubNav.vue';
 
-Vue.use(subNav);
+app.use(subNav);
 
 // 右键菜单
 import $contextmenu from 'view-ui/$contextmenu.vue';
 
-Vue.use($contextmenu);
+app.use($contextmenu);
 
 // 日期
 import dateInline from 'view-ui/date/inline.vue';
@@ -147,24 +147,24 @@ import dateInlineRange from 'view-ui/date/inline-range.vue';
 import datePicker from 'view-ui/date/picker.vue';
 import datePickerRange from 'view-ui/date/picker-range.vue';
 
-Vue.use(dateInline);
-Vue.use(dateInlineRange);
-Vue.use(datePicker);
-Vue.use(datePickerRange);
+app.use(dateInline);
+app.use(dateInlineRange);
+app.use(datePicker);
+app.use(datePickerRange);
 
 import tag from 'view-ui/tag.vue';
 
-Vue.use(tag);
+app.use(tag);
 
 import _switch from 'view-ui/switch.vue';
 
-Vue.use(_switch);
+app.use(_switch);
 
 import menu from 'view-ui/menu/';
 import menuLine from 'view-ui/menu/line';
 
-Vue.use(menu);
-Vue.use(menuLine);
+app.use(menu);
+app.use(menuLine);
 
 import theme from 'view-ui/theme.js';
 

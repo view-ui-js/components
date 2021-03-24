@@ -49,8 +49,8 @@ export default {
     this.image = images[index];
     document.body.appendChild(this.$el);
   },
-  install(Vue) {
-    Vue.component(this.name, this);
+  install(app) {
+    app.component(this.name, this);
   }
 };
 </script>

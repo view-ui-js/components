@@ -20,9 +20,9 @@ export default {
     }
     return createElement(Component, data, children);
   },
-  install(Vue) {
+  install(app) {
     theme.style(Single.style);
     theme.style(Range.style);
-    Vue.component("Slider", this);
+    app.component("Slider", this);
   }
 };

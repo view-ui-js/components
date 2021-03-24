@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade"><Bubble v-if="open" class="vi-tip" :border="false" :placement="placement"><slot></slot></Bubble></transition>
+  <transition name="fade"><Bubble v-if="open" className="vi-tip" :border="false" :placement="placement"><slot></slot></Bubble></transition>
 </template>
 
 <script>
@@ -47,20 +47,9 @@ export default {
       }
     `;
   },
-  install(Vue) {
-    Vue.component(this.name, this);
+  install(app) {
+    app.component(this.name, this);
     theme.style(this.style);
   }
 };
 </script>
-
-<style lang="scss">
-.vi-tip {
-  pointer-events: none;
-  .vi-bubble-content {
-    padding: 5px 10px;
-    font-size: 12px;
-    color: #fff;
-  }
-}
-</style>

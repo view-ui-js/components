@@ -61,8 +61,8 @@ export default {
       this.$emit("input", this.value);
     }
   },
-  install(Vue) {
-    Vue.component(this.name, this);
+  install(app) {
+    app.component(this.name, this);
   }
 };
 </script>

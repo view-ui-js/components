@@ -12,8 +12,8 @@
 <script>
 export default {
   name: "ListItem",
-  install(Vue) {
-    Vue.component(this.name, this);
+  install(app) {
+    app.component(this.name, this);
   },
   methods: {
     click(event) {

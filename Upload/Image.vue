@@ -29,8 +29,8 @@ import base from "./base.js";
 export default {
   name: "Upload",
   extends: base,
-  install(Vue, options){
-    Vue.component(this.name, this);
+  install(app, options){
+    app.component(this.name, this);
   }
 };
 </script>

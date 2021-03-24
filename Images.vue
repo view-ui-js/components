@@ -43,7 +43,7 @@
 <script>
 import Draggable from "./Draggable.vue";
 export default {
-  name: "vImages",
+  name: "Images",
   components: { Draggable },
   props: {
     value: {
@@ -139,9 +139,9 @@ export default {
       this.$emit("input", this.images);
     }
   },
-  install(Vue, network) {
+  install(app, network) {
     this.network = network;
-    Vue.component(this.name, this);
+    app.component(this.name, this);
   }
 };
 </script>

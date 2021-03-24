@@ -1,11 +1,11 @@
 ## view-ui
 
-轻量化的vue ui组件库
+基于vue 3.x的轻量化的ui组件库
 
 ### Install
 
 ```
-npm install view-ui
+npm install view-ui@3
 ```
 
 ### Usage
@@ -13,13 +13,13 @@ npm install view-ui
 按需引入，可参考配置示例代码"./import_example.js"，进行批量配置。
 
 ```js
-import Vue from 'vue'
+import app from 'vue'
 import tabs from 'view-ui/tabs.vue'
 import button from 'view-ui/button.vue'
 import theme from 'view-ui/theme.js'
 
-Vue.use(tabs);
-Vue.use(button);
+app.use(tabs);
+app.use(button);
 
 theme.use('black'); // 必须先添加组件，后定义主题，否则初始状态下无法获取动态样式
 ```

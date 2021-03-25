@@ -138,7 +138,7 @@ export default {
       if (this[this.placement]) this[this.placement]();
     });
   },
-  destroyed() {
+  unmounted() {
     // app不会自动销毁已移动至组件外部的子节点，需要开发者自行管理组件外部的子节点
     //  document.body.removeChild(this.childNode);
     this.childNode.remove();

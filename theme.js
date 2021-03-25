@@ -64,6 +64,10 @@ export default {
 
          localStorage.theme = name;
 
+      } else {
+
+         throw new Error(`无效主题"${name}"`);
+
       }
 
    },

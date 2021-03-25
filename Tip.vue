@@ -1,5 +1,12 @@
 <template>
-  <transition name="fade"><Bubble v-if="open" className="vi-tip" :border="false" :placement="placement"><slot></slot></Bubble></transition>
+  <transition name="fade"
+    ><Bubble
+      v-if="open"
+      className="vi-tip"
+      :border="false"
+      :placement="placement"
+      ><slot></slot></Bubble
+  ></transition>
 </template>
 
 <script>
@@ -9,21 +16,21 @@ export default {
   props: {
     placement: {
       type: String,
-      default: "right"
-    }
+      default: "right",
+    },
   },
   data() {
     return {
-      open: false
+      open: false,
     };
   },
   mounted() {
     this.$nextTick(() => {
       const { parentNode } = this.$el;
-      parentNode.addEventListener("mouseenter", ev => {
+      parentNode.addEventListener("mouseenter", (ev) => {
         this.open = true;
       });
-      parentNode.addEventListener("mouseleave", ev => {
+      parentNode.addEventListener("mouseleave", (ev) => {
         this.open = false;
       });
     });
@@ -50,6 +57,6 @@ export default {
   install(app) {
     app.component(this.name, this);
     theme.style(this.style);
-  }
+  },
 };
 </script>

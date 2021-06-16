@@ -74,7 +74,7 @@ export default {
 @import "../style/var.scss";
 .vi-category {
   position: relative;
-  .select-drop-enter,
+  .select-drop-enter-from,
   .select-drop-leave-to {
     opacity: 0;
     li {

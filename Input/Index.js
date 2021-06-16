@@ -4,10 +4,10 @@ import Date from "./Date.vue";
 import DateRange from "./DateRange.vue";
 import Number from "./Number.vue";
 import NumberRange from "./NumberRange.vue";
+import { h } from 'vue';
 
 export default {
   name: "Input",
-  functional: true,
   props: {
     type: {
       type: String,
@@ -15,9 +15,9 @@ export default {
     },
     range: Boolean,
   },
-  render(createElement, context) {
-    const { props, data, children } = context;
-    const { type, range } = props;
+  render() {
+    const { $props } = this;
+    const { type, range } = $props;
     let Component;
     if (type === 'text') {
       Component = Text;
@@ -36,7 +36,8 @@ export default {
     } else {
       Component = Text;
     }
-    return createElement(Component, data, children);
+    const { data, children } = this;
+    return h(Component, data, children);
   },
   install(app) {
     app.component("Input", this);

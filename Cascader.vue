@@ -155,7 +155,7 @@ export default {
 @import "./style/var.scss";
 .vi-cascader {
   position: relative;
-  .select-drop-enter,
+  .select-drop-enter-from,
   .select-drop-leave-to {
     opacity: 0;
     li {

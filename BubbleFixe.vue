@@ -155,7 +155,7 @@ export default {
 }
 .vi-bubble-fixe {
   position: fixed;
-  z-index: 2000;
+  z-index: 1000000;
   color: #999;
   line-height: normal;
   .vi-bubble-fixe-content {

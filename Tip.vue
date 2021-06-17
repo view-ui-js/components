@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade"
+  <transition name="fade" appear
     ><Bubble
       v-if="open"
       className="vi-tip"

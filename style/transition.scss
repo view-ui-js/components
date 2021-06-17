@@ -20,15 +20,26 @@
   transition: all 0.15s ease-in-out;
 }
 
+.elastic-enter-active,
+.elastic-leave-active {
+  transition: transform 0.3s ease-in-out;
+}
+
 .elastic-enter-from,
 .elastic-leave-to {
   opacity: 0;
   transform: scale(1.01);
 }
 
-.elastic-enter-active,
-.elastic-leave-active {
-  transition: transform 0.3s ease-in-out;
+.left-enter-active,
+.left-leave-active,
+.right-enter-active,
+.right-leave-active,
+.top-enter-active,
+.top-leave-active,
+.bottom-enter-active,
+.bottom-leave-active {
+  transition: transform 0.2s ease;
 }
 
 .left-enter-from,
@@ -49,15 +60,4 @@
 .bottom-enter-from,
 .bottom-leave-to {
   transform: translate3d(0, 100%, 0);
-}
-
-.left-enter-active,
-.left-leave-active,
-.right-enter-active,
-.right-leave-active,
-.top-enter-active,
-.top-leave-active,
-.bottom-enter-active,
-.bottom-leave-active {
-  transition: transform 0.3s ease;
 }

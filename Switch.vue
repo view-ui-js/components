@@ -12,7 +12,7 @@
 <script>
 import theme from "./theme.js";
 export default {
-  name: "vSwitch",
+  name: "Switch",
   props: {
     value: {
       type: Boolean,

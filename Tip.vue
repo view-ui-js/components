@@ -1,11 +1,8 @@
 <template>
-  <transition name="fade" appear
-    ><Bubble
-      v-if="open"
-      className="vi-tip"
-      :border="false"
-      :placement="placement"
-      ><slot></slot></Bubble
+  <transition name="scale" appear
+    ><keep-alive
+      ><Bubble v-if="open" class="vi-tip" :border="false" :placement="placement"
+        ><slot></slot></Bubble></keep-alive
   ></transition>
 </template>
 
@@ -24,39 +21,45 @@ export default {
       open: false,
     };
   },
+  methods: {
+    mouseenter() {
+      this.open = true;
+    },
+    mouseleave() {
+      this.open = false;
+    },
+  },
   mounted() {
     this.$nextTick(() => {
       const { parentNode } = this.$el;
-      parentNode.addEventListener("mouseenter", (ev) => {
-        this.open = true;
-      });
-      parentNode.addEventListener("mouseleave", (ev) => {
-        this.open = false;
-      });
+      parentNode.addEventListener("mouseenter", this.mouseenter);
+      parentNode.addEventListener("mouseleave", this.mouseleave);
     });
-  },
-  style({ main }) {
-    return `
-      .vi-tip .vi-bubble-content{
-         background-color: ${main.background} !important;
-      }
-      .vi-tip .vi-bubble-arrow-right:after{
-         border-right-color: ${main.background} !important;
-      }
-      .vi-tip .vi-bubble-arrow-left:after{
-         border-left-color: ${main.background} !important;
-      }
-      .vi-tip .vi-bubble-arrow-top:after{
-         border-top-color: ${main.background} !important;
-      }
-      .vi-tip .vi-bubble-arrow-bottom:after{
-         border-bottom-color: ${main.background} !important;
-      }
-    `;
   },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
+    theme.style(({ main }) => {
+      const { background } = main;
+      return `
+      .vi-tip .vi-bubble-content {
+         color: #fff;
+         padding: 8px 14px;
+         background-color: ${background} !important;
+      }
+      .vi-tip .vi-bubble-arrow i {
+         background-color: ${background} !important;
+      }
+      .vi-tip .vi-bubble-arrow i {
+         background-color: ${background} !important;
+      }
+      .vi-tip .vi-bubble-arrow i {
+         background-color: ${background} !important;
+      }
+      .vi-tip .vi-bubble-arrow i {
+         background-color: ${background} !important;
+      }
+    `;
+    });
   },
 };
 </script>

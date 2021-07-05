@@ -201,7 +201,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../style/var.scss";
 .vi-slider-range-track {
   width: 100%;

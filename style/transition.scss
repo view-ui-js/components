@@ -61,3 +61,15 @@
 .bottom-leave-to {
   transform: translate3d(0, 100%, 0);
 }
+
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(0.8, 0.8);
+  transform-origin: 50% 100%;
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: transform 0.3s, opacity 0.3s;
+}

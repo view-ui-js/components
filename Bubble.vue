@@ -1,86 +1,90 @@
 <template>
-  <span class="vi-bubble-point">
-    <div
-      class="vi-bubble"
-      :class="className"
-      :style="style"
-      @mouseenter="$emit('mouseenter')"
-      @mouseleave="$emit('mouseleave')"
-    >
-      <div class="vi-bubble-content">
-        <slot></slot>
-      </div>
-      <div :class="'vi-bubble-arrow-' + direction" :style="arrow"></div>
+  <div
+    class="vi-bubble"
+    :class="[direction]"
+    :style="style"
+    @mouseenter="$emit('mouseenter')"
+    @mouseleave="$emit('mouseleave')"
+  >
+    <div class="vi-bubble-content">
+      <slot></slot>
     </div>
-  </span>
+    <div class="vi-bubble-arrow">
+      <i :style="arrow" />
+    </div>
+  </div>
 </template>
 
 <script>
+import theme from "./theme.js";
 export default {
   name: "Bubble",
   props: {
     placement: {
       type: String,
-      default: "top"
+      default: "top",
     },
     gap: {
       type: Number,
-      default: 10
+      default: 10,
     },
-    className: ""
   },
-  emits: ['mouseenter', 'mouseleave'],
+  emits: ["mouseenter", "mouseleave"],
   data() {
     return {
       style: {},
       arrow: {},
-      direction: "top"
+      direction: "top",
     };
   },
   methods: {
-    // 水平自适应，用于横向定位
+    /**
+     * 水平自适应，用于横向定位
+     */
     level() {
-      const { left, right, width } = this.parentRect;
-      const widthCenter = (this.bubbleRect.width - width) / 2;
-      if (left < widthCenter) {
-        // 左浮动
-        this.style.left = 0;
-        this.arrow = { left: left + width / 2 - 6 + "px" };
-      } else if (window.innerWidth < right + widthCenter) {
-        // 右浮动
-        this.style.right = 0;
-        this.arrow = {
-          right: window.innerWidth - right + width / 2 + "px"
-        };
+      const { parentRect, bubbleRect } = this;
+      const { left, right, width } = parentRect;
+      const center = (bubbleRect.width - width) / 2;
+      // console.log(bubbleRect);
+      if (left < center) {
+        // 左靠齐
+        this.style.left = left + "px";
+        this.arrow = { left: width / 2 - 4 + "px" };
+      } else if (window.innerWidth - right < center) {
+        // 右靠齐
+        this.style.right = window.innerWidth - right + "px";
+        this.arrow = { right: width / 2 - 4 + "px" };
       } else {
         // 居中
-        this.style.left = left - widthCenter + "px";
-        this.arrow = { left: this.bubbleRect.width / 2 - 6 + "px" };
+        this.style.left = left - center + "px";
+        this.arrow = { left: width / 2 - 4 + "px" };
       }
     },
-    // 垂直自适应，用于纵向定位
+    /**
+     * 垂直自适应，用于纵向定位
+     */
     vertical() {
       let { top, bottom, height } = this.parentRect;
       let heightCenter = (this.bubbleRect.height - height) / 2;
       if (top < heightCenter) {
         // 上浮动
         this.style.top = 0;
-        this.arrow = { top: top + height / 2 - 7 + "px" };
+        this.arrow = { top: top + height / 2 - 8 + "px" };
       } else if (window.innerHeight < bottom + heightCenter) {
         // 下浮动
         this.style.bottom = 0;
         this.arrow = {
-          bottom: window.innerHeight - bottom + height / 2 + "px"
+          bottom: window.innerHeight - bottom + height / 2 + "px",
         };
       } else {
         // 垂直居中
         this.style.top = top - heightCenter + "px";
-        this.arrow = { top: this.bubbleRect.height / 2 - 7 + "px" };
+        this.arrow = { top: this.bubbleRect.height / 2 - 8 + "px" };
       }
     },
     top() {
       this.level();
-      const { top, bottom, height } = this.parentRect;
+      const { top, bottom } = this.parentRect;
       if (top > this.bubbleRect.height) {
         this.direction = "top";
         this.style.top = top - this.bubbleRect.height - this.gap + "px";
@@ -91,7 +95,7 @@ export default {
     },
     bottom() {
       this.level();
-      const { top, bottom, height } = this.parentRect;
+      const { top, bottom } = this.parentRect;
       if (window.innerHeight - bottom > this.bubbleRect.height) {
         this.direction = "bottom";
         this.style.top = bottom + this.gap + "px";
@@ -102,7 +106,7 @@ export default {
     },
     right() {
       this.vertical();
-      const { right, left, width } = this.parentRect;
+      const { right, left } = this.parentRect;
       if (window.innerWidth - right > this.bubbleRect.width) {
         this.direction = "right";
         this.style.left = right + this.gap + "px";
@@ -113,7 +117,7 @@ export default {
     },
     left() {
       this.vertical();
-      const { right, left, width } = this.parentRect;
+      const { right, left } = this.parentRect;
       if (left > this.bubbleRect.width) {
         this.direction = "left";
         this.style.left = left - this.bubbleRect.width - this.gap + "px";
@@ -122,125 +126,95 @@ export default {
         this.style.left = right - this.gap + "px";
       }
     },
-    initView() {
-      this.parentRect = this.$el.parentNode.getBoundingClientRect();
-      this.bubbleRect = this.tipNode.getBoundingClientRect();
-      this[this.placement]();
-    }
+    /**
+     * 页面初始化
+     */
+    init() {
+      this.parentRect = this.$parentNode.getBoundingClientRect();
+      this.bubbleRect = this.$el.getBoundingClientRect();
+      if (this[this.placement]) this[this.placement]();
+    },
   },
   mounted() {
+    this.$parentNode = this.$el.parentNode;
+    document.body.appendChild(this.$el);
     this.$nextTick(() => {
-      this.parentRect = this.$el.parentNode.getBoundingClientRect();
-      // app中在使用appendChild方法改变节点位置后，再次渲染时父节点parentNode位置不会被初始化。
-      // 暂时使用隐藏节点作为锚点，避免appendChild后再也回不去。
-      this.tipNode = this.$el.childNodes[0];
-      document.body.appendChild(this.tipNode);
-      this.bubbleRect = this.tipNode.getBoundingClientRect();
-      if (this[this.placement]) this[this.placement]();
+      this.init();
     });
   },
-  unmounted() {
-    // app不会自动销毁已移动至组件外部的子节点，需要开发者自行管理组件外部的子节点
-    this.tipNode.remove();
+  activated() {
+    this.init();
   },
   install(app) {
     app.component(this.name, this);
-  }
+    theme.style(this.style);
+  },
 };
 </script>
 
 <style lang="scss">
-.vi-bubble-point {
-  display: none;
-}
 .vi-bubble {
   position: fixed;
   z-index: 1000000;
+  display: flex;
   color: #999;
   line-height: normal;
   .vi-bubble-content {
+    font-size: 12px;
     background-color: #fff;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-    padding: 5px 10px;
-    font-size: 12px;
-    color: #fff;
+    overflow: hidden;
   }
   @mixin arrow {
-    position: absolute;
-    height: 7px;
-    width: 7px;
-    &:before {
-      content: "";
-      width: 0;
-      height: 0;
+    position: relative;
+    i {
+      display: block;
+      width: 8px;
+      height: 8px;
+      background-color: #fff;
       position: absolute;
-    }
-    &:after {
-      content: "";
-      width: 0;
-      height: 0;
-      position: absolute;
+      transform: rotate(45deg);
     }
   }
-  .vi-bubble-arrow-left {
-    @include arrow;
-    right: -7px;
-    &:before {
-      left: 1px;
-      border-left: 7px solid #dedede;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-    }
-    &:after {
-      border-left: 7px solid #ffffff;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
+  &.left {
+    .vi-bubble-arrow {
+      @include arrow;
+      width: 8px;
+      i {
+        left: -4px;
+      }
     }
   }
-  .vi-bubble-arrow-right {
-    @include arrow;
-    left: -7px;
-    &:before {
-      left: -1px;
-      border-top: 6px solid transparent;
-      border-right: 7px solid #dedede;
-      border-bottom: 6px solid transparent;
-    }
-    &:after {
-      border-top: 6px solid transparent;
-      border-right: 7px solid #ffffff;
-      border-bottom: 6px solid transparent;
+  &.right {
+    flex-direction: row-reverse;
+    .vi-bubble-arrow {
+      @include arrow;
+      width: 8px;
+      i {
+        left: 4px;
+      }
     }
   }
-  .vi-bubble-arrow-top {
-    @include arrow;
-    bottom: -7px;
-    &:before {
-      left: -1px;
-      border-top: 7px solid #dedede;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-    }
-    &:after {
-      border-top: 7px solid #ffffff;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
+  &.top {
+    flex-direction: column;
+    .vi-bubble-arrow {
+      @include arrow;
+      height: 8px;
+      i {
+        top: -4px;
+      }
     }
   }
-  .vi-bubble-arrow-bottom {
-    @include arrow;
-    top: -7px;
-    &:before {
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-bottom: 7px solid #dedede;
-    }
-    &:after {
-      top: 1px;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-bottom: 7px solid #ffffff;
+  &.bottom {
+    flex-direction: column;
+    flex-direction: row-reverse;
+    .vi-bubble-arrow {
+      @include arrow;
+      height: 8px;
+      i {
+        top: -4px;
+      }
     }
   }
 }

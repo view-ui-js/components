@@ -1,5 +1,5 @@
 <template>
-  <transition name="scale" appear
+  <transition name="scale"
     ><keep-alive
       ><Bubble v-if="open" class="vi-tip" :border="false" :placement="placement"
         ><slot></slot></Bubble></keep-alive

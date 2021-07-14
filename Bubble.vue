@@ -26,7 +26,7 @@ export default {
     },
     gap: {
       type: Number,
-      default: 10,
+      default: 6,
     },
   },
   emits: ["mouseenter", "mouseleave"],
@@ -39,55 +39,56 @@ export default {
   },
   methods: {
     /**
-     * 水平自适应，用于横向定位
+     * 水平自适应
      */
     level() {
-      const { parentRect, bubbleRect } = this;
+      const { parentRect, $el } = this;
       const { left, right, width } = parentRect;
-      const center = (bubbleRect.width - width) / 2;
-      // console.log(bubbleRect);
-      if (left < center) {
+      const bubbleCenter = ($el.clientWidth - width) / 2;
+      const parentCenter = width / 2;
+      if (left < bubbleCenter) {
         // 左靠齐
         this.style.left = left + "px";
-        this.arrow = { left: width / 2 - 4 + "px" };
-      } else if (window.innerWidth - right < center) {
+        this.arrow = { left: parentCenter - 4 + "px" };
+      } else if (window.innerWidth - right < bubbleCenter) {
         // 右靠齐
         this.style.right = window.innerWidth - right + "px";
-        this.arrow = { right: width / 2 - 4 + "px" };
+        this.arrow = { right: parentCenter - 4 + "px" };
       } else {
         // 居中
-        this.style.left = left - center + "px";
-        this.arrow = { left: width / 2 - 4 + "px" };
+        this.style.left = left - bubbleCenter + "px";
+        this.arrow = {};
       }
     },
     /**
-     * 垂直自适应，用于纵向定位
+     * 垂直自适应
      */
     vertical() {
-      let { top, bottom, height } = this.parentRect;
-      let heightCenter = (this.bubbleRect.height - height) / 2;
-      if (top < heightCenter) {
+      const { clientHeight } = this.$el;
+      const { top, bottom, height } = this.parentRect;
+      const bubbleCenter = (clientHeight - height) / 2;
+      const parentCenter = height / 2;
+      if (top < bubbleCenter) {
         // 上浮动
-        this.style.top = 0;
-        this.arrow = { top: top + height / 2 - 8 + "px" };
-      } else if (window.innerHeight < bottom + heightCenter) {
+        this.style.top = top;
+        this.arrow = { top: parentCenter - 4 + "px" };
+      } else if (window.innerHeight - bottom < bubbleCenter) {
         // 下浮动
-        this.style.bottom = 0;
-        this.arrow = {
-          bottom: window.innerHeight - bottom + height / 2 + "px",
-        };
+        this.style.bottom = bottom;
+        this.arrow = { bottom: parentCenter - 4 + "px" };
       } else {
-        // 垂直居中
-        this.style.top = top - heightCenter + "px";
-        this.arrow = { top: this.bubbleRect.height / 2 - 8 + "px" };
+        // 居中
+        this.style.top = top - bubbleCenter + "px";
+        this.arrow = {};
       }
     },
     top() {
       this.level();
+      const { clientHeight } = this.$el;
       const { top, bottom } = this.parentRect;
-      if (top > this.bubbleRect.height) {
+      if (top > clientHeight) {
         this.direction = "top";
-        this.style.top = top - this.bubbleRect.height - this.gap + "px";
+        this.style.top = top - clientHeight - this.gap + "px";
       } else {
         this.direction = "bottom";
         this.style.top = bottom + this.gap + "px";
@@ -95,32 +96,33 @@ export default {
     },
     bottom() {
       this.level();
+      const { clientHeight } = this.$el;
       const { top, bottom } = this.parentRect;
-      if (window.innerHeight - bottom > this.bubbleRect.height) {
+      if (window.innerHeight - bottom > clientHeight) {
         this.direction = "bottom";
         this.style.top = bottom + this.gap + "px";
       } else {
         this.direction = "top";
-        this.style.top = top - this.bubbleRect.height - this.gap + "px";
+        this.style.top = top - clientHeight - this.gap + "px";
       }
     },
     right() {
       this.vertical();
       const { right, left } = this.parentRect;
-      if (window.innerWidth - right > this.bubbleRect.width) {
+      if (window.innerWidth - right > this.$el.clientWidth) {
         this.direction = "right";
         this.style.left = right + this.gap + "px";
       } else {
         this.direction = "left";
-        this.style.left = left - this.bubbleRect.width - this.gap + "px";
+        this.style.left = left - this.$el.clientWidth - this.gap + "px";
       }
     },
     left() {
       this.vertical();
       const { right, left } = this.parentRect;
-      if (left > this.bubbleRect.width) {
+      if (left > this.$el.clientWidth) {
         this.direction = "left";
-        this.style.left = left - this.bubbleRect.width - this.gap + "px";
+        this.style.left = left - this.$el.clientWidth - this.gap + "px";
       } else {
         this.direction = "right";
         this.style.left = right - this.gap + "px";
@@ -130,20 +132,24 @@ export default {
      * 页面初始化
      */
     init() {
-      this.parentRect = this.$parentNode.getBoundingClientRect();
-      this.bubbleRect = this.$el.getBoundingClientRect();
-      if (this[this.placement]) this[this.placement]();
+      this.$nextTick(() => {
+        this.isInit = true;
+        this.parentRect = this.$parentNode.getBoundingClientRect();
+        if (this[this.placement]) {
+          this[this.placement]();
+        }
+      });
     },
   },
   mounted() {
     this.$parentNode = this.$el.parentNode;
     document.body.appendChild(this.$el);
-    this.$nextTick(() => {
-      this.init();
-    });
+    this.init();
   },
   activated() {
-    this.init();
+    if (this.isInit) {
+      this.init();
+    }
   },
   install(app) {
     app.component(this.name, this);
@@ -167,6 +173,8 @@ export default {
     overflow: hidden;
   }
   @mixin arrow {
+    display: flex;
+    justify-content: center;
     position: relative;
     i {
       display: block;
@@ -180,6 +188,7 @@ export default {
   &.left {
     .vi-bubble-arrow {
       @include arrow;
+      flex-direction: column;
       width: 8px;
       i {
         left: -4px;
@@ -190,6 +199,7 @@ export default {
     flex-direction: row-reverse;
     .vi-bubble-arrow {
       @include arrow;
+      flex-direction: column;
       width: 8px;
       i {
         left: 4px;
@@ -207,13 +217,12 @@ export default {
     }
   }
   &.bottom {
-    flex-direction: column;
-    flex-direction: row-reverse;
+    flex-direction: column-reverse;
     .vi-bubble-arrow {
       @include arrow;
       height: 8px;
       i {
-        top: -4px;
+        top: 4px;
       }
     }
   }

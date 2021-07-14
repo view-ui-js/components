@@ -1,13 +1,14 @@
 <template>
   <transition name="scale" appear>
     <keep-alive>
-      <Bubble v-if="show" class="vi-float-menu" :gap="gap" placement="bottom">
+      <Bubble v-if="open" class="vi-float-menu" :gap="gap">
         <ul class="vi-float-menu-items">
           <li
-            class="vt-hover2"
             v-for="(item, key) of options"
+            class="vt-hover2"
+            :class="{ 'vt-active': current == key }"
             :key="key"
-            @click="action(item)"
+            @click="select(item)"
           >
             <i :class="item.icon"></i>
             {{ item.name }}
@@ -25,31 +26,30 @@ export default {
     options: {
       type: Array,
     },
+    current: {
+      type: [String, Number],
+    },
     gap: {
       type: Number,
       default: 0,
     },
   },
   data() {
-    return { show: false };
+    return { open: false };
   },
   methods: {
-    action(item) {
-      this.show = false;
-      if (item.action) {
-        item.action(item);
-      } else if (item.path) {
-        this.$router.push(item.path);
-      }
+    select(item) {
+      this.open = false;
+      this.$emit("select", item);
     },
     mouseenter() {
       clearTimeout(this.timeId);
-      this.show = true;
+      this.open = true;
     },
     mouseleave() {
       clearTimeout(this.timeId);
       this.timeId = setTimeout(() => {
-        this.show = false;
+        this.open = false;
       }, 200);
     },
   },
@@ -59,7 +59,7 @@ export default {
     parentNode.addEventListener("mouseleave", this.mouseleave);
   },
   watch: {
-    show() {
+    open() {
       if (this.active === true) return;
       this.active = true;
       this.$nextTick(() => {

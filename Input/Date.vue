@@ -5,9 +5,9 @@
         <input v-model="input" :placeholder="placeholder" readonly />
         <i class="vicon-riqi1"></i>
       </div>
-      <BubbleFixe v-if="open" placement="bottom">
+      <Bubble v-if="open" placement="bottom">
         <Date :value="ymd" @change="change"></Date>
-      </BubbleFixe>
+      </Bubble>
     </div>
   </FormBox>
   <div v-else-if="value" class="vi-input-preview">
@@ -21,10 +21,10 @@ import dayjs from "dayjs";
 import mixing from "./mixingDate.js";
 import Date from "../Date/Index.vue";
 import FormBox from "../FormBox.vue";
-import BubbleFixe from "../BubbleFixe.vue";
+import Bubble from "../Bubble.vue";
 export default {
   extends: mixing,
-  components: { FormBox, BubbleFixe },
+  components: { FormBox, Bubble },
   props: {
     value: {
       type: String,

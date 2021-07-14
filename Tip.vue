@@ -13,7 +13,7 @@ export default {
   props: {
     placement: {
       type: String,
-      default: "right",
+      default: "top",
     },
   },
   data() {
@@ -34,6 +34,9 @@ export default {
       const { parentNode } = this.$el;
       parentNode.addEventListener("mouseenter", this.mouseenter);
       parentNode.addEventListener("mouseleave", this.mouseleave);
+      parentNode.addEventListener("click", () => {
+        this.open = false;
+      });
     });
   },
   install(app) {

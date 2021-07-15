@@ -8,27 +8,28 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-let messageContainer;
+import * as Vue from "vue";
+let message;
 export default {
   data() {
     return { status: true };
   },
   mounted() {
-    messageContainer.appendChild(this.$el);
+    // container.appendChild(this.$el);
     setTimeout(() => {
       this.status = false;
     }, this.time);
   },
   install(app) {
-    const Message = defineComponent(this);
+    const _this = this;
     function proxy(type, body = "", time = 1500) {
-      if (!messageContainer) {
-        messageContainer = document.createElement("div");
-        messageContainer.id = "vi-message-container";
-        document.body.appendChild(messageContainer);
+      if (!message) {
+        message = Vue.createApp(_this, { type, body, time });
+        const container = document.createElement("div");
+        container.id = "vi-message-container";
+        document.body.appendChild(container);
+        message.mount(container);
       }
-      new Message({ data: { type, body, time } }).$mount();
     }
     app.mixin({
       methods: {

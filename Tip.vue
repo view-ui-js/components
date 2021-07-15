@@ -8,8 +8,10 @@
 
 <script>
 import theme from "./theme.js";
+import Bubble from "./Bubble.vue";
 export default {
   name: "Tip",
+  components: { Bubble },
   props: {
     placement: {
       type: String,

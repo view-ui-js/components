@@ -1,17 +1,23 @@
 <template>
-  <Dialog v-if="open" class="vi-confirm" @close="Close">
-    <template v-slot:header><i class='vicon-bangzhu-plus-copy'></i>提示</template>
-    {{body}}
+  <Dialog v-show="open" class="vi-confirm" @close="Close">
+    <template v-slot:header
+      ><i class="vicon-bangzhu-plus-copy"></i>{{ title }}</template
+    >
+    {{ body }}
     <template v-slot:footer>
-      <Button @click="Close">取消</Button>
-      <Button :color="color" @click="Confirm">{{buttonText}}</Button>
+      <Button @click="Close">{{ cancelButton }}</Button>
+      <Button :color="color" @click="Confirm">{{ confirmButton }}</Button>
     </template>
   </Dialog>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import * as Vue from "vue";
+import Dialog from "./Dialog.vue";
+import Button from "./Button.vue";
+let confirm;
 export default {
+  components: { Dialog, Button },
   methods: {
     Confirm() {
       if (this.confirm) {
@@ -24,49 +30,51 @@ export default {
         this.close();
       }
       this.open = false;
-    }
+    },
   },
   mounted() {
-    // 确保element已挂载完成，否则在初次显示时没有过渡动效
     this.open = true;
   },
   install(app) {
-    const Component = defineComponent(this);
-    let component;
+    const _this = this;
     app.mixin({
       methods: {
         $confirm(options) {
-          // 单实例组件在每次执行前需要初始化data中的所有参数，否则会因为状态共享而出现混乱
           const data = {
-            open: false,
+            title: "Tips",
             color: "success",
-            buttonText: "确认"
+            cancelButton: "Cancel",
+            confirmButton: "Confirm",
           };
           if (typeof options === "object") {
             Object.assign(data, options);
-            const { color, buttonText } = options;
+            const { color, confirmButton } = options;
             if (color) {
               data.color = color;
             }
-            if (buttonText) {
-              data.buttonText = buttonText;
+            if (confirmButton) {
+              data.confirmButton = confirmButton;
             }
           } else {
             data.body = options;
           }
-          // 持久化单例组件，全局共用一个实例。(改为多实例模式只要去掉实例判断即可，也不存在过渡失效问题)
-          if (component) {
-            data.open = true;
-            Object.assign(component, data); // 更新已缓存的组件
+          data.open = true;
+          if (confirm) {
+            Object.assign(confirm, data);
           } else {
-            // 初次加载时data.open应为false，等待$el挂载后通过mounted方法切换v-show，否则首次出场过渡动效不会执行
-            // 此组件通过事件动态挂载，初次加载生命周期有别于路由内嵌组件
-            component = new Component({ data }).$mount();
+            const container = document.createElement("container");
+            document.body.appendChild(container);
+            confirm = Vue.createApp({
+              data() {
+                return data;
+              },
+              ..._this,
+            }).mount(container);
           }
-        }
-      }
+        },
+      },
     });
-  }
+  },
 };
 </script>
 

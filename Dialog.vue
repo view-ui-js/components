@@ -3,7 +3,7 @@
     <div class="vi-mask" ref="maskBox" @click="maskClick" @mousedown.stop>
       <div class="vi-dialog col" :style="style">
         <i class="vicon vi-dialog-close" @click="close">&#xe679;</i>
-        <div v-if="title" class="vi-dialog-header">{{title}}</div>
+        <div v-if="title" class="vi-dialog-header">{{ title }}</div>
         <div v-else-if="$slots.header" class="vi-dialog-header">
           <slot name="header"></slot>
         </div>
@@ -13,7 +13,7 @@
         <div v-if="$slots.footer" class="vi-dialog-footer">
           <slot name="footer"></slot>
         </div>
-        <div v-else-if="confirm" class="vi-dialog-footer">
+        <div v-else-if="onConfirm" class="vi-dialog-footer">
           <Button @click="close">取消</Button>
           <Button color="success" @click="$emit('confirm')">确认</Button>
         </div>
@@ -23,8 +23,10 @@
 </template>
 
 <script>
+import Button from "./Button.vue";
 export default {
   name: "Dialog",
+  components: { Button },
   props: {
     title: String,
     mask: Boolean,
@@ -33,10 +35,10 @@ export default {
     height: String,
   },
   data() {
-    const { confirm } = this._events;
+    const { onConfirm } = this.$attrs;
     const { width, height } = this;
     return {
-      confirm,
+      onConfirm,
       style: { width, height },
     };
   },
@@ -53,9 +55,9 @@ export default {
       this.$emit("close");
     },
   },
-  mounted() {
-    document.body.appendChild(this.$el);
-  },
+  // mounted() {
+  //   document.body.appendChild(this.$el);
+  // },
   install(app) {
     app.component(this.name, this);
   },
@@ -76,7 +78,7 @@ export default {
   background-color: #bdbdbdc4;
   backdrop-filter: blur(2px);
   // vi-dialog容器过渡动画
-  &.fade-enter .vi-dialog,
+  &.fade-enter-from .vi-dialog,
   &.fade-leave-to .vi-dialog {
     transform: scale(1.01);
   }

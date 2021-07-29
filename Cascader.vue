@@ -25,7 +25,7 @@
   <div v-else class="vi-form-box-preview">
     <span v-if="showLabel" class="vi-cascader-preview-label">{{showLabel}}: </span>
     <span class="vi-cascader-preview-value">{{showValue || '-'}}</span>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

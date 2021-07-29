@@ -13,7 +13,7 @@
               @click="order(item.sort)"
             >
               {{item.name}}
-              <i class="vicon"></i>
+              <i class="vicon" />
             </th>
             <th v-else :key="key" :style="{ width: item.width }">{{item.name}}</th>
           </template>

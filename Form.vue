@@ -7,7 +7,7 @@
       </h4>
     </div>
     <div class="vi-form-main">
-      <slot></slot>
+      <slot />
     </div>
     <div v-if="confirm" class="vi-form-footer">
       <!-- <Button @click="close">取消</Button> -->

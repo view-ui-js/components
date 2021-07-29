@@ -1,7 +1,7 @@
 <template>
   <div class="vi-form-box">
     <div v-if="label" class="vi-form-box-header">{{label}}</div>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

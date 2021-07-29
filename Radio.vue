@@ -2,7 +2,7 @@
   <div class="vi-radio" @click="click">
     <div class="radio-circular" :class="{'radio-highlight':status}"></div>
     <span class="radio-label">
-      <slot></slot>
+      <slot />
     </span>
   </div>
 </template>

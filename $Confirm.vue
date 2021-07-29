@@ -1,7 +1,7 @@
 <template>
   <Dialog v-show="open" class="vi-confirm" @close="Close">
     <template v-slot:header
-      ><i class="vicon-bangzhu-plus-copy"></i>{{ title }}</template
+      ><i class="vicon-bangzhu-plus-copy" />{{ title }}</template
     >
     {{ body }}
     <template v-slot:footer>

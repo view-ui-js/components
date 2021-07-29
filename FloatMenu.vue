@@ -10,7 +10,7 @@
             :key="key"
             @click="select(item)"
           >
-            <i :class="item.icon"></i>
+            <i :class="item.icon" />
             {{ item.name }}
           </li>
         </ul>

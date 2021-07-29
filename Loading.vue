@@ -11,7 +11,7 @@
   <div class="vi-loading" v-else>
     <div v-if="status!=='data'" class="empty center">暂无数据</div>
     <div class="vi-loading-main">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>

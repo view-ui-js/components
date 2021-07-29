@@ -1,6 +1,6 @@
 <template>
   <div class="vi-row" :class="classOp">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

@@ -7,7 +7,7 @@
     @mouseleave="$emit('mouseleave')"
   >
     <div class="vi-bubble-content">
-      <slot></slot>
+      <slot />
     </div>
     <div class="vi-bubble-arrow">
       <i :style="arrow" />

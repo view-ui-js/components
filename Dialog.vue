@@ -8,7 +8,7 @@
           <slot name="header"></slot>
         </div>
         <div class="vi-dialog-main col">
-          <slot></slot>
+          <slot />
         </div>
         <div v-if="$slots.footer" class="vi-dialog-footer">
           <slot name="footer"></slot>

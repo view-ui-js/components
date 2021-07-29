@@ -1,6 +1,6 @@
 <template>
   <div class="vi-alert" :class="`vi-alert-${type}`">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

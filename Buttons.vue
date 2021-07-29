@@ -1,6 +1,6 @@
 <template>
   <div ref="buttons" class="vi-buttons" @click="click">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

@@ -8,7 +8,7 @@
       :key="name"
       @click="click(item, name)"
     >
-      <i :class="item.icon"></i>
+      <i :class="item.icon" />
       <Tip placement="top">{{item.name}}</Tip>
     </button>
   </div>

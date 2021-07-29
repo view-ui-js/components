@@ -2,7 +2,7 @@
   <transition :name="`${position}-in`" appear>
     <div class="vi-drawer" :class="'vi-drawer-' +  position" :style="style">
       <i class="vicon close-button" @click="$emit('close', false)">&#xe679;</i>
-      <slot></slot>
+      <slot />
     </div>
   </transition>
 </template>

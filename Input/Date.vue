@@ -3,7 +3,7 @@
     <div class="vi-date-picker" @click.stop="click">
       <div class="vi-input">
         <input v-model="input" :placeholder="placeholder" readonly />
-        <i class="vicon-riqi1"></i>
+        <i class="vicon-riqi1" />
       </div>
       <Bubble v-if="open" placement="bottom">
         <Date :value="ymd" @change="change"></Date>

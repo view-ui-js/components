@@ -9,7 +9,7 @@
             :key="path"
             class="vi-nav-menu-item vt-link-active vt-hover"
           >
-            <i :class="value.icon"></i>
+            <i :class="value.icon" />
             <Tip>{{ value.name }}</Tip>
           </router-link>
         </template>
@@ -18,7 +18,7 @@
     </div>
     <aside v-if="children" class="vi-navbar-children vt-sub">
       <h3 v-if="current" class="title">
-        <i :class="current.icon"></i>
+        <i :class="current.icon" />
         {{ current.name }}
         <span v-if="childrenName" class="childrenName">
           / {{ childrenName }}</span
@@ -31,12 +31,12 @@
           :to="`/${prefix}/${cpath}`"
           :key="cpath"
         >
-          <i v-if="value.icon" :class="value.icon"></i>
+          <i v-if="value.icon" :class="value.icon" />
           <span>{{ value.name }}</span>
         </router-link>
       </div>
     </aside>
-    <slot></slot>
+    <slot />
   </nav>
 </template>
 

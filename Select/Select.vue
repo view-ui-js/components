@@ -6,7 +6,7 @@
       <i class="vicon arrow" :class="{ 'arrow_up': drop }">&#xe678;</i>
       <transition name="select-drop" appear>
         <ul v-show="drop">
-          <slot></slot>
+          <slot />
         </ul>
       </transition>
     </div>

@@ -5,10 +5,10 @@
         <div class="vi-image-box">
           <img :src="image.src" />
         </div>
-        <i class="vi-image-delete vicon-cha" @click.stop="destroy"></i>
+        <i class="vi-image-delete vicon-cha" @click.stop="destroy" />
       </div>
       <div v-else class="vi-image-add" @click="add">
-        <i class="vicon-add"></i>
+        <i class="vicon-add" />
         <input
           ref="input"
           type="file"
@@ -22,7 +22,7 @@
       <div v-if="image.src" class="vi-image-box" @click.stop="preview">
         <img :src="image.src" />
       </div>
-      <i v-else class="vi-image-null vicon-tupian"></i>
+      <i v-else class="vi-image-null vicon-tupian" />
     </div>
   </div>
 </template>

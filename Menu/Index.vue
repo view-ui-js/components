@@ -8,7 +8,7 @@
       @click="click(item, k)"
     >
       <div class="vi-menu-content">
-        <i v-if="item.icon" :class="item.icon"></i>
+        <i v-if="item.icon" :class="item.icon" />
         {{item.name}}
       </div>
     </div>

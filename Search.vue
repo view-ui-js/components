@@ -9,7 +9,7 @@
       @input="emit('input')"
       @keyup.enter="emit('enter')"
     />
-    <i class="vicon-search" @click="emit('submit')"></i>
+    <i class="vicon-search" @click="emit('submit')" />
   </div>
 </template>
 

@@ -3,7 +3,7 @@
     <div v-if="src" class="vi-img-box">
       <img :src="src" />
     </div>
-    <i v-else class="vi-img-null" :class="icon"></i>
+    <i v-else class="vi-img-null" :class="icon" />
   </div>
 </template>
 

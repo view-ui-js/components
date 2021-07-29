@@ -1,7 +1,7 @@
 <template>
   <transition name="fade" appear>
     <div v-if="status" class="vi-message">
-      <i :class="`vicon-${type}`"></i>
+      <i :class="`vicon-${type}`" />
       {{ body }}
     </div>
   </transition>

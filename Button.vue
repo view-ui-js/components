@@ -1,6 +1,6 @@
 <template>
   <button class="vi-button" :class="cssClass" :type="type" :style="style" @click.prevent="click">
-    <slot></slot>
+    <slot />
   </button>
 </template>
 

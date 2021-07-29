@@ -3,7 +3,7 @@
     <div class="upload-box upload-img" v-for="(item, key) of images" :key="key">
       <img :src="item.src" :title="item.name" />
       <div class="vi-upload-mask">
-        <i class="vicon icon-chakan preview" @click="$ImgPreview(item.src)"></i>
+        <i class="vicon icon-chakan preview" @click="$ImgPreview(item.src)" />
         <i class="vicon del" @click="Destroy(key)">&#xe679;</i>
       </div>
     </div>

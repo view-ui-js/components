@@ -14,10 +14,10 @@
           />
         </slot>
       </div>
-      <i class="vi-images-delete vicon-cha" @click.stop="destroy(index)"></i>
+      <i class="vi-images-delete vicon-cha" @click.stop="destroy(index)" />
     </Draggable>
     <div v-show="images.length < max" class="vi-images-add" @click="add">
-      <i class="vicon-add"></i>
+      <i class="vicon-add" />
       <input
         ref="input"
         type="file"
@@ -35,7 +35,7 @@
       </div>
     </template>
     <div v-else class="vi-image-null">
-      <i class="vicon-tupian"></i>
+      <i class="vicon-tupian" />
     </div>
   </div>
 </template>

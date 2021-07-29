@@ -1,6 +1,6 @@
 <template>
   <div class="vi-header">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

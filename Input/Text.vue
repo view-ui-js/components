@@ -17,14 +17,14 @@
       />
       <div class="vi-input-after">
         <slot name="after">
-          <i v-if="icon" :class="icon"></i>
+          <i v-if="icon" :class="icon" />
           <span v-if="unit" class="vi-input-unit">{{ unit }}</span>
         </slot>
       </div>
     </div>
   </FormBox>
   <div v-else-if="value" class="vi-input-preview">
-    <i v-if="icon" :class="icon"></i>
+    <i v-if="icon" :class="icon" />
     <span v-else-if="showLabel" class="vi-input-preview-label"
       >{{ showLabel }}：</span
     >

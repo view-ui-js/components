@@ -6,7 +6,7 @@
         @click="click(item, k)"
         :class="{'active gc-border-bottom-2px':k == key}"
       >
-        <i v-if="item.icon" :class="item.icon"></i>
+        <i v-if="item.icon" :class="item.icon" />
         {{item.name}}
       </div>
     </div>

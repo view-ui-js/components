@@ -2,7 +2,7 @@
   <transition name="scale"
     ><keep-alive
       ><Bubble v-if="open" class="vi-tip" :border="false" :placement="placement"
-        ><slot></slot></Bubble></keep-alive
+        ><slot /></Bubble></keep-alive
   ></transition>
 </template>
 

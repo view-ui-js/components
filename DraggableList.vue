@@ -2,10 +2,10 @@
   <div class="vi-draggable-list">
     <Draggable v-if="list.length" v-model="list" v-slot="{ index, item }" @click="click">
       <slot :item="item"></slot>
-      <i class="vi-draggable-list-delete vicon-cha" @click.stop="destroy(index)"></i>
+      <i class="vi-draggable-list-delete vicon-cha" @click.stop="destroy(index)" />
     </Draggable>
     <div v-show="list.length < max" class="vi-draggable-list-add" @click="$emit('add')">
-      <i class="vicon-jia"></i>
+      <i class="vicon-jia" />
     </div>
   </div>
 </template>

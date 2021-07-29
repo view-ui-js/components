@@ -5,7 +5,7 @@
     @dblclick="dblclick"
     @contextmenu="$emit('contextmenu', $event)"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

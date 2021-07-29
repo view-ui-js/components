@@ -7,13 +7,13 @@
       @dragleave.stop.prevent="dragleave"
       @drop.stop.prevent="drop"
     >
-      <i class="vicon icon-upload"></i> 点击或拖拽上传文件
+      <i class="vicon icon-upload" /> 点击或拖拽上传文件
     </div>
 
     <div class="vi-upload-item vi-upload-item-image" v-for="(item, key) of images" :key="key">
       <img :src="item.src" :title="item.name" />
       <div class="vi-upload-mask">
-        <i class="vicon icon-chakan vi-upload-preview" @click="$ImgPreview(item.src)"></i>
+        <i class="vicon icon-chakan vi-upload-preview" @click="$ImgPreview(item.src)" />
         <i class="vicon vi-upload-delete" @click="Destroy(key)">&#xe679;</i>
       </div>
     </div>

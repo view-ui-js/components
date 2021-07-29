@@ -1,9 +1,9 @@
 <template>
   <DialogPage :title="Title" :icon="Icon" @close="$emit('close')">
-    <slot></slot>
+    <slot />
     <template #sidebar>
       <Button fab v-for="(item, key) in Actions" :key="key" @click="item.click">
-        <i :class="item.icon"></i>
+        <i :class="item.icon" />
         <Tip>{{item.name}}</Tip>
       </Button>
     </template>

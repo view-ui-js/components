@@ -3,11 +3,11 @@
     <section class="vi-float-mask" ref="maskBox" @mousedown.stop>
       <div class="vi-dialog-page vertical">
         <header class="vi-dialog-page-header">
-          <i :class="icon"></i>
+          <i :class="icon" />
           {{title}}
         </header>
         <main class="vi-dialog-page-main">
-          <slot></slot>
+          <slot />
         </main>
         <aside class="vi-dialog-page-sidebar">
           <slot name="sidebar"></slot>

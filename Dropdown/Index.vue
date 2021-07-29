@@ -6,7 +6,7 @@
     </div>
     <transition name="scale">
       <Bubble v-if="open" placement="bottom" :gap="gap">
-        <slot></slot>
+        <slot />
       </Bubble>
     </transition>
   </div>

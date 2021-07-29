@@ -12,7 +12,7 @@
           :key="key"
           @click="!item.disable && click(item)"
         >
-          <i v-if="item.icon" :class="item.icon"></i>
+          <i v-if="item.icon" :class="item.icon" />
           <span>{{ item.name }}</span>
         </li>
       </template>

@@ -2,7 +2,7 @@
   <div id="vi-message-container">
     <transition-group name="fade">
       <div class="vi-message" v-for="item of queue" :key="item.id">
-        <i :class="`vicon-${item.type}`"></i>
+        <i :class="`vicon-${item.type}`" />
         {{ item.body }}
       </div>
     </transition-group>

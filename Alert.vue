@@ -1,5 +1,5 @@
 <template>
-  <div class="vi-alert" :class="`vi-alert-${type}`">
+  <div class="v-alert" :class="`v-alert-${type}`">
     <slot />
   </div>
 </template>
@@ -18,21 +18,21 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-alert {
+.v-alert {
   margin: 10px;
   padding: 10px;
   border-radius: 3px;
   background-color: #fffbe6;
   border: 1px solid #fbedc0;
-  &.vi-alert-success {
+  &.v-alert-success {
     background-color: #f6ffed;
     border: 1px solid #daefca;
   }
-  &.vi-alert-error {
+  &.v-alert-error {
     background-color: #fff1f0;
     border: 1px solid #ffa39e;
   }
-  &.vi-alert-info {
+  &.v-alert-info {
     background-color: #e6f7ff;
     border: 1px solid #91d5ff;
   }

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" appear>
-    <div v-if="status" class="vi-message">
+    <div v-if="status" class="v-message">
       <i :class="`vicon-${type}`" />
       {{ body }}
     </div>
@@ -26,7 +26,7 @@ export default {
       if (!message) {
         message = Vue.createApp(_this, { type, body, time });
         const container = document.createElement("div");
-        container.id = "vi-message-container";
+        container.id = "v-message-container";
         document.body.appendChild(container);
         message.mount(container);
       }
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss">
-#vi-message-container {
+#v-message-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -68,7 +68,7 @@ export default {
   flex-direction: column;
   align-items: center;
   pointer-events: none;
-  .vi-message {
+  .v-message {
     border-radius: 4px;
     padding: 10px 15px;
     margin: 10px;

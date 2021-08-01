@@ -1,7 +1,7 @@
 <template>
-  <div class="vi-upload-drag">
+  <div class="v-upload-drag">
     <div
-      class="vi-upload-drag-box"
+      class="v-upload-drag-box"
       @click="Add"
       @dragenter.stop.prevent="dragenter"
       @dragleave.stop.prevent="dragleave"
@@ -10,11 +10,11 @@
       <i class="vicon icon-upload" /> 点击或拖拽上传文件
     </div>
 
-    <div class="vi-upload-item vi-upload-item-image" v-for="(item, key) of images" :key="key">
+    <div class="v-upload-item v-upload-item-image" v-for="(item, key) of images" :key="key">
       <img :src="item.src" :title="item.name" />
-      <div class="vi-upload-mask">
-        <i class="vicon icon-chakan vi-upload-preview" @click="$ImgPreview(item.src)" />
-        <i class="vicon vi-upload-delete" @click="Destroy(key)">&#xe679;</i>
+      <div class="v-upload-mask">
+        <i class="vicon icon-chakan v-upload-preview" @click="$ImgPreview(item.src)" />
+        <i class="vicon v-upload-delete" @click="Destroy(key)">&#xe679;</i>
       </div>
     </div>
 
@@ -75,8 +75,8 @@ window.onload = function() {
 </script>
 
 <style lang="scss">
-.vi-upload-drag {
-  .vi-upload-drag-box {
+.v-upload-drag {
+  .v-upload-drag-box {
     border-style: dashed !important;
     border: 2px solid #dee5e7;
     color: #58666e;

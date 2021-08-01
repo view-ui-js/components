@@ -1,12 +1,12 @@
 <template>
-  <div class="vi-slider">
-    <div class="vi-slider-track" @mousedown="mousedown">
-      <dir class="vi-slider-baseline">
-        <div class="vi-slider-progress vt-main" :style="progress">
-          <div class="vi-slider-button"></div>
-          <div class="vi-slider-right">
+  <div class="v-slider">
+    <div class="v-slider-track" @mousedown="mousedown">
+      <dir class="v-slider-baseline">
+        <div class="v-slider-progress vt-main" :style="progress">
+          <div class="v-slider-button"></div>
+          <div class="v-slider-right">
             <Bubble
-              class="vi-slider-bubble"
+              class="v-slider-bubble"
               ref="bubble"
               :gap="14"
               :border="false"
@@ -16,7 +16,7 @@
         </div>
       </dir>
     </div>
-    <div v-if="step" ref="gauge" class="vi-slider-gauge">
+    <div v-if="step" ref="gauge" class="v-slider-gauge">
       <span v-for="(value, key) in ruler" :key="key">{{ value }}</span>
     </div>
   </div>
@@ -101,22 +101,22 @@ export default {
   },
   style({ main }) {
     return `
-      .vi-slider-track .vi-slider-button {
+      .v-slider-track .v-slider-button {
         border: 2px solid ${main.background} !important;
       }
-      .vi-slider-track .vi-bubble-content{
+      .v-slider-track .v-bubble-content{
          background-color: ${main.background} !important;
       }
-      .vi-slider-track .vi-bubble-arrow-right:after{
+      .v-slider-track .v-bubble-arrow-right:after{
          border-right-color: ${main.background} !important;
       }
-      .vi-slider-track .vi-bubble-arrow-left:after{
+      .v-slider-track .v-bubble-arrow-left:after{
          border-left-color: ${main.background} !important;
       }
-      .vi-slider-track .vi-bubble-arrow-top:after{
+      .v-slider-track .v-bubble-arrow-top:after{
          border-top-color: ${main.background} !important;
       }
-      .vi-slider-track .vi-bubble-arrow-bottom:after{
+      .v-slider-track .v-bubble-arrow-bottom:after{
          border-bottom-color: ${main.background} !important;
       }
     `;
@@ -125,16 +125,16 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-slider-track {
+.v-slider-track {
   position: relative;
   width: 100%;
   padding: 6px 0;
   &:hover {
-    .vi-slider-baseline {
+    .v-slider-baseline {
       background-color: #cccccc;
     }
   }
-  .vi-slider-baseline {
+  .v-slider-baseline {
     height: 4px;
     background-color: #efefef;
     transition: background 0.15s ease-in-out;
@@ -143,12 +143,12 @@ export default {
   &:hover {
     cursor: pointer;
   }
-  .vi-slider-progress {
+  .v-slider-progress {
     position: absolute;
     left: 0;
     height: inherit;
     border-radius: inherit;
-    .vi-slider-button {
+    .v-slider-button {
       position: absolute;
       z-index: 10;
       right: 0;
@@ -163,7 +163,7 @@ export default {
         box-shadow: 0 0 0 5px rgba(24, 144, 255, 0.2);
       }
     }
-    .vi-slider-right {
+    .v-slider-right {
       position: absolute;
       right: 0;
     }

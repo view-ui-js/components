@@ -1,15 +1,15 @@
 <template>
   <div
-    class="vi-bubble"
+    class="v-bubble"
     :class="[direction]"
     :style="style"
     @mouseenter="$emit('mouseenter')"
     @mouseleave="$emit('mouseleave')"
   >
-    <div class="vi-bubble-content">
+    <div class="v-bubble-content">
       <slot />
     </div>
-    <div class="vi-bubble-arrow">
+    <div class="v-bubble-arrow">
       <i :style="arrow" />
     </div>
   </div>
@@ -159,13 +159,13 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-bubble {
+.v-bubble {
   position: fixed;
   z-index: 1000000;
   display: flex;
   color: #999;
   line-height: normal;
-  .vi-bubble-content {
+  .v-bubble-content {
     font-size: 12px;
     background-color: #fff;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
@@ -186,7 +186,7 @@ export default {
     }
   }
   &.left {
-    .vi-bubble-arrow {
+    .v-bubble-arrow {
       @include arrow;
       flex-direction: column;
       width: 8px;
@@ -197,7 +197,7 @@ export default {
   }
   &.right {
     flex-direction: row-reverse;
-    .vi-bubble-arrow {
+    .v-bubble-arrow {
       @include arrow;
       flex-direction: column;
       width: 8px;
@@ -208,7 +208,7 @@ export default {
   }
   &.top {
     flex-direction: column;
-    .vi-bubble-arrow {
+    .v-bubble-arrow {
       @include arrow;
       height: 8px;
       i {
@@ -218,7 +218,7 @@ export default {
   }
   &.bottom {
     flex-direction: column-reverse;
-    .vi-bubble-arrow {
+    .v-bubble-arrow {
       @include arrow;
       height: 8px;
       i {

@@ -1,5 +1,5 @@
 <template>
-  <div class="vi-radio" @click="click">
+  <div class="v-radio" @click="click">
     <div class="radio-circular" :class="{'radio-highlight':status}"></div>
     <span class="radio-label">
       <slot />
@@ -32,7 +32,7 @@ export default {
   },
   style({ active }) {
     return `
-      .vi-radio .radio-highlight {
+      .v-radio .radio-highlight {
          border: 5px solid ${active.color};
       }
     `;
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-radio {
+.v-radio {
   cursor: pointer;
   display: inline-block;
   padding: 9px 3px;

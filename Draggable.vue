@@ -1,7 +1,7 @@
 <template>
-  <div class="vi-draggable">
+  <div class="v-draggable">
     <div
-      class="vi-draggable-item"
+      class="v-draggable-item"
       draggable="true"
       v-for="(item, index) of value"
       :key="index"

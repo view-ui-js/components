@@ -1,5 +1,5 @@
 <template>
-  <div class="vi-header">
+  <div class="v-header">
     <slot />
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 
 <style lang="scss">
 @import "./style/var.scss";
-.vi-header {
+.v-header {
   display: flex;
   flex: none;
   justify-content: space-between;

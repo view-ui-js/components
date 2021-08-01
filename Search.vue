@@ -1,5 +1,5 @@
 <template>
-  <div class="vi-search">
+  <div class="v-search">
     <input
       v-model="data"
       type="text"
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-search {
+.v-search {
   display: flex;
   background-color: #efefef;
   border-radius: 50px;

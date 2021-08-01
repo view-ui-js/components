@@ -1,6 +1,6 @@
 <template>
   <FormBox v-if="edit" :label="label" :error="error">
-    <div class="vi-cascader" @click.stop="click">
+    <div class="v-cascader" @click.stop="click">
       <input autocomplete="off" readonly="readonly" :placeholder="placeholder" :value="showValue" />
       <i class="vicon arrow" :class="{'arrow_up':open}">&#xe678;</i>
       <transition name="drop">
@@ -22,9 +22,9 @@
       </transition>
     </div>
   </FormBox>
-  <div v-else class="vi-form-box-preview">
-    <span v-if="showLabel" class="vi-cascader-preview-label">{{showLabel}}: </span>
-    <span class="vi-cascader-preview-value">{{showValue || '-'}}</span>
+  <div v-else class="v-form-box-preview">
+    <span v-if="showLabel" class="v-cascader-preview-label">{{showLabel}}: </span>
+    <span class="v-cascader-preview-value">{{showValue || '-'}}</span>
     <slot />
   </div>
 </template>
@@ -153,7 +153,7 @@ export default {
 
 <style lang="scss">
 @import "./style/var.scss";
-.vi-cascader {
+.v-cascader {
   position: relative;
   .select-drop-enter-from,
   .select-drop-leave-to {

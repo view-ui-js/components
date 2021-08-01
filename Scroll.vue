@@ -1,5 +1,5 @@
 <template>
-  <div class="vi-scroll">
+  <div class="v-scroll">
     <slot />
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-scroll {
+.v-scroll {
   position: relative;
   width: $menuWidth;
   height: 100%;

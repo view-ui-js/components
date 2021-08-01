@@ -1,6 +1,6 @@
 <template>
   <FormBox v-if="edit" :label="label">
-    <div class="vi-selects" @click="click">
+    <div class="v-selects" @click="click">
       <div v-if="input.length" class="input-box">
         <span v-for="(item, key) of input" :key="key">
           {{ item }}
@@ -21,8 +21,8 @@
       </transition>
     </div>
   </FormBox>
-  <div v-else class="vi-selects-preview">
-    <span class="vi-selects-preview-name">{{label}}：</span>
+  <div v-else class="v-selects-preview">
+    <span class="v-selects-preview-name">{{label}}：</span>
     <span v-for="(item, key) of input" :key="key">{{ item }}</span>
   </div>
 </template>
@@ -98,7 +98,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-selects {
+.v-selects {
   user-select: none;
   height: 40px;
   .input-box {
@@ -147,7 +147,7 @@ export default {
   }
 }
 
-.vi-selects-preview {
+.v-selects-preview {
   line-height: 45px;
   width: 50%;
 }

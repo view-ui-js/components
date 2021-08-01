@@ -1,6 +1,6 @@
 <template>
-  <div class="col flex-auto vi-table">
-    <table class="vi-table-head">
+  <div class="col flex-auto v-table">
+    <table class="v-table-head">
       <thead>
         <tr>
           <template v-for="(item, key) of columns">
@@ -21,7 +21,7 @@
       </thead>
     </table>
     <Loading :status="loading">
-      <table class="vi-table-tbody">
+      <table class="v-table-tbody">
         <tbody>
           <slot v-for="(item, index) in data" :item="item" :index="index"></slot>
         </tbody>
@@ -86,7 +86,7 @@ export default {
 
 <style lang="scss">
 @import "./style/var.scss";
-.vi-table {
+.v-table {
   // 基础样式
   table {
     width: 100%;
@@ -123,7 +123,7 @@ export default {
     }
   }
 
-  .vi-table-head {
+  .v-table-head {
     position: sticky;
     top: 0;
     z-index: 5;
@@ -159,7 +159,7 @@ export default {
     }
   }
 
-  .vi-table-tbody {
+  .v-table-tbody {
     tbody {
       tr {
         &:hover {

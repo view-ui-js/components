@@ -1,11 +1,11 @@
 <template>
-  <div class="vi-date" @click.stop>
-    <div class="vi-date-show">
+  <div class="v-date" @click.stop>
+    <div class="v-date-show">
       <i class="vicon" @click="switchMonth(-1)">&#xeb2a;</i>
       <span>{{year}} 年 {{month}} 月</span>
       <i class="vicon" @click="switchMonth(1)">&#xe6b7;</i>
     </div>
-    <div class="vi-date-week">
+    <div class="v-date-week">
       <span>一</span>
       <span>二</span>
       <span>三</span>
@@ -14,8 +14,8 @@
       <span>六</span>
       <span>日</span>
     </div>
-    <div class="vi-date-days" @click="selectDate">
-      <ul class="vi-date-line" v-for="(date, key) of dates" :key="key">
+    <div class="v-date-days" @click="selectDate">
+      <ul class="v-date-line" v-for="(date, key) of dates" :key="key">
         <li v-for="(item,key) of date" :key="key" :class="item.class">
           <span>{{item.date}}</span>
         </li>
@@ -93,7 +93,7 @@ export default {
       for (let i = lastEndDate - prevMonth; i <= lastEndDate; i++) {
         dates.push({
           date: i,
-          class: "vi-date-prev-month"
+          class: "v-date-prev-month"
         });
       }
 
@@ -113,14 +113,14 @@ export default {
         // 突显当日
         if (i === nowDay) {
           if (year === nowYear && month === nowMonth) {
-            data.class = "vi-date-select";
+            data.class = "v-date-select";
           }
         }
 
         // 突出选中项
         if (i === this.setDay) {
           if (year === this.setYear && month === this.setMonth) {
-            data.class = "vi-date-prominent";
+            data.class = "v-date-prominent";
           }
         }
 
@@ -133,7 +133,7 @@ export default {
         for (let i = 1; i <= nextMonth; i++) {
           dates.push({
             date: i,
-            class: "vi-date-next-month"
+            class: "v-date-next-month"
           });
         }
       }
@@ -167,9 +167,9 @@ export default {
       const { className, localName, innerText } = ev.target;
       if (localName === "span") {
         // 跨月份切换
-        if (className === "vi-date-prev-month") {
+        if (className === "v-date-prev-month") {
           this.month -= 1;
-        } else if (className === "vi-date-next-month") {
+        } else if (className === "v-date-next-month") {
           this.month += 1;
         }
         this.currentDate = this.nweDate(this.year, this.month, innerText);
@@ -196,13 +196,13 @@ export default {
   },
   style({ main }) {
     return `
-      .vi-date-show .vicon:hover {
+      .v-date-show .vicon:hover {
           color: ${main.background};
       }
-      .vi-date-days li:hover, .vi-date-days li.vi-date-select {
+      .v-date-days li:hover, .v-date-days li.v-date-select {
           color: ${main.background};
       }
-      .vi-date-days .vi-date-prominent span {
+      .v-date-days .v-date-prominent span {
           background-color: ${main.background};
       }
     `;

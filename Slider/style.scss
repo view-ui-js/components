@@ -1,9 +1,9 @@
-.vi-slider {
+.v-slider {
   position: relative;
   width: 100%;
   padding-top: 43px;
   user-select: none;
-  .vi-slider-gauge {
+  .v-slider-gauge {
     display: flex;
     width: 100%;
     color: #888;
@@ -13,8 +13,8 @@
       text-align: center;
     }
   }
-  .vi-slider-bubble {
-    .vi-bubble-content {
+  .v-slider-bubble {
+    .v-bubble-content {
       padding: 6px;
       color: #ffffff;
       font-size: 12px;

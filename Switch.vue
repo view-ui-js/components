@@ -1,11 +1,11 @@
 <template>
   <div
-    class="vi-switch"
-    :class="{'vi-switch-open':status, 'vi-switch-disable':disable}"
+    class="v-switch"
+    :class="{'v-switch-open':status, 'v-switch-disable':disable}"
     @click="click"
     @dblclick.stop
   >
-    <div class="vi-switch-circle"></div>
+    <div class="v-switch-circle"></div>
   </div>
 </template>
 
@@ -55,10 +55,10 @@ export default {
   },
   style({ active }) {
     return `
-      .vi-switch.vi-switch-open {
+      .v-switch.v-switch-open {
         background-color: ${active.color};
       }
-      .vi-switch-open .vi-switch-circle {
+      .v-switch-open .v-switch-circle {
         border: 1px solid ${active.color};
       }
     `;
@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-switch {
+.v-switch {
   width: 36px;
   height: 20px;
   display: block;
@@ -80,11 +80,11 @@ export default {
   cursor: pointer;
   user-select: none;
   transition: all 0.1s ease;
-  &.vi-switch-disable {
+  &.v-switch-disable {
     cursor: not-allowed;
     opacity: 0.6;
   }
-  .vi-switch-circle {
+  .v-switch-circle {
     width: 20px;
     height: 20px;
     border-radius: 20px;
@@ -92,8 +92,8 @@ export default {
     background-color: #ffffff;
     transition: all 0.1s ease;
   }
-  &.vi-switch-open {
-    .vi-switch-circle {
+  &.v-switch-open {
+    .v-switch-circle {
       transform: translateX(80%);
     }
   }

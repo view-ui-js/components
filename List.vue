@@ -1,6 +1,6 @@
 <template>
   <Loading :status="loading">
-    <div class="vi-list">
+    <div class="v-list">
       <slot name="befor"></slot>
       <slot v-for="(item, index) of list" :item="item" :index="index"></slot>
       <slot name="after"></slot>
@@ -38,7 +38,7 @@ export default {
 
 <style lang="scss">
 @import "./style/var.scss";
-.vi-list {
+.v-list {
   margin: 6px;
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
-  <nav class="vi-navbar">
-    <div class="vi-navbar-main vt-main">
+  <nav class="v-navbar">
+    <div class="v-navbar-main vt-main">
       <slot name="top"></slot>
-      <nav class="vi-nav-menu-scroll">
+      <nav class="v-nav-menu-scroll">
         <template v-for="(value, path) in menu">
           <router-link
             :to="`/${path}`"
             :key="path"
-            class="vi-nav-menu-item vt-link-active vt-hover"
+            class="v-nav-menu-item vt-link-active vt-hover"
           >
             <i :class="value.icon" />
             <Tip>{{ value.name }}</Tip>
@@ -16,7 +16,7 @@
       </nav>
       <slot name="bottom"></slot>
     </div>
-    <aside v-if="children" class="vi-navbar-children vt-sub">
+    <aside v-if="children" class="v-navbar-children vt-sub">
       <h3 v-if="current" class="title">
         <i :class="current.icon" />
         {{ current.name }}
@@ -24,7 +24,7 @@
           / {{ childrenName }}</span
         >
       </h3>
-      <div class="vi-navbar-children-main">
+      <div class="v-navbar-children-main">
         <router-link
           class="vt-link-active2"
           v-for="(value, cpath) in children"
@@ -89,18 +89,18 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-navbar {
+.v-navbar {
   display: flex;
   height: 100%;
   flex: none;
-  .vi-navbar-main {
+  .v-navbar-main {
     // -webkit-app-region: drag; // electron 拖拽专用
     width: 50px;
     user-select: none;
     position: relative;
     z-index: 10000;
-    .vi-nav-menu-scroll {
-      .vi-nav-menu-item {
+    .v-nav-menu-scroll {
+      .v-nav-menu-item {
         height: 50px;
         position: relative;
         display: block;
@@ -113,7 +113,7 @@ export default {
       }
       .router-link-active {
         border-radius: 3px 0 0 3px;
-        .vi-menu {
+        .v-menu {
           display: block;
         }
       }
@@ -122,7 +122,7 @@ export default {
       }
     }
   }
-  .vi-navbar-children {
+  .v-navbar-children {
     flex: none;
     display: flex;
     flex-direction: column;
@@ -144,7 +144,7 @@ export default {
         font-size: 14px;
       }
     }
-    .vi-navbar-children-main {
+    .v-navbar-children-main {
       height: 100%;
       padding-bottom: 20px;
       overflow-y: overlay;

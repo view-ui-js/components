@@ -1,7 +1,7 @@
 <template>
   <FormBox v-if="edit" :label="label" :error="error">
-    <div class="vi-date-picker" @click.stop="click">
-      <div class="vi-input">
+    <div class="v-date-picker" @click.stop="click">
+      <div class="v-input">
         <input v-model="input" :placeholder="placeholder" readonly />
         <i class="vicon-riqi1" />
       </div>
@@ -10,9 +10,9 @@
       </Bubble>
     </div>
   </FormBox>
-  <div v-else-if="value" class="vi-input-preview">
-    <span class="vi-input-preview-label">{{ label }}：</span>
-    <span class="vi-input-preview-value">{{ setInput(value) }}</span>
+  <div v-else-if="value" class="v-input-preview">
+    <span class="v-input-preview-label">{{ label }}：</span>
+    <span class="v-input-preview-value">{{ setInput(value) }}</span>
   </div>
 </template>
 
@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-date-picker {
+.v-date-picker {
   position: relative;
   height: 38px;
 }

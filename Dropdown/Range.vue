@@ -1,7 +1,7 @@
 <template>
   <Dropdown :name="activeName">
-    <div class="vi-dropdown-range" @click.stop>
-      <div class="vi-dropdown-range-options">
+    <div class="v-dropdown-range" @click.stop>
+      <div class="v-dropdown-range-options">
         <span
           v-for="(item,index) of options"
           :key="index"
@@ -11,11 +11,11 @@
         <span :class="{'active':activeItem && !activeItem[1]}" @click="More()">{{range[1]+unit}}以上</span>
         <span :class="{'active':!activeItem}" @click="Option()">不限</span>
       </div>
-      <div class="vi-dropdown-range-customize">
+      <div class="v-dropdown-range-customize">
         <span>自定义{{name}} (单位:{{unit}})</span>
         <Button :disable="disable" class="fr" size="small" color="success" @click="Confirm">确定</Button>
       </div>
-      <div class="vi-dropdown-range-slider">
+      <div class="v-dropdown-range-slider">
         <SliderRange
           :min="min"
           :max="max"
@@ -117,11 +117,11 @@ export default {
 
 <style lang="scss">
 @import "../style/var.scss";
-.vi-dropdown-range {
+.v-dropdown-range {
   width: 300px;
   padding: 15px 13px;
   font-size: 13px;
-  .vi-dropdown-range-options {
+  .v-dropdown-range-options {
     display: flex;
     flex-wrap: wrap;
     span {
@@ -135,14 +135,14 @@ export default {
       }
     }
   }
-  .vi-dropdown-range-customize {
+  .v-dropdown-range-customize {
     margin: 12px 0 12px 0;
     span {
       display: inline-block;
       padding: 6px;
     }
   }
-  .vi-dropdown-range-slider {
+  .v-dropdown-range-slider {
     padding: 0 10px 10px 10px;
   }
 }

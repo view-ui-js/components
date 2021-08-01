@@ -48,20 +48,20 @@ view-ui采用分级颜色主题配置方案，支持直接在组件内使用动�
 {
   style({ main }) {
     return `
-      .vi-bubble-content{
+      .v-bubble-content{
          color: #fff;
          background-color: ${main.background} !important;
       }
-      .vi-bubble-arrow-right:after{
+      .v-bubble-arrow-right:after{
          border-right-color: ${main.background} !important;
       }
-      .vi-bubble-arrow-left:after{
+      .v-bubble-arrow-left:after{
          border-left-color: ${main.background} !important;
       }
-      .vi-bubble-arrow-top:after{
+      .v-bubble-arrow-top:after{
          border-top-color: ${main.background} !important;
       }
-      .vi-bubble-arrow-bottom:after{
+      .v-bubble-arrow-bottom:after{
          border-bottom-color: ${main.background} !important;
       }
     `;

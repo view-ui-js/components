@@ -1,6 +1,6 @@
 <template>
   <div
-    class="vi-list-item"
+    class="v-list-item"
     @click="click"
     @dblclick="dblclick"
     @contextmenu="$emit('contextmenu', $event)"
@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss">
 @import "./style/var.scss";
-.vi-list-item {
+.v-list-item {
   width: 220px;
   height: 320px;
   margin: 8px;

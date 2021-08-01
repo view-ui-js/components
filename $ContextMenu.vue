@@ -1,6 +1,6 @@
 <template>
   <div
-    class="vi-contextmenu"
+    class="v-contextmenu"
     v-if="open"
     :style="style"
     @mousedown.capture.stop
@@ -108,7 +108,7 @@ export default {
 
 <style lang="scss">
 @import "./style/var.scss";
-.vi-contextmenu {
+.v-contextmenu {
   position: fixed;
   z-index: 5000;
   color: #999;

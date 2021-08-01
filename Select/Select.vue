@@ -1,6 +1,6 @@
 <template>
   <FormBox v-if="edit" ref="FormBox" :label="label">
-    <div class="vi-select" @click="click">
+    <div class="v-select" @click="click">
       <div v-if="current" class="show-current">{{current}}</div>
       <div v-else class="show-current placeholder">{{placeholder}}</div>
       <i class="vicon arrow" :class="{ 'arrow_up': drop }">&#xe678;</i>
@@ -11,8 +11,8 @@
       </transition>
     </div>
   </FormBox>
-  <div v-else class="vi-select-preview">
-    <span class="vi-select-preview-name">{{label}}：</span>
+  <div v-else class="v-select-preview">
+    <span class="v-select-preview-name">{{label}}：</span>
     <span>{{ current || '-' }}</span>
   </div>
 </template>

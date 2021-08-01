@@ -1,5 +1,5 @@
 <template>
-  <div ref="buttons" class="vi-buttons" @click="click">
+  <div ref="buttons" class="v-buttons" @click="click">
     <slot />
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-buttons {
+.v-buttons {
   display: flex;
   height: 38px;
   background-color: #efefef;

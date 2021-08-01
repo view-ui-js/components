@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-if="open" class="vi-preview" @close="open=false">
+  <Dialog v-if="open" class="v-preview" @close="open=false">
     <img ref="img" :width="width" :height="height" :src="src" />
   </Dialog>
 </template>

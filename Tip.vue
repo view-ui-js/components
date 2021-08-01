@@ -1,7 +1,7 @@
 <template>
   <transition name="scale"
     ><keep-alive
-      ><Bubble v-if="open" class="vi-tip" :border="false" :placement="placement"
+      ><Bubble v-if="open" class="v-tip" :border="false" :placement="placement"
         ><slot /></Bubble></keep-alive
   ></transition>
 </template>
@@ -46,21 +46,21 @@ export default {
     theme.style(({ main }) => {
       const { background } = main;
       return `
-      .vi-tip .vi-bubble-content {
+      .v-tip .v-bubble-content {
          color: #fff;
          padding: 8px 14px;
          background-color: ${background} !important;
       }
-      .vi-tip .vi-bubble-arrow i {
+      .v-tip .v-bubble-arrow i {
          background-color: ${background} !important;
       }
-      .vi-tip .vi-bubble-arrow i {
+      .v-tip .v-bubble-arrow i {
          background-color: ${background} !important;
       }
-      .vi-tip .vi-bubble-arrow i {
+      .v-tip .v-bubble-arrow i {
          background-color: ${background} !important;
       }
-      .vi-tip .vi-bubble-arrow i {
+      .v-tip .v-bubble-arrow i {
          background-color: ${background} !important;
       }
     `;

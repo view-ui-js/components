@@ -1,7 +1,7 @@
 <template>
   <FormBox v-if="edit" :label="label" :error="error">
-    <div class="vi-input">
-      <div class="vi-input-before">
+    <div class="v-input">
+      <div class="v-input-before">
         <slot name="before"></slot>
       </div>
       <input
@@ -15,21 +15,21 @@
         @click="$emit('click', input)"
         @blur="$emit('blur', input)"
       />
-      <div class="vi-input-after">
+      <div class="v-input-after">
         <slot name="after">
           <i v-if="icon" :class="icon" />
-          <span v-if="unit" class="vi-input-unit">{{ unit }}</span>
+          <span v-if="unit" class="v-input-unit">{{ unit }}</span>
         </slot>
       </div>
     </div>
   </FormBox>
-  <div v-else-if="value" class="vi-input-preview">
+  <div v-else-if="value" class="v-input-preview">
     <i v-if="icon" :class="icon" />
-    <span v-else-if="showLabel" class="vi-input-preview-label"
+    <span v-else-if="showLabel" class="v-input-preview-label"
       >{{ showLabel }}：</span
     >
-    <span class="vi-input-preview-value">{{ value }}</span>
-    <span v-if="unit" class="vi-input-preview-unit">{{ unit }}</span>
+    <span class="v-input-preview-value">{{ value }}</span>
+    <span v-if="unit" class="v-input-preview-unit">{{ unit }}</span>
   </div>
 </template>
 

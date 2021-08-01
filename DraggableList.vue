@@ -1,10 +1,10 @@
 <template>
-  <div class="vi-draggable-list">
+  <div class="v-draggable-list">
     <Draggable v-if="list.length" v-model="list" v-slot="{ index, item }" @click="click">
       <slot :item="item"></slot>
-      <i class="vi-draggable-list-delete vicon-cha" @click.stop="destroy(index)" />
+      <i class="v-draggable-list-delete vicon-cha" @click.stop="destroy(index)" />
     </Draggable>
-    <div v-show="list.length < max" class="vi-draggable-list-add" @click="$emit('add')">
+    <div v-show="list.length < max" class="v-draggable-list-add" @click="$emit('add')">
       <i class="vicon-jia" />
     </div>
   </div>
@@ -50,22 +50,22 @@ export default {
 
 
 <style lang="scss">
-.vi-draggable-list {
+.v-draggable-list {
   // display: flex;
   // flex-wrap: wrap;
   user-select: none;
   width: 100%;
-  .vi-draggable {
+  .v-draggable {
     // display: contents;
     position: relative;
-    .vi-draggable-item {
+    .v-draggable-item {
       position: relative;
       box-sizing: border-box;
       background-color: #eee;
       border-radius: 3px;
       margin-bottom: 10px;
       cursor: grab;
-      .vi-draggable-list-delete {
+      .v-draggable-list-delete {
         display: none;
         justify-content: center;
         align-items: center;
@@ -81,13 +81,13 @@ export default {
         color: #fff;
       }
       &:hover {
-        .vi-draggable-list-delete {
+        .v-draggable-list-delete {
           display: flex;
         }
       }
     }
   }
-  .vi-draggable-list-add {
+  .v-draggable-list-add {
     display: flex;
     justify-content: center;
     align-items: center;

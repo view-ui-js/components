@@ -1,12 +1,12 @@
 <template>
-   <div class="vi-slider-range">
-      <div class="vi-slider-line">
-         <div class="vi-slider-button vi-slider-left" @mousedown="mousedown($event,'left')"></div>
-         <div class="vi-slider-button vi-slider-right" @mousedown="mousedown($event,'right')"></div>
-         <div class="vi-slider-progress vi-slider-progress-left" :style="leftProgress"></div>
-         <div class="vi-slider-progress vi-slider-progress-rtght" :style="rightProgress"></div>
+   <div class="v-slider-range">
+      <div class="v-slider-line">
+         <div class="v-slider-button v-slider-left" @mousedown="mousedown($event,'left')"></div>
+         <div class="v-slider-button v-slider-right" @mousedown="mousedown($event,'right')"></div>
+         <div class="v-slider-progress v-slider-progress-left" :style="leftProgress"></div>
+         <div class="v-slider-progress v-slider-progress-rtght" :style="rightProgress"></div>
       </div>
-      <div class="vi-slider-gauge">
+      <div class="v-slider-gauge">
          <span v-for="(value,key) in ruler" :key="key">{{value}}</span>
          <span style="flex: none">不限</span>
       </div>
@@ -97,16 +97,16 @@ export default {
 
 <style lang="scss">
 @import "../style/var.scss";
-.vi-slider-range {
+.v-slider-range {
   position: relative;
   width: 100%;
   padding-top: 10px;
-  .vi-slider-line {
+  .v-slider-line {
     width: 100%;
     height: 5px;
     background-color: $active;
     position: absolute;
-    .vi-slider-button {
+    .v-slider-button {
       position: absolute;
       z-index: 10;
       top: -5px;
@@ -118,26 +118,26 @@ export default {
       background-color: #fff;
       transform: translate(-50%, 0%);
     }
-    .vi-slider-left {
+    .v-slider-left {
       left: 0;
     }
-    .vi-slider-right {
+    .v-slider-right {
       left: 100%;
     }
   }
-  .vi-slider-progress {
+  .v-slider-progress {
     width: 100%;
     height: 5px;
     background-color: #f5f5f5;
     position: absolute;
   }
-  .vi-slider-progress-left {
+  .v-slider-progress-left {
     left: 0;
   }
-  .vi-slider-progress-rtght {
+  .v-slider-progress-rtght {
     right: 0;
   }
-  .vi-slider-gauge {
+  .v-slider-gauge {
     display: flex;
     width: 100%;
     margin: 15px 0 10px 0;

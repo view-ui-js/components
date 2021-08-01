@@ -1,6 +1,6 @@
 <template>
-  <div class="vi-form-box">
-    <div v-if="label" class="vi-form-box-header">{{label}}</div>
+  <div class="v-form-box">
+    <div v-if="label" class="v-form-box-header">{{label}}</div>
     <slot />
   </div>
 </template>
@@ -20,13 +20,13 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-form-box {
+.v-form-box {
   position: relative;
   width: 49%;
-  .vi-form-box-header {
+  .v-form-box-header {
     padding: 10px 0 5px 2px;
     display: block;
-    .vi-form-box-error {
+    .v-form-box-error {
       float: right;
       color: #ff0000;
     }

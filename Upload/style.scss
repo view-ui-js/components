@@ -1,6 +1,6 @@
-.vi-upload-image,
-.vi-upload-drag {
-   .vi-upload-item {
+.v-upload-image,
+.v-upload-drag {
+   .v-upload-item {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -10,14 +10,14 @@
       margin: 0 5px 5px 0;
       float: left;
       &:hover {
-        .vi-upload-mask {
+        .v-upload-mask {
           display: flex;
         }
       }
       img {
         width: 100%;
       }
-      .vi-upload-mask {
+      .v-upload-mask {
         position: absolute;
         left: 0;
         top: 0;
@@ -29,7 +29,7 @@
         justify-content: center;
         align-items: center;
         color: #fff;
-        .vi-upload-delete {
+        .v-upload-delete {
           position: absolute;
           right: 0;
           top: 0;
@@ -38,16 +38,16 @@
           padding: 3px;
           cursor: pointer;
         }
-        .vi-upload-preview {
+        .v-upload-preview {
           cursor: pointer;
         }
       }
     }
-    .vi-upload-item-image {
+    .v-upload-item-image {
       overflow: hidden;
       border: 1px solid #dee5e7;
     }
-    .vi-upload-tag {
+    .v-upload-tag {
       position: absolute;
       bottom: 0;
       left: 0;

@@ -1,7 +1,7 @@
 <template>
-  <div id="vi-message-container">
+  <div id="v-message-container">
     <transition-group name="fade">
-      <div class="vi-message" v-for="item of queue" :key="item.id">
+      <div class="v-message" v-for="item of queue" :key="item.id">
         <i :class="`vicon-${item.type}`" />
         {{ item.body }}
       </div>
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style lang="scss">
-#vi-message-container {
+#v-message-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -88,7 +88,7 @@ export default {
   flex-direction: column;
   align-items: center;
   pointer-events: none;
-  .vi-message {
+  .v-message {
     border-radius: 4px;
     padding: 10px 15px;
     margin: 10px;

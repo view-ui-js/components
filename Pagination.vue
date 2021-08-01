@@ -1,6 +1,6 @@
 <template>
   <!-- 当页数大于1时才显示分页 -->
-  <div class="vi-paging" v-if="this.pages > 1">
+  <div class="v-paging" v-if="this.pages > 1">
     <span class="previous" @click="previous">
       <i class="vicon">&#xeb25;</i>
     </span>
@@ -123,7 +123,7 @@ export default {
 
 <style lang="scss">
 @import "style/var.scss";
-.vi-paging {
+.v-paging {
   user-select: none;
   span {
     display: inline-block;

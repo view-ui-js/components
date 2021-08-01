@@ -1,5 +1,5 @@
 <template>
-  <div class="vi-column">
+  <div class="v-column">
     <slot />
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-column {
+.v-column {
   display: flex;
   flex-direction: column;
   flex: 1;

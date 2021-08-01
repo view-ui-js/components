@@ -1,17 +1,17 @@
 <template>
   <FormBox v-if="edit" :label="label" :error="error">
-    <div class="vi-input-range">
+    <div class="v-input-range">
       <i v-if="icon" :class="icon" />
       <input v-model="input[0]" type="number" :placeholder="placeholder[0]" @input="min" />
       <span>至</span>
       <input type="number" v-model="input[1]" :placeholder="placeholder[1]" @input="max" />
     </div>
   </FormBox>
-  <div v-else class="vi-input-preview">
+  <div v-else class="v-input-preview">
     <i v-if="icon" :class="icon" />
-    <span v-else class="vi-input-preview-label">{{label}}：</span>
-    <span class="vi-input-preview-value">{{value[0]}} - {{value[1]}}</span>
-    <span class="vi-input-preview-unit">{{unit}}</span>
+    <span v-else class="v-input-preview-label">{{label}}：</span>
+    <span class="v-input-preview-value">{{value[0]}} - {{value[1]}}</span>
+    <span class="v-input-preview-unit">{{unit}}</span>
   </div>
 </template>
 
@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-input-range {
+.v-input-range {
   input {
     width: 45%;
   }

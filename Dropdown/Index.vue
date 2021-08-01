@@ -1,6 +1,6 @@
 <template>
-  <div class="vi-dropdown" @click="click">
-    <div class="vi-dropdown-select" :class="{'active':name && name!==oneName}">
+  <div class="v-dropdown" @click="click">
+    <div class="v-dropdown-select" :class="{'active':name && name!==oneName}">
       {{name || oneName}}
       <i class="vicon arrow" :class="{'arrow_up':open}">&#xe678;</i>
     </div>
@@ -51,7 +51,7 @@ export default {
 
 <style lang="scss">
 @import "../style/var.scss";
-.vi-dropdown {
+.v-dropdown {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -60,7 +60,7 @@ export default {
   .active {
     color: $active;
   }
-  .vi-dropdown-select {
+  .v-dropdown-select {
     position: relative;
     padding-right: 18px;
     .arrow {

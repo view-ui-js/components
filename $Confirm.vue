@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-show="open" class="vi-confirm" @close="Close">
+  <Dialog v-show="open" class="v-confirm" @close="Close">
     <template v-slot:header
       ><i class="vicon-bangzhu-plus-copy" />{{ title }}</template
     >
@@ -79,9 +79,9 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-confirm {
-  .vi-dialog {
-    .vi-dialog-main {
+.v-confirm {
+  .v-dialog {
+    .v-dialog-main {
       padding: 20px 15px;
       background-color: #fff;
     }

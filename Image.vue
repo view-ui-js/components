@@ -1,13 +1,13 @@
 <template>
-  <div class="vi-image" :class="{ 'vi-image-round': round }">
+  <div class="v-image" :class="{ 'v-image-round': round }">
     <template v-if="edit">
-      <div v-if="image.src" class="vi-image-edit" @click="preview">
-        <div class="vi-image-box">
+      <div v-if="image.src" class="v-image-edit" @click="preview">
+        <div class="v-image-box">
           <img :src="image.src" />
         </div>
-        <i class="vi-image-delete vicon-cha" @click.stop="destroy" />
+        <i class="v-image-delete vicon-cha" @click.stop="destroy" />
       </div>
-      <div v-else class="vi-image-add" @click="add">
+      <div v-else class="v-image-add" @click="add">
         <i class="vicon-add" />
         <input
           ref="input"
@@ -18,11 +18,11 @@
         />
       </div>
     </template>
-    <div v-else class="vi-image-show">
-      <div v-if="image.src" class="vi-image-box" @click.stop="preview">
+    <div v-else class="v-image-show">
+      <div v-if="image.src" class="v-image-box" @click.stop="preview">
         <img :src="image.src" />
       </div>
-      <i v-else class="vi-image-null vicon-tupian" />
+      <i v-else class="v-image-null vicon-tupian" />
     </div>
   </div>
 </template>
@@ -110,13 +110,13 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-image {
+.v-image {
   display: flex;
   user-select: none;
   flex-wrap: wrap;
   width: 90px;
   height: 90px;
-  .vi-image-edit {
+  .v-image-edit {
     flex: none;
     position: relative;
     margin: 0 10px 10px 0;
@@ -126,7 +126,7 @@ export default {
     background-color: #eee;
     border-radius: 3px;
     border: 1px solid #eaeaea;
-    .vi-image-delete {
+    .v-image-delete {
       display: none;
       justify-content: center;
       align-items: center;
@@ -142,12 +142,12 @@ export default {
       color: #fff;
     }
     &:hover {
-      .vi-image-delete {
+      .v-image-delete {
         display: flex;
       }
     }
   }
-  .vi-image-add {
+  .v-image-add {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,10 +168,10 @@ export default {
       display: none;
     }
   }
-  .vi-image-show {
+  .v-image-show {
     width: 100%;
     height: 100%;
-    .vi-image-null {
+    .v-image-null {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -182,7 +182,7 @@ export default {
       height: 100%;
     }
   }
-  .vi-image-box {
+  .v-image-box {
     flex: none;
     display: flex;
     justify-content: center;
@@ -200,11 +200,11 @@ export default {
     }
   }
 }
-.vi-image-round {
-  .vi-image-add,
-  .vi-image-edit,
-  .vi-image-box,
-  .vi-image-show {
+.v-image-round {
+  .v-image-add,
+  .v-image-edit,
+  .v-image-box,
+  .v-image-show {
     border-radius: 100%;
   }
 }

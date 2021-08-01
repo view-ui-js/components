@@ -1,19 +1,19 @@
 <template>
   <transition name="fade" appear>
-    <div class="vi-mask" ref="maskBox" @click="maskClick" @mousedown.stop>
-      <div class="vi-dialog col" :style="style">
-        <i class="vicon vi-dialog-close" @click="close">&#xe679;</i>
-        <div v-if="title" class="vi-dialog-header">{{ title }}</div>
-        <div v-else-if="$slots.header" class="vi-dialog-header">
+    <div class="v-mask" ref="maskBox" @click="maskClick" @mousedown.stop>
+      <div class="v-dialog col" :style="style">
+        <i class="vicon v-dialog-close" @click="close">&#xe679;</i>
+        <div v-if="title" class="v-dialog-header">{{ title }}</div>
+        <div v-else-if="$slots.header" class="v-dialog-header">
           <slot name="header"></slot>
         </div>
-        <div class="vi-dialog-main col">
+        <div class="v-dialog-main col">
           <slot />
         </div>
-        <div v-if="$slots.footer" class="vi-dialog-footer">
+        <div v-if="$slots.footer" class="v-dialog-footer">
           <slot name="footer"></slot>
         </div>
-        <div v-else-if="onConfirm" class="vi-dialog-footer">
+        <div v-else-if="onConfirm" class="v-dialog-footer">
           <Button @click="close">取消</Button>
           <Button color="success" @click="$emit('confirm')">确认</Button>
         </div>
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-mask {
+.v-mask {
   position: fixed;
   z-index: 50000;
   top: 0;
@@ -77,20 +77,20 @@ export default {
   height: 100%;
   background-color: #bdbdbdc4;
   backdrop-filter: blur(2px);
-  // vi-dialog容器过渡动画
-  &.fade-enter-from .vi-dialog,
-  &.fade-leave-to .vi-dialog {
+  // v-dialog容器过渡动画
+  &.fade-enter-from .v-dialog,
+  &.fade-leave-to .v-dialog {
     transform: scale(1.01);
   }
-  &.fade-enter-active .vi-dialog,
-  &.fade-leave-active .vi-dialog {
+  &.fade-enter-active .v-dialog,
+  &.fade-leave-active .v-dialog {
     transition: transform 0.3s ease;
   }
-  &.vi-mask-hide {
+  &.v-mask-hide {
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0);
   }
-  .vi-dialog {
+  .v-dialog {
     position: relative;
     min-width: 300px;
     min-height: 200px;
@@ -98,7 +98,7 @@ export default {
     background-color: #fff;
     border-radius: 2px;
     transition: all 0.3s ease;
-    .vi-dialog-close {
+    .v-dialog-close {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -111,7 +111,7 @@ export default {
         transform: rotate(90deg);
       }
     }
-    .vi-dialog-header {
+    .v-dialog-header {
       padding: 12px;
       font-size: 16px;
       color: #828282;
@@ -122,13 +122,13 @@ export default {
         font-size: 18px;
       }
     }
-    .vi-dialog-main {
+    .v-dialog-main {
       position: relative;
       background-color: #fff;
       overflow-y: auto;
       flex: 1;
     }
-    .vi-dialog-footer {
+    .v-dialog-footer {
       padding: 8px 5px;
       text-align: right;
       box-sizing: border-box;

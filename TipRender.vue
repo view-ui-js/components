@@ -18,7 +18,7 @@ export default {
     return h(
       this.tag || "div",
       {
-        class: "vi-tip",
+        class: "v-tip",
         on: {
           mouseenter: this.mouseenter,
           mouseleave: this.mouseleave
@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-tip {
+.v-tip {
   display: inline-block;
   .tip {
     position: fixed;

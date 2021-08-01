@@ -1,19 +1,19 @@
 <template>
   <transition name="fade" appear>
-    <section class="vi-float-mask" ref="maskBox" @mousedown.stop>
-      <div class="vi-dialog-page vertical">
-        <header class="vi-dialog-page-header">
+    <section class="v-float-mask" ref="maskBox" @mousedown.stop>
+      <div class="v-dialog-page vertical">
+        <header class="v-dialog-page-header">
           <i :class="icon" />
           {{title}}
         </header>
-        <main class="vi-dialog-page-main">
+        <main class="v-dialog-page-main">
           <slot />
         </main>
-        <aside class="vi-dialog-page-sidebar">
+        <aside class="v-dialog-page-sidebar">
           <slot name="sidebar"></slot>
         </aside>
       </div>
-      <i class="vicon vi-dialog-page-close" @click="close">&#xe679;</i>
+      <i class="vicon v-dialog-page-close" @click="close">&#xe679;</i>
     </section>
   </transition>
 </template>
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-float-mask {
+.v-float-mask {
   position: fixed;
   z-index: 50000;
   top: 0;
@@ -55,20 +55,20 @@ export default {
   background-color: #bdbdbdc4;
   backdrop-filter: blur(2px);
   padding-top: 12px;
-  // vi-dialog-page容器过渡动画
-  &.fade-enter .vi-dialog-page,
-  &.fade-leave-to .vi-dialog-page {
+  // v-dialog-page容器过渡动画
+  &.fade-enter .v-dialog-page,
+  &.fade-leave-to .v-dialog-page {
     transform: translate(0, 100%);
   }
-  &.fade-enter-active .vi-dialog-page,
-  &.fade-leave-active .vi-dialog-page {
+  &.fade-enter-active .v-dialog-page,
+  &.fade-leave-active .v-dialog-page {
     transition: transform 0.35s ease;
   }
   &.mask-hide {
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0);
   }
-  .vi-dialog-page {
+  .v-dialog-page {
     position: relative;
     width: 800px;
     height: 100%;
@@ -77,7 +77,7 @@ export default {
     border-radius: 3px 3px 0 0;
     transition: all 0.3s ease;
     overflow: visible;
-    .vi-dialog-page-header {
+    .v-dialog-page-header {
       flex: none;
       padding: 15px;
       font-size: 16px;
@@ -88,14 +88,14 @@ export default {
         font-size: 17px;
       }
     }
-    .vi-dialog-page-main {
+    .v-dialog-page-main {
       flex: 1;
       overflow-x: hidden;
       overflow-y: auto;
       padding-bottom: 20px;
       // background-color: #fbfbfb;
     }
-    .vi-dialog-page-sidebar {
+    .v-dialog-page-sidebar {
       position: absolute;
       right: -70px;
       top: 10px;
@@ -107,7 +107,7 @@ export default {
       }
     }
   }
-  .vi-dialog-page-close {
+  .v-dialog-page-close {
     position: fixed;
     top: 16px;
     right: 15px;

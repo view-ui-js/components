@@ -1,6 +1,6 @@
 <template>
-  <div class="center vi-loading">
-    <div class="vi-loading-box">
+  <div class="center v-loading">
+    <div class="v-loading-box">
       <div></div>
       <div></div>
       <div></div>
@@ -28,8 +28,8 @@ export default {
     transform: scale(1, 0.3);
   }
 }
-.vi-loading {
-  .vi-loading-box {
+.v-loading {
+  .v-loading-box {
     width: 200px;
     height: 200px;
     float: left;

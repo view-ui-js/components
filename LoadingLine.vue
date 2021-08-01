@@ -1,5 +1,5 @@
 <template>
-   <div class="vi-loading-line">
+   <div class="v-loading-line">
       <div class="progress vt-main"></div>
    </div>
 </template>
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-loading-line {
+.v-loading-line {
   position: absolute;
   z-index: 1;
   width: 100%;

@@ -1,24 +1,24 @@
 <template>
   <transition name="fade" appear>
-    <div class="vi-image-preview" ref="maskBox" @click="$emit('close')">
-      <div v-if="title" class="vi-image-preview-header">
-        <div class="vi-image-preview-title">{{title}}</div>
+    <div class="v-image-preview" ref="maskBox" @click="$emit('close')">
+      <div v-if="title" class="v-image-preview-header">
+        <div class="v-image-preview-title">{{title}}</div>
       </div>
-      <div class="vi-image-preview-main">
-        <img v-if="image" class="vi-image-preview-img" :src="image.src" @click.stop />
+      <div class="v-image-preview-main">
+        <img v-if="image" class="v-image-preview-img" :src="image.src" @click.stop />
       </div>
-      <div v-if="images.length > 1" class="vi-image-preview-map">
+      <div v-if="images.length > 1" class="v-image-preview-map">
         <img
           v-for="(item,key) of images"
           :key="key"
-          :class="{'vi-image-preview-highlight':item===image}"
+          :class="{'v-image-preview-highlight':item===image}"
           :src="item.src"
           @click.stop
           @mouseover="mouseover(item)"
         />
       </div>
-      <div v-if="image.name" class="vi-image-preview-footer">{{image.name}}</div>
-      <i class="vi-image-preview-close vicon-cha" />
+      <div v-if="image.name" class="v-image-preview-footer">{{image.name}}</div>
+      <i class="v-image-preview-close vicon-cha" />
     </div>
   </transition>
 </template>
@@ -56,15 +56,15 @@ export default {
 </script>
 
 <style lang="scss">
-.fade-enter .vi-image-preview-img,
-.fade-leave-to .vi-image-preview-img {
+.fade-enter .v-image-preview-img,
+.fade-leave-to .v-image-preview-img {
   transform: scale(1.02);
 }
-.fade-enter-active .vi-image-preview-img,
-.fade-leave-active .vi-image-preview-img {
+.fade-enter-active .v-image-preview-img,
+.fade-leave-active .v-image-preview-img {
   transition: transform 0.3s ease;
 }
-.vi-image-preview {
+.v-image-preview {
   position: fixed;
   z-index: 10000;
   top: 0;
@@ -78,7 +78,7 @@ export default {
   background-color: #2f2f2ff2;
   color: #fff;
   font-size: 13px;
-  .vi-image-preview-header {
+  .v-image-preview-header {
     position: absolute;
     top: 0;
     left: 0;
@@ -88,21 +88,21 @@ export default {
     flex: none;
     text-align: center;
     background-color: #00000017;
-    .vi-image-preview-title {
+    .v-image-preview-title {
       padding: 10px 0 0 20px;
       font-size: 15px;
       color: #656565;
     }
   }
-  .vi-image-preview-main {
+  .v-image-preview-main {
     overflow: hidden;
     text-align: center;
     width: 100%;
-    .vi-image-preview-img {
+    .v-image-preview-img {
       height: 100%;
     }
   }
-  .vi-image-preview-map {
+  .v-image-preview-map {
     position: absolute;
     width: 80px;
     display: flex;
@@ -118,12 +118,12 @@ export default {
       cursor: pointer;
       opacity: 0.5;
       border-radius: 3px;
-      &.vi-image-preview-highlight {
+      &.v-image-preview-highlight {
         opacity: 1;
       }
     }
   }
-  .vi-image-preview-footer {
+  .v-image-preview-footer {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -136,7 +136,7 @@ export default {
     padding-top: 15px;
     box-sizing: border-box;
   }
-  .vi-image-preview-close {
+  .v-image-preview-close {
     display: flex;
     justify-content: center;
     align-items: center;

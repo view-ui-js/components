@@ -1,6 +1,6 @@
 <template>
   <div v-if="status==='loading'" class="center">
-    <div class="vi-loading-animation">
+    <div class="v-loading-animation">
       <div></div>
       <div></div>
       <div></div>
@@ -8,9 +8,9 @@
       <div></div>
     </div>
   </div>
-  <div class="vi-loading" v-else>
+  <div class="v-loading" v-else>
     <div v-if="status!=='data'" class="empty center">暂无数据</div>
-    <div class="vi-loading-main">
+    <div class="v-loading-main">
       <slot />
     </div>
   </div>
@@ -37,7 +37,7 @@ export default {
     transform: scale(1, 0.3);
   }
 }
-.vi-loading {
+.v-loading {
   flex: 1;
   position: relative;
   .empty {
@@ -45,12 +45,12 @@ export default {
     left: 0;
     top: 0;
   }
-  .vi-loading-main {
+  .v-loading-main {
     position: relative;
     z-index: 1;
   }
 }
-.vi-loading-animation {
+.v-loading-animation {
   width: 200px;
   height: 200px;
   display: flex;

@@ -1,9 +1,9 @@
 <template>
-  <div class="vi-img" :class="{ 'vi-img-radius': radius }">
-    <div v-if="src" class="vi-img-box">
+  <div class="v-img" :class="{ 'v-img-radius': radius }">
+    <div v-if="src" class="v-img-box">
       <img :src="src" />
     </div>
-    <i v-else class="vi-img-null" :class="icon" />
+    <i v-else class="v-img-null" :class="icon" />
   </div>
 </template>
 
@@ -25,15 +25,15 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-img {
+.v-img {
   width: 50px;
   height: 50px;
   overflow: hidden;
   display: inline-block;
-  &.vi-img-radius {
+  &.v-img-radius {
     border-radius: 100px;
   }
-  .vi-img-box {
+  .v-img-box {
     flex: none;
     display: flex;
     justify-content: center;
@@ -48,7 +48,7 @@ export default {
       width: 100%;
     }
   }
-  .vi-img-null {
+  .v-img-null {
     display: flex;
     justify-content: center;
     align-items: center;

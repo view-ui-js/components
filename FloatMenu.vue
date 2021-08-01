@@ -1,8 +1,8 @@
 <template>
   <transition name="scale" appear>
     <keep-alive>
-      <Bubble v-if="open" class="vi-float-menu" :gap="gap">
-        <ul class="vi-float-menu-items">
+      <Bubble v-if="open" class="v-float-menu" :gap="gap">
+        <ul class="v-float-menu-items">
           <li
             v-for="(item, key) of options"
             class="vt-hover2"
@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-float-menu-items {
+.v-float-menu-items {
   min-width: 80px;
   line-height: 35px;
   padding: 6px 0;

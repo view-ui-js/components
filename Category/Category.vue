@@ -1,6 +1,6 @@
 <template>
   <FormBox v-if="edit" :label="label" :error="error">
-    <div class="vi-category" @click.stop="click">
+    <div class="v-category" @click.stop="click">
       <input autocomplete="off" readonly="readonly" :placeholder="placeholder" :value="inputValue" />
       <i class="vicon arrow" :class="{'arrow_up':open}">&#xe678;</i>
       <transition name="drop">
@@ -10,7 +10,7 @@
       </transition>
     </div>
   </FormBox>
-  <div v-else class="vi-category-preview">{{value.join(" / ")}}</div>
+  <div v-else class="v-category-preview">{{value.join(" / ")}}</div>
 </template>
 
 <script>
@@ -72,7 +72,7 @@ export default {
 
 <style lang="scss">
 @import "../style/var.scss";
-.vi-category {
+.v-category {
   position: relative;
   .select-drop-enter-from,
   .select-drop-leave-to {

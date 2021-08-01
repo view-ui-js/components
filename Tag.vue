@@ -1,16 +1,16 @@
 <template>
   <FormBox class="w100" v-if="edit" :label="label" :error="error">
-    <div class="vi-tag">
-      <transition-group class="vi-tag-group" tag="div" name="fade">
+    <div class="v-tag">
+      <transition-group class="v-tag-group" tag="div" name="fade">
         <template v-for="(item, index) of tags">
-          <span class="vi-tag-item" :key="item">
+          <span class="v-tag-item" :key="item">
             {{item}}
             <i class="vicon" @click="destroy(index)">&#xe679;</i>
           </span>
         </template>
       </transition-group>
       <input
-        class="vi-tag-input"
+        class="v-tag-input"
         :placeholder="placeholder"
         ref="input"
         type="text"
@@ -20,9 +20,9 @@
       />
     </div>
   </FormBox>
-  <div v-else-if="value.length" class="vi-tag-preview">
-    <span v-if="label" class="vi-tag-preview-label">{{label}}：</span>
-    <span class="vi-tag-preview-item" v-for="item of value" :key="item">{{item}}</span>
+  <div v-else-if="value.length" class="v-tag-preview">
+    <span v-if="label" class="v-tag-preview-label">{{label}}：</span>
+    <span class="v-tag-preview-item" v-for="item of value" :key="item">{{item}}</span>
   </div>
 </template>
 
@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-tag {
+.v-tag {
   display: flex;
   user-select: none;
   background-color: #fff;
@@ -92,10 +92,10 @@ export default {
   height: 40px;
   overflow: hidden;
   width: 100%;
-  .vi-tag-group {
+  .v-tag-group {
     white-space: nowrap;
     // overflow-x: scroll;
-    .vi-tag-item {
+    .v-tag-item {
       display: inline-block;
       margin: 4px;
       padding: 0 10px;
@@ -114,17 +114,17 @@ export default {
       }
     }
   }
-  .vi-tag-input {
+  .v-tag-input {
     width: 125px;
     flex: 1;
     border: none;
   }
 }
-.vi-tag-preview {
+.v-tag-preview {
   height: 50px;
   line-height: 45px;
   width: 50%;
-  .vi-tag-preview-item {
+  .v-tag-preview-item {
     border: 1px solid #e6e6e6;
     border-radius: 50px;
     padding: 3px 10px;

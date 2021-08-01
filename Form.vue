@@ -1,15 +1,15 @@
 <template>
-  <div class="vi-form">
-    <div class="vi-form-header">
+  <div class="v-form">
+    <div class="v-form-header">
       <h4 v-if="name">
         {{ name }}
         <span v-if="status === true" class="remark">{{ remark }}</span>
       </h4>
     </div>
-    <div class="vi-form-main">
+    <div class="v-form-main">
       <slot />
     </div>
-    <div v-if="confirm" class="vi-form-footer">
+    <div v-if="confirm" class="v-form-footer">
       <!-- <Button @click="close">取消</Button> -->
       <Button color="success" @click="$emit('confirm')">确认</Button>
     </div>
@@ -60,13 +60,13 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-form {
+.v-form {
   position: relative;
   padding-bottom: 10px;
   &:hover {
     background-color: #fbfbfb;
   }
-  .vi-form-header {
+  .v-form-header {
     margin: 0px 28px;
     padding: 12px 0 12px 0;
     h4 {
@@ -88,13 +88,13 @@ export default {
       }
     }
   }
-  .vi-form-main {
+  .v-form-main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0px 20px;
   }
-  .vi-form-footer {
+  .v-form-footer {
     padding: 8px 20px;
     text-align: right;
     box-sizing: border-box;

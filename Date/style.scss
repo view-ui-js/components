@@ -1,10 +1,10 @@
-.vi-date {
+.v-date {
   width: 300px;
   padding: 8px;
   color: #777;
   display: inline-block;
   user-select: none;
-  .vi-date-show {
+  .v-date-show {
     display: flex;
     justify-content: space-between;
     padding: 12px 0 12px 0;
@@ -13,7 +13,7 @@
       cursor: pointer;
     }
   }
-  .vi-date-week {
+  .v-date-week {
     display: flex;
     text-align: center;
     padding: 2px 0 10px 0;
@@ -23,10 +23,10 @@
       flex: auto;
     }
   }
-  .vi-date-days {
+  .v-date-days {
     padding-top: 3px;
     font-size: 13px;
-    .vi-date-line {
+    .v-date-line {
       display: flex;
       text-align: center;
       li {
@@ -35,8 +35,8 @@
         height: 30px;
         list-style-type: none;
         cursor: pointer;
-        &.vi-date-prev-month,
-        &.vi-date-next-month {
+        &.v-date-prev-month,
+        &.v-date-next-month {
           color: #bbb;
         }
         span {
@@ -46,7 +46,7 @@
           height: 28px;
           border-radius: 100%;
         }
-        &.vi-date-prominent {
+        &.v-date-prominent {
           span {
             color: #fff !important;
             // background-color: #ccc !important;

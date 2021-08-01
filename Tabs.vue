@@ -1,6 +1,6 @@
 <template>
-  <div class="vi-tab">
-    <div class="vi-tab-header">
+  <div class="v-tab">
+    <div class="v-tab-header">
       <ul>
         <li
           v-for="(name,key) in tabsData"
@@ -10,7 +10,7 @@
         >{{name}}</li>
       </ul>
     </div>
-    <div class="vi-tab-body" v-for="(name,key) in tabsData" :key="name" v-show="key===tabKey">
+    <div class="v-tab-body" v-for="(name,key) in tabsData" :key="name" v-show="key===tabKey">
       <slot :name="key"></slot>
     </div>
   </div>
@@ -42,10 +42,10 @@ export default {
   },
   style({ main }) {
     return `
-      .vi-tab-header li:hover {
+      .v-tab-header li:hover {
           color: ${main.background};
       }
-      .vi-tab-header li.active {
+      .v-tab-header li.active {
           color: ${main.background};
           border-bottom: 2px solid ${main.background};
       }
@@ -59,8 +59,8 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-tab {
-  .vi-tab-header {
+.v-tab {
+  .v-tab-header {
     z-index: 1;
     user-select: none;
     box-shadow: 1px 2px 2px #f3f3f3;
@@ -77,7 +77,7 @@ export default {
       }
     }
   }
-  .vi-tab-body {
+  .v-tab-body {
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;

@@ -1,5 +1,5 @@
 <template>
-  <button class="vi-button" :class="cssClass" :type="type" :style="style" @click.prevent="click">
+  <button class="v-button" :class="cssClass" :type="type" :style="style" @click.prevent="click">
     <slot />
   </button>
 </template>
@@ -43,12 +43,12 @@ export default {
         style.backgroundColor = "transparent";
       }
     }
-    cssClass.push(`vi-button-${this.size}`);
+    cssClass.push(`v-button-${this.size}`);
     if (this.fab) {
-      cssClass.push(`vi-button-fab`);
+      cssClass.push(`v-button-fab`);
     }
     if (this.disable) {
-      cssClass.push(`vi-button-disable`);
+      cssClass.push(`v-button-disable`);
     }
     return {
       cssClass,
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-button {
+.v-button {
   position: relative;
   display: inline-block;
   border-radius: 3px;
@@ -87,17 +87,17 @@ export default {
   &:hover {
     filter: brightness(1.03);
   }
-  &.vi-button-medium {
+  &.v-button-medium {
     padding: 0px 16px;
     height: 33px;
     font-size: 14px;
   }
-  &.vi-button-small {
+  &.v-button-small {
     padding: 0px 12px;
     height: 30px;
     font-size: 13px;
   }
-  &.vi-button-disable {
+  &.v-button-disable {
     background-color: #f5f5f5;
     color: #a5a5a5;
     cursor: not-allowed;
@@ -105,7 +105,7 @@ export default {
       background-color: #f5f5f5;
     }
   }
-  &.vi-button-fab {
+  &.v-button-fab {
     border-radius: 50%;
     width: 40px;
     height: 40px;

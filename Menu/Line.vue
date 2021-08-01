@@ -1,6 +1,6 @@
 <template>
-  <div class="vi-menu vi-menu-line row">
-    <div class="vi-menu-item flex" v-for="(item, k) of items" :key="k">
+  <div class="v-menu v-menu-line row">
+    <div class="v-menu-item flex" v-for="(item, k) of items" :key="k">
       <div
         class="pointer"
         @click="click(item, k)"
@@ -21,7 +21,7 @@ export default {
   extends: base,
   style({ active }) {
     return `
-      .vi-menu-line .active:before {
+      .v-menu-line .active:before {
         content: "";
         width: 50%;
         position: absolute;
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-menu-line {
+.v-menu-line {
   .pointer {
     display: flex;
     justify-content: center;

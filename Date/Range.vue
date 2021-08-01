@@ -1,11 +1,11 @@
 <template>
-   <div class="vi-date" @click.stop>
-      <div class="vi-date-show">
+   <div class="v-date" @click.stop>
+      <div class="v-date-show">
          <i class="vicon" @click="switchMonth(-1)">&#xeb2a;</i>
          <span>{{year}} 年 {{month}} 月</span>
          <i class="vicon" @click="switchMonth(1)">&#xe6b7;</i>
       </div>
-      <div class="vi-date-week">
+      <div class="v-date-week">
          <span>一</span>
          <span>二</span>
          <span>三</span>
@@ -14,8 +14,8 @@
          <span>六</span>
          <span>日</span>
       </div>
-      <div class="vi-date-days" @click="selectDate" @mouseover="mouseover">
-         <ul class="vi-date-line" v-for="(date,key) of dates" :key="key">
+      <div class="v-date-days" @click="selectDate" @mouseover="mouseover">
+         <ul class="v-date-line" v-for="(date,key) of dates" :key="key">
             <li v-for="(item,key) of date" :key="key" :class="item.class">
                <span>{{item.date}}</span>
             </li>
@@ -95,7 +95,7 @@ export default {
       for (let i = lastEndDate - prevMonth; i <= lastEndDate; i++) {
         dates.push({
           date: i,
-          class: "vi-date-prev-month"
+          class: "v-date-prev-month"
         });
       }
 
@@ -121,18 +121,18 @@ export default {
         // 点亮当日
         if (i === nowDay) {
           if (ymString === ymNowString) {
-            data.class = "vi-date-select";
+            data.class = "v-date-select";
           }
         }
 
         // 点亮选区、选中日
         if (ymString === ymStartString) {
           if (i > this.startDay && i < this.endDay) {
-            data.class = "vi-date-background";
+            data.class = "v-date-background";
           } else if (i === this.startDay) {
-            data.class = "vi-date-prominent vi-date-start";
+            data.class = "v-date-prominent v-date-start";
           } else if (i === this.endDay) {
-            data.class = "vi-date-prominent vi-date-end";
+            data.class = "v-date-prominent v-date-end";
           }
         }
 
@@ -145,7 +145,7 @@ export default {
         for (let i = 1; i <= nextMonth; i++) {
           dates.push({
             date: i,
-            class: "vi-date-next-month"
+            class: "v-date-next-month"
           });
         }
       }
@@ -207,9 +207,9 @@ export default {
       if (el) {
         const { className, innerText } = el;
         // 跨月份切换
-        if (className === "vi-date-prev-month") {
+        if (className === "v-date-prev-month") {
           this.month -= 1;
-        } else if (className === "vi-date-next-month") {
+        } else if (className === "v-date-next-month") {
           this.month += 1;
         }
         const currentDate = this.nweDate(this.year, this.month, innerText);
@@ -237,10 +237,10 @@ export default {
         let [[year, month, day]] = this.sets;
 
         // 通过className来区分不同的选区
-        if (className === "vi-date-prev-month") {
+        if (className === "v-date-prev-month") {
           this.startDay = 0;
           this.endDay = day;
-        } else if (className === "vi-date-next-month") {
+        } else if (className === "v-date-next-month") {
           this.startDay = day;
           this.endDay = 32;
         } else if (innerText > day) {
@@ -263,15 +263,15 @@ export default {
     updateView(startDay, endDay) {
       for (const row of this.dates) {
         for (const item of row) {
-          if (item.class === "vi-date-prev-month") {
-          } else if (item.class === "vi-date-next-month") {
+          if (item.class === "v-date-prev-month") {
+          } else if (item.class === "v-date-next-month") {
           } else {
             if (item.date > startDay && item.date < endDay) {
-              this.$set(item, "class", "vi-date-background");
+              this.$set(item, "class", "v-date-background");
             } else if (item.date === startDay) {
-              this.$set(item, "class", "vi-date-prominent vi-date-start");
+              this.$set(item, "class", "v-date-prominent v-date-start");
             } else if (item.date === endDay) {
-              this.$set(item, "class", "vi-date-prominent vi-date-end");
+              this.$set(item, "class", "v-date-prominent v-date-end");
             } else {
               this.$set(item, "class", "");
             }
@@ -296,16 +296,16 @@ export default {
 
 <style lang="scss">
 @import "../style/var.scss";
-.vi-date-range {
-  .vi-date-background {
+.v-date-range {
+  .v-date-background {
     background-color: #ebfff6;
   }
-  .vi-date-start {
+  .v-date-start {
     background-color: #ebfff6;
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
   }
-  .vi-date-end {
+  .v-date-end {
     background-color: #ebfff6;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;

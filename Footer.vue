@@ -1,5 +1,5 @@
 <template>
-  <div class="vi-footer">
+  <div class="v-footer">
     <slot />
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 @import "./style/var.scss";
-.vi-footer {
+.v-footer {
   display: flex;
   flex: none;
   justify-content: space-between;

@@ -1,5 +1,5 @@
 <template>
-  <div class="vi-date-range" @click.stop="click">
+  <div class="v-date-range" @click.stop="click">
     <input
       v-model="input"
       type="text"
@@ -14,7 +14,7 @@
       vicon="&#xe628;"
       range
     >
-    <Bubble v-if="open" class="vi-date-range-box" placement="bottom">
+    <Bubble v-if="open" class="v-date-range-box" placement="bottom">
       <DateRange :value="pickerA" @change="change('A', $event)"></DateRange>
       <DateRange :value="pickerB" @change="change('B', $event)"></DateRange>
     </Bubble>
@@ -115,10 +115,10 @@ export default {
 </script>
 
 <style lang="scss">
-.vi-date-range {
+.v-date-range {
   position: relative;
   height: 38px;
-  .vi-date:nth-child(1) {
+  .v-date:nth-child(1) {
     border-right: 1px solid #ebeef5;
   }
 }

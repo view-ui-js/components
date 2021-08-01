@@ -1,12 +1,12 @@
 <template>
-  <div v-if="edit" class="vi-images">
+  <div v-if="edit" class="v-images">
     <Draggable v-if="images.length" v-model="images" v-slot="{ index, item }" @click="preview">
-      <div class="vi-images-item">
+      <div class="v-images-item">
         <slot :item="item">
           <img draggable="false" :src="item.src" :title="item.name" />
           <input
             draggable="false"
-            class="vi-images-input"
+            class="v-images-input"
             type="text"
             :placeholder="placeholder"
             v-model="item.name"
@@ -14,9 +14,9 @@
           />
         </slot>
       </div>
-      <i class="vi-images-delete vicon-cha" @click.stop="destroy(index)" />
+      <i class="v-images-delete vicon-cha" @click.stop="destroy(index)" />
     </Draggable>
-    <div v-show="images.length < max" class="vi-images-add" @click="add">
+    <div v-show="images.length < max" class="v-images-add" @click="add">
       <i class="vicon-add" />
       <input
         ref="input"
@@ -28,13 +28,13 @@
       />
     </div>
   </div>
-  <div v-else class="vi-images vi-images-preview">
+  <div v-else class="v-images v-images-preview">
     <template v-if="value.length">
-      <div class="vi-images-item" v-for="(item, key) of value" :key="key" @click="preview(key)">
+      <div class="v-images-item" v-for="(item, key) of value" :key="key" @click="preview(key)">
         <img :src="item.src" />
       </div>
     </template>
-    <div v-else class="vi-image-null">
+    <div v-else class="v-image-null">
       <i class="vicon-tupian" />
     </div>
   </div>
@@ -148,22 +148,22 @@ export default {
 
 
 <style lang="scss">
-.vi-images {
+.v-images {
   display: flex;
   user-select: none;
   flex-wrap: wrap;
   width: 100%;
-  .vi-draggable {
+  .v-draggable {
     display: contents;
     position: relative;
-    .vi-draggable-item {
+    .v-draggable-item {
       position: relative;
       box-sizing: border-box;
       background-color: #eee;
       border-radius: 3px;
       margin: 0 10px 10px 0;
       cursor: grab;
-      .vi-images-item {
+      .v-images-item {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -173,7 +173,7 @@ export default {
         img {
           width: 100%;
         }
-        .vi-images-input {
+        .v-images-input {
           display: block;
           position: absolute;
           bottom: 0;
@@ -189,7 +189,7 @@ export default {
           outline-style: none;
         }
       }
-      .vi-images-delete {
+      .v-images-delete {
         display: none;
         justify-content: center;
         align-items: center;
@@ -205,13 +205,13 @@ export default {
         color: #fff;
       }
       &:hover {
-        .vi-images-delete {
+        .v-images-delete {
           display: flex;
         }
       }
     }
   }
-  .vi-images-add {
+  .v-images-add {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -234,8 +234,8 @@ export default {
   }
 }
 
-.vi-images-preview {
-  .vi-images-item {
+.v-images-preview {
+  .v-images-item {
     flex: none;
     display: flex;
     justify-content: center;
@@ -253,7 +253,7 @@ export default {
       width: 100%;
     }
   }
-  .vi-image-null {
+  .v-image-null {
     display: flex;
     justify-content: center;
     align-items: center;

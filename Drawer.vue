@@ -1,6 +1,6 @@
 <template>
   <transition :name="`${position}-in`" appear>
-    <div class="vi-drawer" :class="'vi-drawer-' +  position" :style="style">
+    <div class="v-drawer" :class="'v-drawer-' +  position" :style="style">
       <i class="vicon close-button" @click="$emit('close', false)">&#xe679;</i>
       <slot />
     </div>
@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss">
 @import "style/var.scss";
-.vi-drawer {
+.v-drawer {
   position: fixed;
   z-index: 1000;
   background-color: #ffffff;
@@ -48,25 +48,25 @@ export default {
     }
   }
 }
-.vi-drawer-right {
+.v-drawer-right {
   top: 0;
   right: 0;
   width: 300px;
   height: 100%;
 }
-.vi-drawer-top {
+.v-drawer-top {
   top: 0;
   left: 0;
   width: 100%;
   height: 300px;
 }
-.vi-drawer-left {
+.v-drawer-left {
   top: 0;
   left: 0;
   width: 300px;
   height: 100%;
 }
-.vi-drawer-bottom {
+.v-drawer-bottom {
   bottom: 0;
   left: 0;
   width: 100%;

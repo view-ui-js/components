@@ -1,21 +1,21 @@
 <template>
-  <div class="vi-slider">
-    <div class="vi-slider-range-track" @mousedown="mousedown">
-      <div class="vi-slider-baseline">
-        <div ref="left" class="vi-slider-button vi-slider-left"></div>
-        <div ref="right" class="vi-slider-button vi-slider-right"></div>
-        <div class="vi-slider-progress vt-main" :style="progress">
-          <vi-bubble
+  <div class="v-slider">
+    <div class="v-slider-range-track" @mousedown="mousedown">
+      <div class="v-slider-baseline">
+        <div ref="left" class="v-slider-button v-slider-left"></div>
+        <div ref="right" class="v-slider-button v-slider-right"></div>
+        <div class="v-slider-progress vt-main" :style="progress">
+          <v-bubble
             v-if="bubble"
-            class="vi-slider-bubble"
+            class="v-slider-bubble"
             ref="bubble"
             :border="false"
             :gap="14"
-          >{{ scope[0] + ' - ' + scope[1] + unit }}</vi-bubble>
+          >{{ scope[0] + ' - ' + scope[1] + unit }}</v-bubble>
         </div>
       </div>
     </div>
-    <div v-if="step" ref="gauge" class="vi-slider-gauge">
+    <div v-if="step" ref="gauge" class="v-slider-gauge">
       <span v-for="(value,key) in ruler" :key="key">{{value}}</span>
     </div>
   </div>
@@ -147,22 +147,22 @@ export default {
   },
   style({ main }) {
     return `
-      .vi-slider-baseline .vi-slider-button {
+      .v-slider-baseline .v-slider-button {
         border: 2px solid ${main.background};
       }
-      .vi-slider-baseline .vi-bubble-content{
+      .v-slider-baseline .v-bubble-content{
          background-color: ${main.background} !important;
       }
-      .vi-slider-baseline .vi-bubble-arrow-right:after{
+      .v-slider-baseline .v-bubble-arrow-right:after{
          border-right-color: ${main.background} !important;
       }
-      .vi-slider-baseline .vi-bubble-arrow-left:after{
+      .v-slider-baseline .v-bubble-arrow-left:after{
          border-left-color: ${main.background} !important;
       }
-      .vi-slider-baseline .vi-bubble-arrow-top:after{
+      .v-slider-baseline .v-bubble-arrow-top:after{
          border-top-color: ${main.background} !important;
       }
-      .vi-slider-baseline .vi-bubble-arrow-bottom:after{
+      .v-slider-baseline .v-bubble-arrow-bottom:after{
          border-bottom-color: ${main.background} !important;
       }
     `;
@@ -176,17 +176,17 @@ export default {
 
 <style lang="scss">
 @import "../style/var.scss";
-.vi-slider-range-track {
+.v-slider-range-track {
   width: 100%;
   padding: 6px 0;
-  .vi-slider-baseline {
+  .v-slider-baseline {
     position: relative;
     width: 100%;
     height: 4px;
     background-color: #efefef;
     border-radius: 3px;
     transition: background 0.15s ease-in-out;
-    .vi-slider-button {
+    .v-slider-button {
       position: absolute;
       z-index: 10;
       top: -6px;
@@ -200,13 +200,13 @@ export default {
         border: 2px solid $active;
       }
     }
-    .vi-slider-left {
+    .v-slider-left {
       left: 0;
     }
-    .vi-slider-right {
+    .v-slider-right {
       left: 100%;
     }
-    .vi-slider-progress {
+    .v-slider-progress {
       position: absolute;
       left: 0;
       right: 0;
@@ -215,7 +215,7 @@ export default {
   }
   &:hover {
     cursor: pointer;
-    .vi-slider-baseline {
+    .v-slider-baseline {
       background-color: #cccccc;
     }
   }

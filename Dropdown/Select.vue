@@ -1,6 +1,6 @@
 <template>
   <Dropdown :name="activeName">
-    <ul class="vi-dropdown-select" @click.stop>
+    <ul class="v-dropdown-select" @click.stop>
       <li
         v-for="(value,name) of options"
         :key="name"
@@ -55,7 +55,7 @@ export default {
 
 <style lang="scss">
 @import "../style/var.scss";
-.vi-dropdown-select {
+.v-dropdown-select {
   // padding: 8px 0px;
   // line-height: 36px;
   // white-space: nowrap;

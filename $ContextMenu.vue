@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="v-contextmenu"
-    v-if="open"
-    :style="style"
-    @mousedown.capture.stop
-  >
+  <div class="v-contextmenu" v-if="open" :style="style" @mousedown.capture.stop>
     <ul>
       <template v-for="(item, key) of menu">
         <li
@@ -21,7 +16,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import * as Vue from "vue";
 export default {
   data() {
     return {
@@ -66,7 +61,9 @@ export default {
   },
   install(app) {
     let newComponent;
-    const Contextmenu = defineComponent(this);
+    const container = document.createElement("contextmenu");
+    document.body.appendChild(container);
+    const instance = Vue.createApp(this).mount(container);
 
     document.body.addEventListener("contextmenu", function (event) {
       if (newComponent) {
@@ -83,12 +80,11 @@ export default {
     app.mixin({
       methods: {
         $contextmenu(context, menu) {
-          if (newComponent) {
-            newComponent.open = false;
+          if (instance) {
+            instance.open = false;
           }
 
-          newComponent = new Contextmenu({ data: { context, menu } }).$mount();
-          newComponent.init = true;
+          instance.init = true;
 
           window.addEventListener(
             "mousedown",

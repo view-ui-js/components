@@ -15,7 +15,6 @@
 import * as Vue from "vue";
 import Dialog from "./Dialog.vue";
 import Button from "./Button.vue";
-let confirm;
 export default {
   components: { Dialog, Button },
   methods: {
@@ -32,11 +31,9 @@ export default {
       this.open = false;
     },
   },
-  mounted() {
-    this.open = true;
-  },
   install(app) {
     const _this = this;
+    let instance;
     app.mixin({
       methods: {
         $confirm(options) {
@@ -45,6 +42,7 @@ export default {
             color: "success",
             cancelButton: "Cancel",
             confirmButton: "Confirm",
+            open: true,
           };
           if (typeof options === "object") {
             Object.assign(data, options);
@@ -58,13 +56,12 @@ export default {
           } else {
             data.body = options;
           }
-          data.open = true;
-          if (confirm) {
-            Object.assign(confirm, data);
+          if (instance) {
+            Object.assign(instance, data);
           } else {
-            const container = document.createElement("container");
+            const container = document.createElement("confirm");
             document.body.appendChild(container);
-            confirm = Vue.createApp({
+            instance = Vue.createApp({
               data() {
                 return data;
               },
@@ -78,7 +75,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-confirm {
   .v-dialog {
     .v-dialog-main {

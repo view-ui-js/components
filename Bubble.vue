@@ -158,7 +158,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-bubble {
   position: fixed;
   z-index: 1000000;

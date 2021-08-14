@@ -1,36 +1,56 @@
 <template>
-  <transition name="fade" appear>
-    <div v-if="status" class="v-message">
-      <i :class="`vicon-${type}`" />
-      {{ body }}
-    </div>
-  </transition>
+  <div id="v-message-container">
+    <transition-group name="fade">
+      <div class="v-message" v-for="item of queue" :key="item.id">
+        <i :class="`vicon-${item.type}`" />
+        {{ item.body }}
+      </div>
+    </transition-group>
+  </div>
 </template>
 
 <script>
 import * as Vue from "vue";
-let message;
 export default {
   data() {
-    return { status: true };
-  },
-  mounted() {
-    // container.appendChild(this.$el);
-    setTimeout(() => {
-      this.status = false;
-    }, this.time);
+    return { queue: [] };
   },
   install(app) {
-    const _this = this;
-    function proxy(type, body = "", time = 1500) {
-      if (!message) {
-        message = Vue.createApp(_this, { type, body, time });
-        const container = document.createElement("div");
-        container.id = "v-message-container";
-        document.body.appendChild(container);
-        message.mount(container);
+    let instance;
+    const timer = () => {
+      const { queue } = instance;
+      if (queue.length) {
+        timer.active = true;
+        const [first] = queue;
+        setTimeout(() => {
+          queue.shift();
+          timer();
+        }, first.time);
+      } else {
+        timer.active = false;
       }
-    }
+    };
+    timer.active = false;
+    let id = 0;
+    const proxy = (type, body, time = 1500) => {
+      if (!instance) {
+        const container = document.createElement("message");
+        document.body.appendChild(container);
+        instance = Vue.createApp(this).mount(container);
+      }
+
+      instance.queue.push({
+        id: id++,
+        type,
+        body,
+        time,
+      });
+
+      if (timer.active === false) {
+        timer();
+      }
+    };
+
     app.mixin({
       methods: {
         $message(body, time) {
@@ -57,12 +77,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #v-message-container {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 100000;
+  z-index: 10000;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -98,8 +118,6 @@ export default {
     .vicon-load:before {
       content: "\e608";
       color: #000;
-      // transition: transform 0.5s;
-      // transform: rotate(90deg);
     }
   }
 }

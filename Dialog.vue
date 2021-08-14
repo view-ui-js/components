@@ -96,7 +96,7 @@ export default {
     min-height: 200px;
     pointer-events: auto;
     background-color: #fff;
-    border-radius: 2px;
+    border-radius: 4px;
     transition: all 0.3s ease;
     .v-dialog-close {
       position: absolute;

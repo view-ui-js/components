@@ -2,7 +2,7 @@
   "name": "view-ui",
   "version": "3.0.0-beta.9",
   "main": "index.js",
-  "description": "轻量化的vue ui组件库",
+  "description": "多端适配、轻量化的vue ui组件库",
   "dependencies": {
     "dayjs": "^1.8.36"
   },

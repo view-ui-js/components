@@ -27,25 +27,7 @@
 <script>
 import * as Vue from "vue";
 let instance;
-const timer = () => {
-  const { queue } = instance;
-  if (queue.length) {
-    timer.active = true;
-    const [first] = queue;
-    if (first.time) {
-      setTimeout(() => {
-        queue.shift();
-        timer();
-      }, first.time);
-    }
-  } else {
-    timer.active = false;
-  }
-};
-
-timer.active = false;
-
-let id = 0;
+let incrementId = 0;
 export default {
   data() {
     return { queue: [] };
@@ -69,8 +51,10 @@ export default {
       instance = Vue.createApp(this).mount(container);
     }
 
+    const id  = incrementId++;
+
     instance.queue.push({
-      id: id++,
+      id,
       type,
       title,
       body,
@@ -78,8 +62,10 @@ export default {
       confirm,
     });
 
-    if (timer.active === false) {
-      timer();
+    if (time) {
+      setTimeout(() => {
+        instance.close(id);
+      }, time);
     }
 
     return id;
@@ -94,8 +80,8 @@ export default {
 #v-notification-container {
   position: fixed;
   right: 0;
-  top: 0;
-  z-index: 100000;
+  top: 50px;
+  z-index: 10;
   width: 400px;
   .v-notification {
     position: relative;
@@ -104,7 +90,8 @@ export default {
     font-size: 14px;
     border: 1px solid #fff;
     border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
+      0 9px 28px 8px #0000000d;
     // color: #fff;
     background: #fff;
     pointer-events: auto;
@@ -144,8 +131,8 @@ export default {
         display: flex;
         justify-content: flex-end;
         .confirm {
-          background-color: #52c41a;
-          padding: 6px;
+          background-color: #1890ff;
+          padding: 6px 8px;
           border-radius: 3px;
           color: #fff;
         }
@@ -157,10 +144,11 @@ export default {
       height: 30px;
       top: 4px;
       right: 4px;
-      color: #666;
+      font-size: 16px;
+      color: #999;
       cursor: pointer;
       &:hover {
-        color: #333;
+        color: #666;
       }
     }
     h4 {

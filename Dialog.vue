@@ -75,16 +75,18 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #bdbdbdc4;
-  backdrop-filter: blur(2px);
-  // v-dialog容器过渡动画
-  &.fade-enter-from .v-dialog,
-  &.fade-leave-to .v-dialog {
-    transform: scale(1.01);
-  }
+  // background-color: #bdbdbdc4;
+  // backdrop-filter: blur(2px);
+  background-color: #25262db2;
+
+  // v-dialog内部容器过渡动画
   &.fade-enter-active .v-dialog,
   &.fade-leave-active .v-dialog {
-    transition: transform 0.3s ease;
+    transition: transform 0.25s cubic-bezier(.59,1.25,.84,1.18);
+  }
+  &.fade-enter-from .v-dialog,
+  &.fade-leave-to .v-dialog {
+    transform: scale(0.9);
   }
   &.v-mask-hide {
     pointer-events: none;
@@ -97,7 +99,7 @@ export default {
     pointer-events: auto;
     background-color: #fff;
     border-radius: 4px;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     .v-dialog-close {
       position: absolute;
       top: 10px;

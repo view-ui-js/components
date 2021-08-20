@@ -11,67 +11,69 @@
 
 <script>
 import * as Vue from "vue";
+let instance;
+let incrementId = 0;
 export default {
   data() {
     return { queue: [] };
   },
-  install(app) {
-    let instance;
-    const timer = () => {
+  methods: {
+    close(id) {
       const { queue } = instance;
-      if (queue.length) {
-        timer.active = true;
-        const [first] = queue;
-        setTimeout(() => {
-          queue.shift();
-          timer();
-        }, first.time);
-      } else {
-        timer.active = false;
+      for (const index in queue) {
+        const item = queue[index];
+        if (item.id === id) {
+          queue.splice(index, 1);
+        }
       }
-    };
-    timer.active = false;
-    let id = 0;
-    const proxy = (type, body, time = 1500) => {
-      if (!instance) {
-        const container = document.createElement("message");
-        document.body.appendChild(container);
-        instance = Vue.createApp(this).mount(container);
-      }
+    },
+  },
+  open(options) {
+    const { type = "", title = "", body = "", time = 3000, confirm } = options;
 
-      instance.queue.push({
-        id: id++,
-        type,
-        body,
-        time,
-      });
+    if (instance === undefined) {
+      const container = document.createElement("notification");
+      document.body.appendChild(container);
+      instance = Vue.createApp(this).mount(container);
+    }
 
-      if (timer.active === false) {
-        timer();
-      }
-    };
+    const id = incrementId++;
 
-    app.mixin({
-      methods: {
-        $message(body, time) {
-          proxy("info", body, time);
-        },
-        $info(body, time) {
-          proxy("info", body, time);
-        },
-        $success(body, time) {
-          proxy("success", body, time);
-        },
-        $error(body, time) {
-          proxy("error", body, time);
-        },
-        $warning(body, time) {
-          proxy("warning", body, time);
-        },
-        $load(body, time) {
-          proxy("load", body, time);
-        },
-      },
+    instance.queue.push({
+      id,
+      type,
+      title,
+      body,
+      time,
+      confirm,
+    });
+
+    if (time) {
+      setTimeout(() => {
+        instance.close(id);
+      }, time);
+    }
+  },
+  message(body, time) {
+    this.open({ type: "info", body, time });
+  },
+  info(body, time) {
+    this.open({ type: "info", body, time });
+  },
+  success(body, time) {
+    this.open({ type: "success", body, time });
+  },
+  error(body, time) {
+    this.open({ type: "error", body, time });
+  },
+  warning(body, time) {
+    this.open({ type: "warning", body, time });
+  },
+  load(body, time) {
+    this.open({
+      type: "load",
+      body,
+      time,
     });
   },
 };

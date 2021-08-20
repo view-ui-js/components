@@ -37,6 +37,7 @@
 import FormBox from "../FormBox.vue";
 export default {
   name: "NumberText",
+  emits: ["click"],
   components: { FormBox },
   props: {
     value: Number,

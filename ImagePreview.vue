@@ -62,7 +62,7 @@ export default {
 }
 .fade-enter-active .v-image-preview-img,
 .fade-leave-active .v-image-preview-img {
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 .v-image-preview {
   position: fixed;

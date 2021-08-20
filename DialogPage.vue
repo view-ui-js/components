@@ -75,7 +75,7 @@ export default {
     pointer-events: auto;
     background-color: #fff;
     border-radius: 3px 3px 0 0;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     overflow: visible;
     .v-dialog-page-header {
       flex: none;

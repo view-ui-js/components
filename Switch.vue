@@ -1,7 +1,7 @@
 <template>
   <div
     class="v-switch"
-    :class="{'v-switch-open':status, 'v-switch-disable':disable}"
+    :class="{ 'v-switch-open': status, 'v-switch-disable': disable }"
     @click="click"
     @dblclick.stop
   >
@@ -13,32 +13,33 @@
 import theme from "./theme.js";
 export default {
   name: "Switch",
+  emits: ["click"],
   props: {
     value: {
       type: Boolean,
-      default: false
+      default: false,
     },
     label: {
-      type: String
+      type: String,
     },
     name: {
-      type: String
+      type: String,
     },
     disable: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       edit: true,
-      status: this.value
+      status: this.value,
     };
   },
   watch: {
     value(value) {
       this.status = value;
-    }
+    },
   },
   methods: {
     click(event) {
@@ -51,7 +52,7 @@ export default {
         this.status = !this.status;
         this.$emit("input", this.status);
       }
-    }
+    },
   },
   style({ active }) {
     return `
@@ -66,7 +67,7 @@ export default {
   install(app) {
     app.component(this.name, this);
     theme.style(this.style);
-  }
+  },
 };
 </script>
 

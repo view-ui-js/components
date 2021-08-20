@@ -19,13 +19,14 @@
 <script>
 export default {
   name: "Draggable",
+  emits: ["click"],
   props: {
     value: {
       type: Array,
       default() {
         return [];
-      }
-    }
+      },
+    },
   },
   methods: {
     dragstart(event, key) {
@@ -59,10 +60,10 @@ export default {
     dragend() {
       this.currentTarget.style.opacity = "unset";
       this.$emit("input", this.value);
-    }
+    },
   },
   install(app) {
     app.component(this.name, this);
-  }
+  },
 };
 </script>

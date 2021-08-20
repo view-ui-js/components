@@ -208,7 +208,7 @@ export default {
         border-radius: 50%;
         display: inline-block;
         background-color: #fff;
-        transition: all 0.3s;
+        transition: all 0.25s;
         transform: translate(-50%, 0%);
         &:hover {
           box-shadow: 0 0 0 5px rgba(24, 144, 255, 0.2);

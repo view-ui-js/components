@@ -5,7 +5,7 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
 .drop-enter-from,
@@ -22,7 +22,7 @@
 
 .elastic-enter-active,
 .elastic-leave-active {
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.25s ease-in-out;
 }
 
 .elastic-enter-from,
@@ -39,16 +39,16 @@
 .top-leave-active,
 .bottom-enter-active,
 .bottom-leave-active {
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
 }
 
 .left-enter-from,
-.left-leave-active {
+.left-leave-to {
   transform: translate3d(-100%, 0, 0);
 }
 
 .right-enter-from,
-.right-leave-active {
+.right-leave-to {
   transform: translate3d(100%, 0, 0);
 }
 
@@ -73,5 +73,5 @@
 
 .scale-enter-active,
 .scale-leave-active {
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.25s, opacity 0.25s;
 }

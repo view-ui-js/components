@@ -1,6 +1,6 @@
 <template>
   <div id="v-notification-container">
-    <transition-group name="right">
+    <transition-group name="right-fade">
       <div class="v-notification level" v-for="item of queue" :key="item.id">
         <div v-if="item.type" class="type-icon">
           <i :class="`vicon-${item.type}`" />
@@ -9,16 +9,16 @@
           <h4 v-if="item.title">{{ item.title }}</h4>
           <div class="body">{{ item.body }}</div>
           <div class="actions">
-            <div
+            <button
               v-if="item.confirm"
               class="confirm"
               @click="item.confirm(item.id)"
             >
               Confirm
-            </div>
+            </button>
           </div>
         </div>
-        <i class="ficon-cha close center" @click="close(item.id)" />
+        <i class="ficon-cha close center" @click="onClose(item.id)" />
       </div>
     </transition-group>
   </div>
@@ -33,7 +33,7 @@ export default {
     return { queue: [] };
   },
   methods: {
-    close(id) {
+    onClose(id) {
       const { queue } = instance;
       for (const index in queue) {
         const item = queue[index];
@@ -51,7 +51,7 @@ export default {
       instance = Vue.createApp(this).mount(container);
     }
 
-    const id  = incrementId++;
+    const id = incrementId++;
 
     instance.queue.push({
       id,
@@ -64,14 +64,14 @@ export default {
 
     if (time) {
       setTimeout(() => {
-        instance.close(id);
+        instance.onClose(id);
       }, time);
     }
 
     return id;
   },
   close(id) {
-    instance.close(id);
+    instance.onClose(id);
   },
 };
 </script>
@@ -80,9 +80,18 @@ export default {
 #v-notification-container {
   position: fixed;
   right: 0;
-  top: 50px;
+  top: 0;
   z-index: 10;
   width: 400px;
+  .right-fade-enter-active,
+  .right-fade-leave-active {
+    transition: all 0.25s ease;
+  }
+  .right-fade-enter-from,
+  .right-fade-leave-to {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
   .v-notification {
     position: relative;
     // padding: 10px 15px;
@@ -135,6 +144,7 @@ export default {
           padding: 6px 8px;
           border-radius: 3px;
           color: #fff;
+          cursor: pointer;
         }
       }
     }

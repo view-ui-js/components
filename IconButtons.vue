@@ -66,14 +66,14 @@ export default {
     padding: 5px;
     color: #6e6e6e;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.25s;
     border-radius: 100%;
     &:hover {
       background-color: #dadada;
     }
   }
   .icon-buttons-circle {
-    transition: transform 0.3s ease;
+    transition: transform 0.25s ease;
     position: absolute;
     background-color: #bbbbbb;
     border-radius: 100%;

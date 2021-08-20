@@ -12,6 +12,7 @@
 <script>
 export default {
   name: "ListItem",
+  emits: ["click"],
   install(app) {
     app.component(this.name, this);
   },

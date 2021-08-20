@@ -5,16 +5,6 @@ export default {
    themes: { black, green },
    styleQueue: [],
    /**
-    * 添加自定义主题
-    * @param {String} name 主题名称
-    * @param {Object} options 配色参数
-    */
-   add(name, options) {
-
-      this.themes[name] = options;
-
-   },
-   /**
     * 应用主题
     * @param {String} name 主题名称
     */
@@ -69,6 +59,16 @@ export default {
          throw new Error(`无效主题"${name}"`);
 
       }
+
+   },
+   /**
+    * 添加自定义主题
+    * @param {String} name 主题名称
+    * @param {Object} options 配色参数
+    */
+    add(name, options) {
+
+      this.themes[name] = options;
 
    },
    /**

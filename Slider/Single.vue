@@ -158,7 +158,7 @@ export default {
       margin-right: -7.5px;
       border-radius: 50%;
       background-color: #fff;
-      transition: all 0.3s;
+      transition: all 0.25s;
       &:hover {
         box-shadow: 0 0 0 5px rgba(24, 144, 255, 0.2);
       }

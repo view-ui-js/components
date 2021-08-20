@@ -18,6 +18,7 @@
 <script>
 import * as Vue from "vue";
 export default {
+  instance: undefined,
   data() {
     return {
       context: {},
@@ -59,45 +60,42 @@ export default {
       this.open = true;
     },
   },
-  install(app) {
-    let newComponent;
-    const container = document.createElement("contextmenu");
-    document.body.appendChild(container);
-    const instance = Vue.createApp(this).mount(container);
+  open() {
+    if (this.instance === undefined) {
+      const container = document.createElement("contextmenu");
+      document.body.appendChild(container);
+      this.instance = Vue.createApp(this).mount(container);
+    }
 
     document.body.addEventListener("contextmenu", function (event) {
-      if (newComponent) {
-        if (newComponent.init === true) {
-          newComponent.init = false;
-          newComponent.event(event);
+      if (this.instance) {
+        if (this.instance.init === true) {
+          this.instance.init = false;
+          this.instance.event(event);
         } else {
-          newComponent.open = false;
+          this.instance.open = false;
         }
       }
       event.preventDefault();
     });
 
-    app.mixin({
-      methods: {
-        $contextmenu(context, menu) {
-          if (instance) {
-            instance.open = false;
-          }
+    //     $contextmenu(context, menu) {
+    //   if (this.instance) {
+    //     this.instance.open = false;
+    //   }
 
-          instance.init = true;
+    //   this.instance.init = true;
 
-          window.addEventListener(
-            "mousedown",
-            (ev) => {
-              newComponent.open = false;
-            },
-            { once: true }
-          );
+    //   window.addEventListener(
+    //     "mousedown",
+    //     (ev) => {
+    //       this.open = false;
+    //     },
+    //     { once: true }
+    //   );
 
-          document.body.appendChild(newComponent.$el);
-        },
-      },
-    });
+    //   document.body.appendChild(this.$el);
+    // }
   },
 };
 </script>

@@ -1,10 +1,22 @@
 <template>
   <div class="v-draggable-list">
-    <Draggable v-if="list.length" v-model="list" v-slot="{ index, item }" @click="click">
+    <Draggable
+      v-if="list.length"
+      v-model="list"
+      v-slot="{ index, item }"
+      @click="click"
+    >
       <slot :item="item"></slot>
-      <i class="v-draggable-list-delete vicon-cha" @click.stop="destroy(index)" />
+      <i
+        class="v-draggable-list-delete vicon-cha"
+        @click.stop="destroy(index)"
+      />
     </Draggable>
-    <div v-show="list.length < max" class="v-draggable-list-add" @click="$emit('add')">
+    <div
+      v-show="list.length < max"
+      class="v-draggable-list-add"
+      @click="$emit('add')"
+    >
       <i class="vicon-jia" />
     </div>
   </div>
@@ -14,23 +26,24 @@
 import Draggable from "./Draggable.vue";
 export default {
   name: "DraggableList",
+  emits: ["click"],
   components: { Draggable },
   props: {
     value: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     max: {
       type: Number,
-      default: 20
+      default: 20,
     },
-    title: String
+    title: String,
   },
   data() {
     return {
-      list: this.value
+      list: this.value,
     };
   },
   methods: {
@@ -40,11 +53,11 @@ export default {
     },
     click(evnet, index, item) {
       this.$emit("click", index, item);
-    }
+    },
   },
   install(app) {
     app.component(this.name, this);
-  }
+  },
 };
 </script>
 

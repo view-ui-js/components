@@ -8,6 +8,7 @@
 import theme from "./theme.js";
 export default {
   name: "Button",
+  emits:["click"],
   props: {
     color: {
       type: String

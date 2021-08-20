@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import theme from "./theme.js";
 export default {
   name: "Bubble",
   props: {
@@ -153,7 +152,6 @@ export default {
   },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
   },
 };
 </script>

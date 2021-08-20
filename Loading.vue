@@ -65,7 +65,7 @@ export default {
     display: inline-block;
     margin: 0 3px;
     &:nth-child(1) {
-      animation: loader21 0.5s -0.3s ease-in-out infinite alternate;
+      animation: loader21 0.5s -0.25s ease-in-out infinite alternate;
     }
     &:nth-child(2) {
       animation: loader21 0.5s -0.15s ease-in-out infinite alternate;

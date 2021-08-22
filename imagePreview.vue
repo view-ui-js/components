@@ -49,8 +49,8 @@ export default {
     this.image = images[index];
     document.body.appendChild(this.$el);
   },
-  install(app) {
-    app.component(this.name, this);
+  open({ images, index, title }) {
+    
   }
 };
 </script>

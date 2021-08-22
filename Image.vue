@@ -28,8 +28,9 @@
 </template>
 
 <script>
+import imagePreview from "../imagePreview.vue";
 export default {
-  name: "vImage",
+  name: "Image",
   props: {
     value: {
       type: String,
@@ -73,7 +74,7 @@ export default {
     },
     preview() {
       const { image } = this;
-      this.$ImgPreview({
+      imagePreview.open({
         images: [image],
         index: 0
       });

@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "ViSliderRange",
+  name: "SliderRange",
   props: {
     min: {
       type: Number,

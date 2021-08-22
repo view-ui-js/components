@@ -33,6 +33,9 @@ export default {
       this.open = false;
       item.action(this.context);
     },
+    /**
+     * contextmenu 事件
+     */
     event(targetEvent) {
       const { clientX, clientY } = targetEvent;
 
@@ -60,42 +63,30 @@ export default {
       this.open = true;
     },
   },
-  open() {
-    if (this.instance === undefined) {
+  open(context, menu) {
+    const { instance } = this;
+    if (instance === undefined) {
       const container = document.createElement("contextmenu");
       document.body.appendChild(container);
-      this.instance = Vue.createApp(this).mount(container);
+      instance = Vue.createApp(this).mount(container);
     }
-
-    document.body.addEventListener("contextmenu", function (event) {
-      if (this.instance) {
-        if (this.instance.init === true) {
-          this.instance.init = false;
-          this.instance.event(event);
-        } else {
-          this.instance.open = false;
-        }
-      }
-      event.preventDefault();
-    });
-
-    //     $contextmenu(context, menu) {
-    //   if (this.instance) {
-    //     this.instance.open = false;
+    Object.assign(instance, { context, menu });
+    document.body.addEventListener(
+      "mousedown",
+      (ev) => {
+        instance.open = false;
+      },
+      { once: true }
+    );
+    // document.body.addEventListener("contextmenu", function (event) {
+    //   if (instance.init === true) {
+    //     instance.init = false;
+    //     instance.event(event);
+    //   } else {
+    //     instance.open = false;
     //   }
-
-    //   this.instance.init = true;
-
-    //   window.addEventListener(
-    //     "mousedown",
-    //     (ev) => {
-    //       this.open = false;
-    //     },
-    //     { once: true }
-    //   );
-
-    //   document.body.appendChild(this.$el);
-    // }
+    //   event.preventDefault();
+    // });
   },
 };
 </script>

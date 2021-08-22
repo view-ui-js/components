@@ -42,6 +42,7 @@
 
 <script>
 import Draggable from "./Draggable.vue";
+import imagePreview from "../imagePreview.vue";
 export default {
   name: "Images",
   components: { Draggable },
@@ -100,7 +101,7 @@ export default {
     },
     preview(index, item) {
       const { images, title } = this;
-      this.$ImgPreview({ images, index, title });
+      imagePreview.open({ images, index, title });
     },
     /**
      * 供外部调用的图片上传接口

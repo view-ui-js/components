@@ -1,40 +1,45 @@
 <template>
   <FormBox v-if="edit" :label="label" :error="error">
     <div class="v-category" @click.stop="click">
-      <input autocomplete="off" readonly="readonly" :placeholder="placeholder" :value="inputValue" />
-      <i class="vicon arrow" :class="{'arrow_up':open}">&#xe678;</i>
+      <input
+        autocomplete="off"
+        readonly="readonly"
+        :placeholder="placeholder"
+        :value="inputValue"
+      />
+      <i class="vicon arrow" :class="{ arrow_up: open }">&#xe678;</i>
       <transition name="drop">
         <div v-if="open" class="category-drop">
-          <CategoryItem :options="options" :active="value" @select="select"></CategoryItem>
+          <Item :options="options" :active="value" @select="select" />
         </div>
       </transition>
     </div>
   </FormBox>
-  <div v-else class="v-category-preview">{{value.join(" / ")}}</div>
+  <div v-else class="v-category-preview">{{ value.join(" / ") }}</div>
 </template>
 
 <script>
-import CategoryItem from "./_CategoryItem.vue";
+import Item from "./Item.vue";
 export default {
   name: "Category",
-  components: { CategoryItem },
+  components: { Item },
   props: {
     options: {
       type: Object,
       default() {
         return {};
-      }
+      },
     },
     value: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     placeholder: String,
     label: {
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
@@ -51,8 +56,8 @@ export default {
       if (this.open === false) {
         // 在document.body上添加一次性的click事件
         this.open = true;
-        document.body.addEventListener("click", ev => (this.open = false), {
-          once: true
+        document.body.addEventListener("click", (ev) => (this.open = false), {
+          once: true,
         });
       } else {
         this.open = false;
@@ -62,11 +67,11 @@ export default {
       this.open = false;
       this.inputValue = option.join(" / ");
       this.$emit("input", option);
-    }
+    },
   },
   install(app) {
     app.component(this.name, this);
-  }
+  },
 };
 </script>
 

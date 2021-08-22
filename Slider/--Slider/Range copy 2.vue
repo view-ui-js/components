@@ -25,7 +25,7 @@
 import base from "./base.js";
 import theme from "../theme.js";
 export default {
-  name: "ViSliderRange",
+  name: "SliderRange",
   extends: base,
   data() {
     return {

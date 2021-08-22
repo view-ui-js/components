@@ -18,7 +18,7 @@
             </button>
           </div>
         </div>
-        <i class="ficon-cha close center" @click="onClose(item.id)" />
+        <i class="ficon-cha close center" @click="close(item.id)" />
       </div>
     </transition-group>
   </div>
@@ -26,15 +26,15 @@
 
 <script>
 import * as Vue from "vue";
-let instance;
-let incrementId = 0;
 export default {
+  instance: undefined,
+  incrementId: 0,
   data() {
     return { queue: [] };
   },
   methods: {
-    onClose(id) {
-      const { queue } = instance;
+    close(id) {
+      const { queue } = this;
       for (const index in queue) {
         const item = queue[index];
         if (item.id === id) {
@@ -45,15 +45,15 @@ export default {
   },
   open(options) {
     const { type = "", title = "", body = "", time = 3000, confirm } = options;
-    if (!instance) {
+    if (this.instance === undefined) {
       const container = document.createElement("notification");
       document.body.appendChild(container);
-      instance = Vue.createApp(this).mount(container);
+      this.instance = Vue.createApp(this).mount(container);
     }
 
-    const id = incrementId++;
+    const id = this.incrementId++;
 
-    instance.queue.push({
+    this.instance.queue.push({
       id,
       type,
       title,
@@ -64,14 +64,14 @@ export default {
 
     if (time) {
       setTimeout(() => {
-        instance.onClose(id);
+        this.instance.close(id);
       }, time);
     }
 
     return id;
   },
   close(id) {
-    instance.onClose(id);
+    this.instance.close(id);
   },
 };
 </script>
@@ -94,8 +94,7 @@ export default {
   }
   .v-notification {
     position: relative;
-    // padding: 10px 15px;
-    margin: 10px;
+    margin: 6px;
     font-size: 14px;
     border: 1px solid #fff;
     border-radius: 4px;

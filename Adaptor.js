@@ -9,8 +9,11 @@ import * as Vue from "vue";
  * @param {*} options 
  * @returns 组件实例
  */
-function Component(options) {
+function Component(options, id) {
   const container = document.createElement('section');
+  if (id) {
+    container.id = id;
+  }
   document.body.appendChild(container);
   return Vue.createApp(options).mount(container);
 }

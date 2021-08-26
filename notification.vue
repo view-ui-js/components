@@ -1,34 +1,29 @@
 <template>
-  <div id="v-notification-container">
-    <transition-group name="right-fade">
-      <div class="v-notification level" v-for="item of queue" :key="item.id">
-        <div v-if="item.type" class="type-icon">
-          <i :class="`vicon-${item.type}`" />
-        </div>
-        <div class="main vertical">
-          <h4 v-if="item.title">{{ item.title }}</h4>
-          <div class="body">{{ item.body }}</div>
-          <div class="actions">
-            <button
-              v-if="item.confirm"
-              class="confirm"
-              @click="item.confirm(item.id)"
-            >
-              Confirm
-            </button>
-          </div>
-        </div>
-        <i class="ficon-cha close center" @click="close(item.id)" />
+  <ListTransition>
+    <div class="v-notification vertical" v-for="item of queue" :key="item.id">
+      <h4 v-if="item.title"><i class="vicon-info" /> {{ item.title }}</h4>
+      <div class="body">{{ item.body }}</div>
+      <div class="actions">
+        <button
+          v-if="item.confirm"
+          class="confirm"
+          @click="item.confirm(item.id)"
+        >
+          Confirm
+        </button>
       </div>
-    </transition-group>
-  </div>
+      <i class="ficon-cha close center" @click="close(item.id)" />
+    </div>
+  </ListTransition>
 </template>
 
 <script>
 import Adaptor from "./Adaptor.js";
+import ListTransition from "./ListTransition.vue";
 export default {
   instance: undefined,
   incrementId: 0,
+  components: { ListTransition },
   data() {
     return { queue: [] };
   },
@@ -44,16 +39,15 @@ export default {
     },
   },
   open(options) {
-    const { type = "", title = "", body = "", time = 3000, confirm } = options;
+    const { title = "", body = "", time, confirm } = options;
     if (this.instance === undefined) {
-      this.instance = Adaptor.Component(this);
+      this.instance = Adaptor.Component(this, "v-notification-container");
     }
 
     const id = this.incrementId++;
 
     this.instance.queue.push({
       id,
-      type,
       title,
       body,
       time,
@@ -74,96 +68,73 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style >
 #v-notification-container {
   position: fixed;
-  right: 0;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
-  width: 400px;
-  .right-fade-enter-active,
-  .right-fade-leave-active {
-    transition: all 0.25s ease;
+}
+@media screen and (min-width: 500px) {
+  #v-notification-container {
+    left: unset;
+    width: 400px;
   }
-  .right-fade-enter-from,
-  .right-fade-leave-to {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
+}
+</style>
+
+<style lang="scss" scoped>
+.v-notification {
+  position: relative;
+  width: 100%;
+  margin: 6px;
+  font-size: 14px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
+    0 9px 28px 8px #0000000d;
+  // color: #fff;
+  background: #fff;
+  pointer-events: auto;
+  padding: 16px;
+  .body {
+    margin: 6px 0;
   }
-  .v-notification {
-    position: relative;
-    margin: 6px;
-    font-size: 14px;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
-      0 9px 28px 8px #0000000d;
-    // color: #fff;
-    background: #fff;
-    pointer-events: auto;
-    .type-icon {
-      flex: none;
-      display: flex;
-      justify-content: flex-end;
-      width: 34px;
-      padding-top: 16px;
-      i {
-        font-size: 20px;
-      }
-      .vicon-info:before {
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    .confirm {
+      background-color: #1890ff;
+      padding: 8px 10px;
+      border-radius: 3px;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+  .close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 8px;
+    right: 8px;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+    &:hover {
+      color: #666;
+    }
+  }
+  h4 {
+    padding-bottom: 10px;
+    i {
+      display: inline-block;
+      margin-right: 3px;
+      &:before {
         content: "\e753";
         color: #1890ff;
       }
-      .vicon-success:before {
-        content: "\e602";
-        color: #52c41a;
-      }
-      .vicon-warning:before {
-        content: "\e613";
-        color: #faad14;
-      }
-      .vicon-error:before {
-        content: "\e728";
-        color: #f5222d;
-      }
-      .vicon-load:before {
-        content: "\e608";
-        color: #000;
-      }
     }
-    .main {
-      padding: 16px;
-      .actions {
-        display: flex;
-        justify-content: flex-end;
-        .confirm {
-          background-color: #1890ff;
-          padding: 6px 8px;
-          border-radius: 3px;
-          color: #fff;
-          cursor: pointer;
-        }
-      }
-    }
-    .close {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      top: 4px;
-      right: 4px;
-      font-size: 16px;
-      color: #999;
-      cursor: pointer;
-      &:hover {
-        color: #666;
-      }
-    }
-    h4 {
-      padding-bottom: 10px;
-    }
-    // .description {
-    //   padding-top: 10px;
-    // }
   }
 }
 </style>

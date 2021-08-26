@@ -1,21 +1,19 @@
 <template>
-  <ListTransition>
+  <transition-group name="group-drop">
     <div class="v-message" v-for="item of queue" :key="item.id">
       <i class="vicon" :class="`vicon-${item.type}`" />
       <span class="body">
         {{ item.body }}
       </span>
     </div>
-  </ListTransition>
+  </transition-group>
 </template>
 
 <script>
 import Adaptor from "./Adaptor.js";
-import ListTransition from "./ListTransition.vue";
 let instance;
 let incrementId = 0;
 export default {
-  components: { ListTransition },
   data() {
     return { queue: [] };
   },
@@ -93,6 +91,8 @@ export default {
 
 <style lang="scss" scoped>
 .v-message {
+  display: inline-block;
+  transition: all 0.3s ease;
   border-radius: 4px;
   width: 100%;
   padding: 18px 20px;

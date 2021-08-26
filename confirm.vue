@@ -12,10 +12,11 @@
 </template>
 
 <script>
-import * as Vue from "vue";
 import Dialog from "./Dialog.vue";
 import Button from "./Button.vue";
+import Adaptor from "./Adaptor.js";
 export default {
+  name: "confirm",
   instance: undefined,
   components: { Dialog, Button },
   methods: {
@@ -48,14 +49,12 @@ export default {
     if (this.instance) {
       Object.assign(this.instance, data);
     } else {
-      const container = document.createElement("confirm");
-      document.body.appendChild(container);
-      this.instance = Vue.createApp({
+      this.instance = Adaptor.Component({
         data() {
           return data;
         },
         ...this,
-      }).mount(container);
+      });
     }
   },
 };

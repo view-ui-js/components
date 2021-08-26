@@ -116,7 +116,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../style/var.scss";
 .v-dropdown-range {
   width: 300px;
   padding: 15px 13px;
@@ -131,7 +130,7 @@ export default {
       cursor: pointer;
       width: 33%;
       &:hover {
-        color: $active;
+        color: var(--active);
       }
     }
   }

@@ -17,7 +17,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./style/var.scss";
 .v-footer {
   display: flex;
   flex: none;

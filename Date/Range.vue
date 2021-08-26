@@ -295,7 +295,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../style/var.scss";
 .v-date-range {
   .v-date-background {
     background-color: #ebfff6;

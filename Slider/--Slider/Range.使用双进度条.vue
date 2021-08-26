@@ -96,7 +96,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../style/var.scss";
 .v-slider-range {
   position: relative;
   width: 100%;
@@ -104,7 +103,7 @@ export default {
   .v-slider-line {
     width: 100%;
     height: 5px;
-    background-color: $active;
+    background-color: var(--active);
     position: absolute;
     .v-slider-button {
       position: absolute;
@@ -112,7 +111,7 @@ export default {
       top: -5px;
       width: 15px;
       height: 15px;
-      border: 2px solid $active;
+      border: 2px solid var(--active);
       border-radius: 50%;
       display: inline-block;
       background-color: #fff;

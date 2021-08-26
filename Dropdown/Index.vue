@@ -50,7 +50,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../style/var.scss";
 .v-dropdown {
   position: relative;
   display: inline-block;
@@ -58,7 +57,7 @@ export default {
   padding: 10px;
   &:hover,
   .active {
-    color: $active;
+    color: var(--active);
   }
   .v-dropdown-select {
     position: relative;

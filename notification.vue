@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import * as Vue from "vue";
+import Adaptor from "./Adaptor.js";
 export default {
   instance: undefined,
   incrementId: 0,
@@ -46,9 +46,7 @@ export default {
   open(options) {
     const { type = "", title = "", body = "", time = 3000, confirm } = options;
     if (this.instance === undefined) {
-      const container = document.createElement("notification");
-      document.body.appendChild(container);
-      this.instance = Vue.createApp(this).mount(container);
+      this.instance = Adaptor.Component(this);
     }
 
     const id = this.incrementId++;

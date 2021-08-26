@@ -122,7 +122,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "style/var.scss";
 .v-paging {
   user-select: none;
   span {

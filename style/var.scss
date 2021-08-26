@@ -1,9 +1,7 @@
-$menuWidth: 50px;
-$subMenuWidth: 150px;
-$sidebar: $menuWidth + $subMenuWidth;
-$formWidth: 260px;
-$active: #4fc08d;
-$hover: #44ac7d;
-$black: #3a3f51;
-$gules: #e44343;
-$warning: #ffa726;
+:root {
+  --active: #4fc08d;
+  --hover: #44ac7d;
+  --black: #3a3f51;
+  --gules: #e44343;
+  --warning: #ffa726;
+}

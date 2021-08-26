@@ -42,7 +42,7 @@
 
 <script>
 import Draggable from "./Draggable.vue";
-import imagePreview from "../imagePreview.vue";
+import imagePreview from "./imagePreview.vue";
 export default {
   name: "Images",
   components: { Draggable },

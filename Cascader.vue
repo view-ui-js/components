@@ -152,7 +152,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./style/var.scss";
 .v-cascader {
   position: relative;
   .select-drop-enter-from,
@@ -195,7 +194,7 @@ export default {
           background-color: #f5f5f5;
         }
         &.active {
-          color: $active;
+          color: var(--active);
           background-color: #f5f5f5;
         }
         > ul {

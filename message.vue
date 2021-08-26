@@ -1,16 +1,18 @@
 <template>
   <div id="v-message-container">
-    <transition-group name="fade">
+    <transition-group name="page">
       <div class="v-message" v-for="item of queue" :key="item.id">
-        <i :class="`vicon-${item.type}`" />
-        {{ item.body }}
+        <i class="vicon" :class="`vicon-${item.type}`" />
+        <span class="body">
+          {{ item.body }}
+        </span>
       </div>
     </transition-group>
   </div>
 </template>
 
 <script>
-import * as Vue from "vue";
+import Adaptor from "./Adaptor.js";
 let instance;
 let incrementId = 0;
 export default {
@@ -32,9 +34,7 @@ export default {
     const { type = "", title = "", body = "", time = 3000, confirm } = options;
 
     if (instance === undefined) {
-      const container = document.createElement("notification");
-      document.body.appendChild(container);
-      instance = Vue.createApp(this).mount(container);
+      instance = Adaptor.Component(this);
     }
 
     const id = incrementId++;
@@ -82,25 +82,29 @@ export default {
 <style lang="scss" scoped>
 #v-message-container {
   position: fixed;
-  left: 0;
-  top: 0;
   z-index: 10000;
-  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   pointer-events: none;
   .v-message {
+    display: inline-block;
+    transition: all 0.3s ease;
     border-radius: 4px;
-    padding: 10px 15px;
+    padding: 18px 20px;
     margin: 10px;
     font-size: 14px;
-    min-width: 220px;
+    min-width: 300px;
     border: 1px solid #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    // color: #fff;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
     background: #fff;
     pointer-events: auto;
+    .vicon {
+      vertical-align: middle;
+    }
     .vicon-info:before {
       content: "\e753";
       color: #1890ff;
@@ -121,6 +125,21 @@ export default {
       content: "\e608";
       color: #000;
     }
+    .body {
+      margin-left: 8px;
+    }
+  }
+  .page-enter-active,
+  .page-leave-active {
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .page-enter-from,
+  .page-leave-to {
+    transform: translate3d(0, -80%, 0);
+    opacity: 0;
+  }
+  .page-leave-active {
+    position: absolute;
   }
 }
 </style>

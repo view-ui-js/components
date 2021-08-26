@@ -85,7 +85,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./style/var.scss";
 .v-table {
   // 基础样式
   table {
@@ -134,7 +133,7 @@ export default {
           &.sort {
             cursor: pointer;
             &:hover {
-              color: $active;
+              color: var(--active);
             }
             .vicon:after {
               content: "\e66b";
@@ -142,14 +141,14 @@ export default {
           }
 
           &.asc {
-            color: $active;
+            color: var(--active);
             .vicon:after {
               content: "\e71c";
             }
           }
 
           &.desc {
-            color: $active;
+            color: var(--active);
             .vicon:after {
               content: "\eb28";
             }

@@ -31,7 +31,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./style/var.scss";
 .v-list-item {
   width: 220px;
   height: 320px;

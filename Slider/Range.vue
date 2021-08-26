@@ -202,7 +202,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/var.scss";
 .v-slider-range-track {
   width: 100%;
   padding: 6px 0;

@@ -29,7 +29,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "style/var.scss";
 .v-drawer {
   position: fixed;
   z-index: 1000;

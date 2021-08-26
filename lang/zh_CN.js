@@ -1,3 +1,8 @@
 export default {
-  
+  Alert: {
+
+  },
+  Dialog: {
+    
+  }
 }

@@ -1,105 +1,107 @@
 <template>
-  <div class="v-contextmenu" v-if="open" :style="style" @mousedown.capture.stop>
+  <div
+    v-show="show"
+    class="v-contextmenu"
+    :style="style"
+    @mousedown.capture.stop
+  >
     <ul>
-      <template v-for="(item, key) of menu">
-        <li
-          :class="{ disable: item.disable }"
-          :key="key"
-          @click="!item.disable && click(item)"
-        >
-          <i v-if="item.icon" :class="item.icon" />
-          <span>{{ item.name }}</span>
-        </li>
-      </template>
+      <li
+        v-for="(item, key) of menu"
+        :key="key"
+        :class="{ disable: item.disable }"
+        @click="!item.disable && click(item)"
+      >
+        <i v-if="item.icon" :class="item.icon" />
+        <span>{{ item.name }}</span>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-import * as Vue from "vue";
+import Adaptor from "./Adaptor.js";
+let instance, active;
+document.body.addEventListener("contextmenu", (e) => {
+  if (active === true) {
+    instance.show = true;
+    instance.$nextTick(() => {
+      instance.position(e);
+    });
+  } else if (instance) {
+    instance.show = false;
+  }
+  active = false;
+  e.preventDefault();
+});
 export default {
-  instance: undefined,
   data() {
     return {
-      context: {},
       menu: [],
-      open: true,
-      init: true, // 初始状态，用于识别事件来源
+      show: true,
       style: {},
     };
   },
   methods: {
     click(item) {
-      this.open = false;
-      item.action(this.context);
+      this.show = false;
+      item.action();
     },
     /**
      * contextmenu 事件
      */
-    event(targetEvent) {
-      const { clientX, clientY } = targetEvent;
+    position(e) {
+      const { clientX, clientY } = e;
 
-      const menuRect = this.$el.getBoundingClientRect();
-      const { innerWidth, innerHeight } = global;
-
+      let { innerWidth, innerHeight } = window;
       const style = {};
+      const { $el } = this;
 
-      // 宽度自适应
-      if (clientX + menuRect.width > innerWidth) {
-        style.left = innerWidth - menuRect.width + "px"; // 右浮动
+      innerWidth = innerWidth - 6;
+      innerHeight = innerHeight - 6;
+
+      // 横向自适应
+      if (clientX + $el.clientWidth > innerWidth) {
+        style.left = innerWidth - $el.clientWidth + "px"; // 右浮动
       } else {
         style.left = clientX + "px"; // 正常
       }
 
-      // 高度自适应
-      if (clientY + menuRect.height > innerHeight) {
-        style.top = innerHeight - menuRect.height + "px"; // 下浮动
+      // 纵向自适应
+      if (clientY + $el.clientHeight > innerHeight) {
+        style.top = clientY - $el.clientHeight + "px"; // 下浮动
       } else {
         style.top = clientY + "px"; // 正常
       }
 
       this.style = style;
-
-      this.open = true;
     },
   },
-  open(context, menu) {
-    const { instance } = this;
+  open(menu) {
+    active = true;
     if (instance === undefined) {
-      const container = document.createElement("contextmenu");
-      document.body.appendChild(container);
-      instance = Vue.createApp(this).mount(container);
+      instance = Adaptor.Component(this);
     }
-    Object.assign(instance, { context, menu });
+    Object.assign(instance, { menu });
     document.body.addEventListener(
       "mousedown",
-      (ev) => {
-        instance.open = false;
+      (e) => {
+        instance.show = false;
       },
       { once: true }
     );
-    // document.body.addEventListener("contextmenu", function (event) {
-    //   if (instance.init === true) {
-    //     instance.init = false;
-    //     instance.event(event);
-    //   } else {
-    //     instance.open = false;
-    //   }
-    //   event.preventDefault();
-    // });
   },
 };
 </script>
 
 <style lang="scss">
-@import "./style/var.scss";
 .v-contextmenu {
   position: fixed;
-  z-index: 5000;
+  z-index: 1000000;
   color: #999;
   line-height: normal;
   user-select: none;
-  border-radius: 8px;
+  border-radius: 6px;
   min-width: 120px;
   background-color: #fff;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
@@ -114,7 +116,7 @@ export default {
       color: #666;
       &:hover {
         background-color: #f0f0f0;
-        color: $hover;
+        color: var(--hover);
       }
       &.disable {
         color: #bbb;

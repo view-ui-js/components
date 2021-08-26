@@ -11,13 +11,13 @@ export default {
     edit: Boolean,
     multiple: Boolean
   },
-  render(createElement, context) {
+  render(h, context) {
     const { props, data, children } = context;
     const { edit, multiple } = props;
     if (edit) {
-      return createElement(SelectEdit, data, children);
+      return h(SelectEdit, data, children);
     } else {
-      return createElement(Select, data, children);
+      return h(Select, data, children);
     }
   },
   install(app) {

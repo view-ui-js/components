@@ -175,7 +175,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../style/var.scss";
 .v-slider-range-track {
   width: 100%;
   padding: 6px 0;
@@ -197,7 +196,7 @@ export default {
       background-color: #fff;
       transform: translate(-50%, 0%);
       &:hover {
-        border: 2px solid $active;
+        border: 2px solid var(--active);
       }
     }
     .v-slider-left {

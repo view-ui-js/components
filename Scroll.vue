@@ -17,7 +17,6 @@ export default {
 <style lang="scss">
 .v-scroll {
   position: relative;
-  width: $menuWidth;
   height: 100%;
 }
 </style>

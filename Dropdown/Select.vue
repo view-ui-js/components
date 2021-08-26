@@ -54,7 +54,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../style/var.scss";
 .v-dropdown-select {
   // padding: 8px 0px;
   // line-height: 36px;
@@ -65,7 +64,7 @@ export default {
     padding: 0 26px;
     &.active {
       background-color: #f0f0f0;
-      color: $active;
+      color: var(--active);
       &:before {
         font-family: "vicon";
         content: "\e600";
@@ -80,7 +79,7 @@ export default {
     }
     &:hover {
       background-color: #f7f7f7;
-      color: $hover;
+      color: var(--hover);
     }
   }
 }

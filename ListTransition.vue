@@ -2,7 +2,7 @@
   <transition-group
     class="transition-group"
     tag="div"
-    :name="`list-${direction}`"
+    :name="`list-${enter}`"
   >
     <slot />
   </transition-group>
@@ -12,7 +12,7 @@
 export default {
   name: "ListTransition",
   props: {
-    direction: {
+    enter: {
       type: String,
       default: "down",
     },

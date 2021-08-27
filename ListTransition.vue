@@ -1,9 +1,5 @@
 <template>
-  <transition-group
-    class="transition-group"
-    tag="div"
-    :name="`list-${enter}`"
-  >
+  <transition-group class="transition-group" tag="div" :name="`list-${enter}`">
     <slot />
   </transition-group>
 </template>
@@ -20,11 +16,13 @@ export default {
 };
 </script>
 
+// 在横向排版时应该使用 display: inline-block; position: absolute; 在不占用空间的状态下保持原位，目前还没有好的替代方案
+// item不应该使用margin，否则会出现偏移
+
 <style lang="scss" scoped>
 .transition-group:deep {
   > * {
-    display: inline-block;
-    transition: transform 0.3s ease;
+    transition: transform 0.25s ease;
   }
   > .list-down-enter-from,
   > .list-down-leave-to {
@@ -40,7 +38,7 @@ export default {
   > .list-up-leave-active,
   > .list-down-enter-active,
   > .list-down-leave-active {
-    transition: transform 0.25s, opacity 0.25s;
+    transition: all 0.25s ease-in-out;
   }
   > .list-up-leave-active,
   > .list-down-leave-active {

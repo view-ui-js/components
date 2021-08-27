@@ -1,10 +1,12 @@
 <template>
   <ListTransition>
-    <div class="v-message" v-for="item of queue" :key="item.id">
-      <i class="vicon" :class="`vicon-${item.type}`" />
-      <span class="body">
-        {{ item.body }}
-      </span>
+    <div class="v-message-padding" v-for="item of queue" :key="item.id">
+      <div class="v-message">
+        <i class="vicon" :class="`vicon-${item.type}`" />
+        <span class="body">
+          {{ item.body }}
+        </span>
+      </div>
     </div>
   </ListTransition>
 </template>
@@ -92,43 +94,49 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.v-message {
-  border-radius: 4px;
-  width: 100%;
-  padding: 18px 20px;
-  margin: 10px 0;
-  font-size: 14px;
-  border: 1px solid #fff;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
-  background: #fff;
-  pointer-events: auto;
-  .vicon {
-    vertical-align: middle;
-    font-size: 20px;
-    margin-right: 8px;
-  }
-  .vicon-info:before {
-    content: "\e753";
-    color: #1890ff;
-  }
-  .vicon-success:before {
-    content: "\e602";
-    color: #52c41a;
-  }
-  .vicon-warning:before {
-    content: "\e613";
-    color: #faad14;
-  }
-  .vicon-error:before {
-    content: "\e728";
-    color: #f5222d;
-  }
-  .vicon-load:before {
-    content: "\e608";
-    color: #000;
-  }
-  .body {
-    vertical-align: middle;
+.transition-group {
+  padding-top: 6px;
+  .v-message-padding {
+    padding: 6px;
+    width: 100%;
+    .v-message {
+      position: relative;
+      border-radius: 4px;
+      padding: 18px 20px;
+      font-size: 14px;
+      border: 1px solid #fff;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+      background: #fff;
+      pointer-events: auto;
+      .vicon {
+        vertical-align: middle;
+        font-size: 20px;
+        margin-right: 8px;
+      }
+      .vicon-info:before {
+        content: "\e753";
+        color: #1890ff;
+      }
+      .vicon-success:before {
+        content: "\e602";
+        color: #52c41a;
+      }
+      .vicon-warning:before {
+        content: "\e613";
+        color: #faad14;
+      }
+      .vicon-error:before {
+        content: "\e728";
+        color: #f5222d;
+      }
+      .vicon-load:before {
+        content: "\e608";
+        color: #000;
+      }
+      .body {
+        vertical-align: middle;
+      }
+    }
   }
 }
 </style>

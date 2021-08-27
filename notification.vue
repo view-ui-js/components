@@ -1,18 +1,20 @@
 <template>
   <ListTransition>
-    <div class="v-notification vertical" v-for="item of queue" :key="item.id">
-      <h4 v-if="item.title"><i class="vicon-info" /> {{ item.title }}</h4>
-      <div class="body">{{ item.body }}</div>
-      <div class="actions">
-        <button
-          v-if="item.confirm"
-          class="confirm"
-          @click="item.confirm(item.id)"
-        >
-          Confirm
-        </button>
+    <div class="v-notification-padding" v-for="item of queue" :key="item.id">
+      <div class="v-notification vertical">
+        <h4 v-if="item.title"><i class="vicon-info" /> {{ item.title }}</h4>
+        <div class="body">{{ item.body }}</div>
+        <div class="actions">
+          <button
+            v-if="item.confirm"
+            class="confirm"
+            @click="item.confirm(item.id)"
+          >
+            Confirm
+          </button>
+        </div>
+        <i class="ficon-cha close center" @click="close(item.id)" />
       </div>
-      <i class="ficon-cha close center" @click="close(item.id)" />
     </div>
   </ListTransition>
 </template>
@@ -56,7 +58,7 @@ export default {
 
     if (time) {
       setTimeout(() => {
-        this.instance.close(id);
+        // this.instance.close(id);
       }, time);
     }
 
@@ -85,54 +87,60 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.v-notification {
-  position: relative;
-  width: 100%;
-  margin: 6px;
-  font-size: 14px;
-  border: 1px solid #fff;
-  border-radius: 4px;
-  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
-    0 9px 28px 8px #0000000d;
-  // color: #fff;
-  background: #fff;
-  pointer-events: auto;
-  padding: 16px;
-  .body {
-    margin: 6px 0;
-  }
-  .actions {
-    display: flex;
-    justify-content: flex-end;
-    .confirm {
-      background-color: #1890ff;
-      padding: 8px 10px;
-      border-radius: 3px;
-      color: #fff;
-      cursor: pointer;
-    }
-  }
-  .close {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 8px;
-    right: 8px;
-    font-size: 18px;
-    color: #999;
-    cursor: pointer;
-    &:hover {
-      color: #666;
-    }
-  }
-  h4 {
-    padding-bottom: 10px;
-    i {
-      display: inline-block;
-      margin-right: 3px;
-      &:before {
-        content: "\e753";
-        color: #1890ff;
+.transition-group {
+  padding-top: 6px;
+  .v-notification-padding {
+    padding: 6px;
+    width: 100%;
+    .v-notification {
+      position: relative;
+      padding: 16px;
+      font-size: 14px;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
+        0 9px 28px 8px #0000000d;
+      // color: #fff;
+      background: #fff;
+      pointer-events: auto;
+      .body {
+        margin: 6px 0;
+      }
+      .actions {
+        display: flex;
+        justify-content: flex-end;
+        .confirm {
+          background-color: #1890ff;
+          padding: 8px 10px;
+          border-radius: 3px;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+      .close {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        right: 0;
+        font-size: 16px;
+        color: #999;
+        cursor: pointer;
+        padding: 6px;
+        &:hover {
+          color: #666;
+        }
+      }
+      h4 {
+        padding-bottom: 10px;
+        i {
+          display: inline-block;
+          margin-right: 3px;
+          &:before {
+            content: "\e753";
+            color: #1890ff;
+          }
+        }
       }
     }
   }

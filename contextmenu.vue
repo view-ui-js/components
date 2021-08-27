@@ -45,7 +45,7 @@ export default {
   methods: {
     click(item) {
       this.show = false;
-      item.action();
+      item.action(item);
     },
     /**
      * contextmenu 事件

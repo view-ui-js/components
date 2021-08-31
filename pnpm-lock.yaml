@@ -1,0 +1,13 @@
+lockfileVersion: 5.3
+
+specifiers:
+  dayjs: ^1.8.36
+
+dependencies:
+  dayjs: 1.10.6
+
+packages:
+
+  /dayjs/1.10.6:
+    resolution: {integrity: sha512-AztC/IOW4L1Q41A86phW5Thhcrco3xuAA+YX/BLpLWWjRcTj5TOt/QImBLmCKlrF7u7k47arTnOyL6GnbG8Hvw==}
+    dev: false

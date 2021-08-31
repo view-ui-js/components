@@ -1,22 +1,24 @@
 <template>
-  <div
-    v-show="show"
-    class="v-contextmenu"
-    :style="style"
-    @mousedown.capture.stop
-  >
-    <ul>
-      <li
-        v-for="(item, key) of menu"
-        :key="key"
-        :class="{ disable: item.disable }"
-        @click="!item.disable && click(item)"
-      >
-        <i v-if="item.icon" :class="item.icon" />
-        <span>{{ item.name }}</span>
-      </li>
-    </ul>
-  </div>
+  <transition name="fade">
+    <div
+      v-show="show"
+      class="v-contextmenu"
+      :style="style"
+      @mousedown.capture.stop
+    >
+      <ul>
+        <li
+          v-for="(item, key) of menu"
+          :key="key"
+          :class="{ disable: item.disable }"
+          @click="!item.disable && click(item)"
+        >
+          <i v-if="item.icon" :class="item.icon" />
+          <span>{{ item.name }}</span>
+        </li>
+      </ul>
+    </div>
+  </transition>
 </template>
 
 <script>

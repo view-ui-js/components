@@ -58,7 +58,7 @@ export default {
 
     if (time) {
       setTimeout(() => {
-        // this.instance.close(id);
+        this.instance.close(id);
       }, time);
     }
 
@@ -124,7 +124,7 @@ export default {
         top: 0;
         right: 0;
         font-size: 16px;
-        color: #999;
+        color: #888;
         cursor: pointer;
         padding: 6px;
         &:hover {

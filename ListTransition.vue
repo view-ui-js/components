@@ -20,9 +20,9 @@ export default {
 // item不应该使用margin，否则会出现偏移
 
 <style lang="scss" scoped>
-.transition-group:deep {
+.transition-group:deep() {
   > * {
-    transition: transform 0.25s ease;
+    transition: all 0.25s ease;
   }
   > .list-down-enter-from,
   > .list-down-leave-to {
@@ -33,12 +33,6 @@ export default {
   > .list-up-leave-to {
     opacity: 0;
     transform: translate3d(0, 20%, 0);
-  }
-  > .list-up-enter-active,
-  > .list-up-leave-active,
-  > .list-down-enter-active,
-  > .list-down-leave-active {
-    transition: all 0.25s ease-in-out;
   }
   > .list-up-leave-active,
   > .list-down-leave-active {

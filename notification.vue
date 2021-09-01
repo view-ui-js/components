@@ -3,7 +3,7 @@
     <div class="v-notification-padding" v-for="item of queue" :key="item.id">
       <div class="v-notification vertical">
         <h4 v-if="item.title"><i class="vicon-info" /> {{ item.title }}</h4>
-        <div class="body">{{ item.body }}</div>
+        <div v-if="item.body" class="body">{{ item.body }}</div>
         <div class="actions">
           <button
             v-if="item.confirm"
@@ -103,8 +103,18 @@ export default {
       // color: #fff;
       background: #fff;
       pointer-events: auto;
+      h4 {
+        i {
+          display: inline-block;
+          margin-right: 3px;
+          &:before {
+            content: "\e753";
+            color: #1890ff;
+          }
+        }
+      }
       .body {
-        margin: 6px 0;
+        margin-top: 16px;
       }
       .actions {
         display: flex;
@@ -115,12 +125,13 @@ export default {
           border-radius: 3px;
           color: #fff;
           cursor: pointer;
+          margin-top: 10px;
         }
       }
       .close {
         position: absolute;
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
         top: 0;
         right: 0;
         font-size: 16px;
@@ -129,17 +140,6 @@ export default {
         padding: 6px;
         &:hover {
           color: #666;
-        }
-      }
-      h4 {
-        padding-bottom: 10px;
-        i {
-          display: inline-block;
-          margin-right: 3px;
-          &:before {
-            content: "\e753";
-            color: #1890ff;
-          }
         }
       }
     }

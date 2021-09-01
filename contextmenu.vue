@@ -1,8 +1,8 @@
 <template>
   <transition name="fade">
     <div
-      v-show="show"
       class="v-contextmenu"
+      v-show="show"
       :style="style"
       @mousedown.capture.stop
     >
@@ -85,8 +85,7 @@ export default {
       instance = Adaptor.Component(this);
     }
     Object.assign(instance, { menu });
-    document.body.addEventListener(
-      "mousedown",
+    document.body.addEventListener("mousedown",
       (e) => {
         instance.show = false;
       },

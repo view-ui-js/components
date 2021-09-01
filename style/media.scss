@@ -1,0 +1,68 @@
+// 元素根据屏幕宽度自适应显示或隐藏，根据宽度区间来对应不同设备
+// mobile、pad、laptop、pc，表示仅适配指定设备
+// pad-、laptop-，表示向上适配，例如“pad-”可适配到pad、laptop、pc
+
+$lrpm: 4%;
+
+.media-padding {
+  padding-left: $lrpm;
+  padding-right: $lrpm;
+}
+.media-margin {
+  margin-left: $lrpm;
+  margin-right: $lrpm;
+}
+
+// mobile无边距
+@media screen and (max-width: 768px) {
+  .media-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .media-margin {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// 仅mobile可见，768以下
+@media screen and (min-width: 768px) {
+  .mobile {
+    display: none !important;
+  }
+}
+
+// pad以上可见，仅pad可见，768~1024
+@media screen and (max-width: 768px) {
+  .pad,
+  .pad- {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .pad {
+    display: none !important;
+  }
+}
+
+// laptop以上可见，仅laptop可见，1024~1440
+@media screen and (max-width: 1024px) {
+  .laptop,
+  .laptop- {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .laptop {
+    display: none !important;
+  }
+}
+
+// 仅pc可见
+@media screen and (max-width: 1440px) {
+  .pc {
+    display: none !important;
+  }
+}

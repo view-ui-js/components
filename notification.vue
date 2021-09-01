@@ -3,6 +3,7 @@
     <div class="v-notification-padding" v-for="item of queue" :key="item.id">
       <div class="v-notification vertical">
         <h4 v-if="item.title"><i class="vicon-info" /> {{ item.title }}</h4>
+        <i class="ficon-cha close center" @click="close(item.id)" />
         <div v-if="item.body" class="body">{{ item.body }}</div>
         <div class="actions">
           <button
@@ -13,7 +14,6 @@
             Confirm
           </button>
         </div>
-        <i class="ficon-cha close center" @click="close(item.id)" />
       </div>
     </div>
   </ListTransition>
@@ -113,8 +113,21 @@ export default {
           }
         }
       }
+      .close {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        top: 0;
+        right: 0;
+        font-size: 16px;
+        color: #888;
+        cursor: pointer;
+        &:hover {
+          color: #666;
+        }
+      }
       .body {
-        margin-top: 16px;
+        margin-top: 14px;
       }
       .actions {
         display: flex;
@@ -126,20 +139,6 @@ export default {
           color: #fff;
           cursor: pointer;
           margin-top: 10px;
-        }
-      }
-      .close {
-        position: absolute;
-        width: 48px;
-        height: 48px;
-        top: 0;
-        right: 0;
-        font-size: 16px;
-        color: #888;
-        cursor: pointer;
-        padding: 6px;
-        &:hover {
-          color: #666;
         }
       }
     }

@@ -123,7 +123,7 @@ export default {
         color: #888;
         cursor: pointer;
         &:hover {
-          color: #666;
+          color: #f80000;
         }
       }
       .body {

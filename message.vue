@@ -1,5 +1,5 @@
 <template>
-  <ListTransition>
+  <ListTransition class="v-message-box">
     <div class="v-message-padding" v-for="item of queue" :key="item.id">
       <div class="v-message">
         <i class="vicon" :class="`vicon-${item.type}`" />
@@ -94,7 +94,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.transition-group {
+.v-message-box {
   padding-top: 6px;
   .v-message-padding {
     padding: 6px;

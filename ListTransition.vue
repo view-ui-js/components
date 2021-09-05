@@ -1,5 +1,5 @@
 <template>
-  <transition-group class="transition-group" tag="div" :name="`list-${enter}`">
+  <transition-group class="list-transition" tag="div" :name="`list-${enter}`">
     <slot />
   </transition-group>
 </template>
@@ -20,7 +20,7 @@ export default {
 // item不应该使用margin，否则会出现偏移
 
 <style lang="scss" scoped>
-.transition-group:deep() {
+.list-transition:deep() {
   > * {
     transition: all 0.25s ease;
   }

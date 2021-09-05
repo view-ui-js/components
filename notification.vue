@@ -1,5 +1,5 @@
 <template>
-  <ListTransition>
+  <ListTransition class="v-notification-box">
     <div class="v-notification-padding" v-for="item of queue" :key="item.id">
       <div class="v-notification vertical">
         <h4 v-if="item.title"><i class="vicon-info" /> {{ item.title }}</h4>
@@ -70,7 +70,7 @@ export default {
 };
 </script>
 
-<style >
+<style>
 #v-notification-container {
   position: fixed;
   top: 0;
@@ -87,7 +87,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.transition-group {
+.v-notification-box {
   padding-top: 6px;
   .v-notification-padding {
     padding: 6px;

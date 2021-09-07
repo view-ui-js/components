@@ -104,6 +104,7 @@ export default {
       background: #fff;
       pointer-events: auto;
       h4 {
+        font-weight: unset;
         i {
           display: inline-block;
           margin-right: 3px;

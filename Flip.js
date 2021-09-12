@@ -40,6 +40,7 @@ export default class Flip {
         const left = data.offsetLeft - offsetLeft;
         const top = data.offsetTop - offsetTop;
         if (left || top) {
+          element.style.zIndex = "";
           element.style.transition = 'unset';
           element.style.transform = `translate(${left}px, ${top}px)`;
           moves.push(element);
@@ -59,15 +60,14 @@ export default class Flip {
   /**
    * 下一帧应用动效，复原原位
    */
-  play(transition = "transform 1s") {
+  play() {
     requestAnimationFrame(() => {
       for (const element of this.moves) {
-        element.style.zIndex = "unset";
-        element.style.transition = transition;
+        element.style.transition = "";
         element.style.transform = "";
       }
       const { target } = this;
-      target.style.transition = transition;
+      target.style.transition = "";
       target.style.transform = "";
     });
   }

@@ -22,17 +22,17 @@ export default {
 <style lang="scss">
 .list-transition {
   > * {
-    transition: all 0.3s ease;
+    transition: all 0.4s;
   }
   > .list-down-enter-from,
   > .list-down-leave-to {
     opacity: 0;
-    transform: translate3d(0, -80%, 0);
+    transform: translate3d(0, -100%, 0);
   }
   > .list-up-enter-from,
   > .list-up-leave-to {
     opacity: 0;
-    transform: translate3d(0, 60%, 0);
+    transform: translate3d(0, 20%, 0);
   }
   > .list-up-leave-active,
   > .list-down-leave-active {

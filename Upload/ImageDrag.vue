@@ -32,7 +32,7 @@
 <script>
 import base from "./base.js";
 export default {
-  name: "UploadDrag",
+  name: "UploadImageDrag",
   extends: base,
   methods: {
     dragenter(e) {

@@ -18,9 +18,6 @@ function Component(options, id) {
   return Vue.createApp(options).mount(container);
 }
 
-export { Vue, Component };
+export { Component };
 
-export default {
-  Vue,
-  Component
-};
+export default { Component };

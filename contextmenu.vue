@@ -117,7 +117,7 @@ export default {
       color: #666;
       &:hover {
         background-color: #f0f0f0;
-        color: var(--hover);
+        color: var(--v-hover);
       }
       &.disable {
         color: #bbb;

@@ -130,7 +130,7 @@ export default {
       cursor: pointer;
       width: 33%;
       &:hover {
-        color: var(--active);
+        color: var(--v-active);
       }
     }
   }

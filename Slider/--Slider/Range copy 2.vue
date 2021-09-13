@@ -196,7 +196,7 @@ export default {
       background-color: #fff;
       transform: translate(-50%, 0%);
       &:hover {
-        border: 2px solid var(--active);
+        border: 2px solid var(--v-active);
       }
     }
     .v-slider-left {

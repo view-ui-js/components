@@ -133,7 +133,7 @@ export default {
           &.sort {
             cursor: pointer;
             &:hover {
-              color: var(--active);
+              color: var(--v-active);
             }
             .vicon:after {
               content: "\e66b";
@@ -141,14 +141,14 @@ export default {
           }
 
           &.asc {
-            color: var(--active);
+            color: var(--v-active);
             .vicon:after {
               content: "\e71c";
             }
           }
 
           &.desc {
-            color: var(--active);
+            color: var(--v-active);
             .vicon:after {
               content: "\eb28";
             }

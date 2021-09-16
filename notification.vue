@@ -22,6 +22,7 @@
 <script>
 import Adaptor from "./Adaptor.js";
 import ListTransition from "./ListTransition.vue";
+// import EventMask from "./EventMask.vue";
 export default {
   instance: undefined,
   incrementId: 0,
@@ -67,6 +68,17 @@ export default {
   close(id) {
     this.instance.close(id);
   },
+  /**
+   * 显示状态切换
+   */
+  show(state) {
+    const { style } = this.$el;
+    if (state) {
+      style.opacity = 1;
+    } else {
+      style.opacity = 0;
+    }
+  },
 };
 </script>
 
@@ -74,14 +86,18 @@ export default {
 #v-notification-container {
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  transition: all 0.25s;
 }
 @media screen and (min-width: 500px) {
   #v-notification-container {
-    left: unset;
-    width: 400px;
+    /* left: unset; */
+    /* width: 400px; */
   }
 }
 </style>
@@ -89,12 +105,13 @@ export default {
 <style lang="scss" scoped>
 .v-notification-box {
   padding-top: 6px;
+  width: 400px;
   .v-notification-padding {
     padding: 6px;
     width: 100%;
     .v-notification {
       position: relative;
-      padding: 16px;
+      padding: 16px 14px;
       font-size: 14px;
       border: 1px solid #fff;
       border-radius: 4px;
@@ -116,11 +133,10 @@ export default {
       }
       .close {
         position: absolute;
-        width: 48px;
-        height: 48px;
+        width: 40px;
         top: 0;
         right: 0;
-        font-size: 16px;
+        font-size: 14px;
         color: #888;
         cursor: pointer;
         &:hover {

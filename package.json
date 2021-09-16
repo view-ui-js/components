@@ -1,12 +1,10 @@
 {
   "name": "view-ui",
-  "version": "3.0.0-beta.10",
-  "main": "index.js",
+  "version": "3.0.0-beta.11",
   "description": "多端适配、轻量化的vue ui组件库",
   "dependencies": {
     "dayjs": "^1.8.36"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

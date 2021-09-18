@@ -23,20 +23,9 @@
 
 <script>
 import Adaptor from "./Adaptor.js";
-let instance, active;
-document.body.addEventListener("contextmenu", (e) => {
-  if (active === true) {
-    instance.show = true;
-    instance.$nextTick(() => {
-      instance.position(e);
-    });
-  } else if (instance) {
-    instance.show = false;
-  }
-  active = false;
-  e.preventDefault();
-});
 export default {
+  instance: undefined,
+  active: false,
   data() {
     return {
       menu: [],
@@ -80,12 +69,27 @@ export default {
     },
   },
   open(menu) {
-    active = true;
+    this.active = true;
+    let { instance } = this;
     if (instance === undefined) {
       instance = Adaptor.Component(this);
+      this.instance = instance;
+      document.body.addEventListener("contextmenu", (e) => {
+        if (this.active === true) {
+          instance.show = true;
+          instance.$nextTick(() => {
+            instance.position(e);
+          });
+        } else if (instance) {
+          instance.show = false;
+        }
+        this.active = false;
+        e.preventDefault();
+      });
     }
     Object.assign(instance, { menu });
-    document.body.addEventListener("mousedown",
+    document.body.addEventListener(
+      "mousedown",
       (e) => {
         instance.show = false;
       },

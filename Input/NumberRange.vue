@@ -63,11 +63,11 @@ export default {
     }
   },
   created() {
-    if (this.jsIcon) {
-      this.jsIcon = this.jsIcon.replace(/&#x/, "\\u");
-      this.jsIcon = this.jsIcon.replace(/;/, "");
-      this.jsIcon = eval('"' + this.jsIcon + '"');
-    }
+    // if (this.jsIcon) {
+    //   this.jsIcon = this.jsIcon.replace(/&#x/, "\\u");
+    //   this.jsIcon = this.jsIcon.replace(/;/, "");
+    //   this.jsIcon = eval('"' + this.jsIcon + '"');
+    // }
   },
   install(app) {
     app.component(this.name, this);

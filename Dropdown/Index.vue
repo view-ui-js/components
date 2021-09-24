@@ -1,8 +1,11 @@
 <template>
   <div class="v-dropdown" @click="click">
-    <div class="v-dropdown-select" :class="{'active':name && name!==oneName}">
-      {{name || oneName}}
-      <i class="vicon arrow" :class="{'arrow_up':open}">&#xe678;</i>
+    <div
+      class="v-dropdown-select"
+      :class="{ active: name && name !== oneName }"
+    >
+      {{ name || oneName }}
+      <i class="vicon arrow" :class="{ arrow_up: open }">&#xe678;</i>
     </div>
     <transition name="scale">
       <Bubble v-if="open" placement="bottom" :gap="gap">
@@ -13,21 +16,23 @@
 </template>
 
 <script>
+import Bubble from "../Bubble.vue";
 export default {
   name: "Dropdown",
+  components: { Bubble },
   props: {
     name: {
-      type: String
+      type: String,
     },
     gap: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
       oneName: this.oneName || this.name,
-      open: false
+      open: false,
     };
   },
   methods: {
@@ -41,11 +46,11 @@ export default {
     },
     close(events) {
       this.open = false;
-    }
+    },
   },
   install(app) {
     app.component(this.name, this);
-  }
+  },
 };
 </script>
 

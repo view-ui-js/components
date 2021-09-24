@@ -20,8 +20,10 @@
 </template>
 
 <script>
+import Bubble from "./Bubble.vue";
 export default {
   name: "FloatMenu",
+  components: { Bubble },
   props: {
     options: {
       type: Array,

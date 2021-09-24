@@ -30,15 +30,9 @@ export default {
         return ["最小值", "最大值"];
       }
     },
-    label: {
-      type: String
-    },
-    icon: {
-      type: String
-    },
-    unit: {
-      type: String
-    }
+    label: String,
+    icon: String,
+    unit: String
   },
   data() {
     return {

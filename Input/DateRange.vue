@@ -24,9 +24,10 @@
 <script>
 import mixing from "./mixingDate.js";
 import InputNumber from "./Number.vue";
+import Bubble from "../Bubble.vue";
 export default {
   extends: mixing,
-  components: { InputNumber },
+  components: { InputNumber, Bubble },
   props: {
     value: {
       type: Array,

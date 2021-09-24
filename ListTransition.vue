@@ -1,5 +1,5 @@
 <template>
-  <transition-group class="list-transition" tag="div" :name="`list-${enter}`">
+  <transition-group class="v-list-transition" tag="div" :name="`list-${enter}`">
     <slot />
   </transition-group>
 </template>
@@ -20,19 +20,19 @@ export default {
 // item不应该使用margin，否则会出现偏移
 
 <style lang="scss">
-.list-transition {
+.v-list-transition {
   > * {
     transition: all 0.4s;
   }
   > .list-down-enter-from,
   > .list-down-leave-to {
     opacity: 0;
-    transform: translate3d(0, -100%, 0);
+    transform: translate3d(-40%, 0, 0);
   }
   > .list-up-enter-from,
   > .list-up-leave-to {
     opacity: 0;
-    transform: translate3d(0, 20%, 0);
+    transform: translate3d(40%, 0, 0);
   }
   > .list-up-leave-active,
   > .list-down-leave-active {

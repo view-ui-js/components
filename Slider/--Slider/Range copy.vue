@@ -1,6 +1,6 @@
 <template>
   <div class="v-slider">
-    <div class="v-slider-range-track" @mousedown="mousedown">
+    <div class="v-slider-range-track" @pointerdown="pointerdown">
       <div class="v-slider-baseline">
         <div class="v-slider-progress vt-main" :style="{ left, right }">
           <v-bubble
@@ -66,7 +66,7 @@ export default {
 
       this.scope = this.getScope(this.p1, this.p2);
     },
-    mousedown(ev) {
+    pointerdown(ev) {
       this.Limiter(ev, value => {
         // 小于左滑块
         if (value <= this.p1) {
@@ -97,10 +97,10 @@ export default {
           }
         }
       });
-      document.body.addEventListener("mousemove", this.mousemove);
-      document.body.addEventListener("mouseup", this.mouseup);
+      document.body.addEventListener("pointermove", this.pointermove);
+      document.body.addEventListener("pointerup", this.pointerup);
     },
-    mousemove(ev) {
+    pointermove(ev) {
       // 两个标点中只有一个为动态，以静态标点的位置作为换向点
       // 为了防止换向抖动，因该同时设置left和right值，并使用static值对其中一个值进行初始化
       this.Limiter(ev, value => {
@@ -115,12 +115,12 @@ export default {
         this.right = this.width - this.p2 + "px";
       });
     },
-    mouseup(ev) {
+    pointerup(ev) {
       // change优先级高于input
       this.$emit("change", this.scope);
       this.$emit("input", this.scope);
-      document.body.removeEventListener("mousemove", this.mousemove);
-      document.body.removeEventListener("mouseup", this.mouseup);
+      document.body.removeEventListener("pointermove", this.pointermove);
+      document.body.removeEventListener("pointerup", this.pointerup);
     }
   },
   mounted() {

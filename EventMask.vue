@@ -2,8 +2,8 @@
   <div
     v-show="mask"
     class="v-events-mask"
-    @mousemove.stop="mousemove"
-    @mouseup="mouseup"
+    @pointermove.stop="pointermove"
+    @pointerup="pointerup"
   ></div>
 </template>
 
@@ -17,39 +17,39 @@ export default {
     return { mask: false };
   },
   methods: {
-    mousedown(e) {
+    pointerdown(e) {
       if (e.button !== 0) return; // 仅限鼠标左键
       this.down = true;
       this.clientX = e.clientX;
-      this.mousemovecb = undefined;
-      this.mouseupcb = undefined;
+      this.pointermovecb = undefined;
+      this.pointerupcb = undefined;
       this.mask = true;
     },
-    mousemove(e) {
+    pointermove(e) {
       if (this.down === false) return;
       e.moveX = e.clientX - this.clientX;
-      this.mousemovecb(e);
+      this.pointermovecb(e);
     },
-    mouseup(e) {
+    pointerup(e) {
       if (this.down === false) return;
       this.down = false;
       this.mask = false;
       e.moveX = e.clientX - this.clientX;
-      this.mouseupcb(e);
+      this.pointerupcb(e);
       this.clientX = undefined;
     },
   },
   /**
    *鼠标按下时，激活遮罩层
    */
-  mousedown(e) {
+  pointerdown(e) {
     if (this.instance === undefined) {
       this.instance = Adaptor.Component(this, "v-events-mask-container");
     }
-    this.instance.mousedown(e);
+    this.instance.pointerdown(e);
   },
   /**
-   * 注册 mousemove、mouseup 代理事件
+   * 注册 pointermove、pointerup 代理事件
    */
   on(name, cb) {
     this.instance[`${name}cb`] = cb;

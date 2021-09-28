@@ -1,6 +1,6 @@
 <template>
   <div class="v-slider">
-    <div class="v-slider-range-track" @mousedown="mousedown">
+    <div class="v-slider-range-track" @pointerdown="pointerdown">
       <div class="v-slider-baseline">
         <div ref="left" class="v-slider-button v-slider-left"></div>
         <div ref="right" class="v-slider-button v-slider-right"></div>
@@ -48,15 +48,15 @@ export default {
       const v2 = x2 !== 0 ? (x2 / this.clientWidth) * max : 0;
       return [Math.floor(v1), Math.floor(v2)];
     },
-    mousedown(ev) {
-      document.body.addEventListener("mousemove", this.mousemove);
-      document.body.addEventListener("mouseup", this.mouseup);
+    pointerdown(ev) {
+      document.body.addEventListener("pointermove", this.pointermove);
+      document.body.addEventListener("pointerup", this.pointerup);
       const { target, pageX } = ev;
       this.target = target;
       this.targetX = target.offsetLeft;
       this.startPageX = pageX;
     },
-    mousemove(ev) {
+    pointermove(ev) {
       const x1 = this.getMoveX(ev);
       if (x1 >= 0 && x1 <= this.clientWidth) {
         // 小于重合点
@@ -67,7 +67,7 @@ export default {
           this.x1 = this.x2;
           this.target.style.left = this.x1 + "px";
           this.progress.left = this.x1 + "px";
-          this.$mousemove = this.rightMousemove;
+          this.$pointermove = this.rightMousemove;
           this.scope = this.getScope(this.x1, this.x2);
           this.target = this.$refs.right;
           return;
@@ -94,7 +94,7 @@ export default {
           this.x2 = this.x1;
           this.target.style.left = this.x2 + "px";
           this.progress.right = this.clientWidth - this.x2 + "px";
-          this.$mousemove = this.leftMousemove;
+          this.$pointermove = this.leftMousemove;
           this.scope = this.getScope(this.x1, this.x2);
           this.target = this.$refs.left;
           return;
@@ -109,12 +109,12 @@ export default {
       this.scope = this.getScope(this.x1, this.x2);
       this.target.style.left = this.x2 + "px";
     },
-    mouseup(ev) {
+    pointerup(ev) {
       // change优先级高于input
       this.$emit("change", this.scope);
       this.$emit("input", this.scope);
-      document.body.removeEventListener("mousemove", this.mousemove);
-      document.body.removeEventListener("mouseup", this.mouseup);
+      document.body.removeEventListener("pointermove", this.pointermove);
+      document.body.removeEventListener("pointerup", this.pointerup);
     }
   },
   mounted() {

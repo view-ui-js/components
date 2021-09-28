@@ -32,7 +32,7 @@ $lrpm: 4%;
   }
 }
 
-// pad以上可见，仅pad可见，768~1024
+// 仅pad、pad及以上可见，768~1024
 @media screen and (max-width: 768px) {
   .pad,
   .pad- {

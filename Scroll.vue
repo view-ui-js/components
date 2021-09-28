@@ -2,7 +2,7 @@
   <div
     class="scroll"
     :class="{ 'scroll-snap': scrollSnap }"
-    @mousedown="mousedown"
+    @pointerdown="pointerdown"
     @click.capture="click"
     @scroll="scroll"
   >
@@ -14,7 +14,7 @@
 const target = {};
 const isTouch = "ontouchstart" in document;
 if (!isTouch) {
-  document.addEventListener("mousedown", function (e) {
+  document.addEventListener("pointerdown", function (e) {
     target.down = true;
     target.move = false;
     const { $el } = target;
@@ -26,7 +26,7 @@ if (!isTouch) {
       e.preventDefault();
     }
   });
-  document.addEventListener("mousemove", function (e) {
+  document.addEventListener("pointermove", function (e) {
     const { down, $el } = target;
     if (down && $el) {
       if (!target.move) {
@@ -46,7 +46,7 @@ if (!isTouch) {
     }
     e.preventDefault();
   });
-  document.addEventListener("mouseup", function () {
+  document.addEventListener("pointerup", function () {
     target.down = false;
     target.$el = null;
     // document.body.style.cursor = "";
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     // 按下鼠标时，切换目标滚动元素
-    mousedown(e) {
+    pointerdown(e) {
       target.$el = e.currentTarget;
     },
     click(e) {

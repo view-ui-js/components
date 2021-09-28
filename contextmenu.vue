@@ -4,7 +4,7 @@
       class="v-contextmenu"
       v-show="show"
       :style="style"
-      @mousedown.capture.stop
+      @pointerdown.capture.stop
     >
       <ul>
         <li
@@ -89,7 +89,7 @@ export default {
     }
     Object.assign(instance, { menu });
     document.body.addEventListener(
-      "mousedown",
+      "pointerdown",
       (e) => {
         instance.show = false;
       },

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" appear>
-    <section class="v-float-mask" ref="maskBox" @mousedown.stop>
+    <section class="v-float-mask" ref="maskBox" @pointerdown.stop>
       <div class="v-dialog-page vertical">
         <header class="v-dialog-page-header">
           <i :class="icon" />

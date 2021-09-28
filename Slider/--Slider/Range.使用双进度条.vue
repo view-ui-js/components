@@ -1,8 +1,8 @@
 <template>
    <div class="v-slider-range">
       <div class="v-slider-line">
-         <div class="v-slider-button v-slider-left" @mousedown="mousedown($event,'left')"></div>
-         <div class="v-slider-button v-slider-right" @mousedown="mousedown($event,'right')"></div>
+         <div class="v-slider-button v-slider-left" @pointerdown="pointerdown($event,'left')"></div>
+         <div class="v-slider-button v-slider-right" @pointerdown="pointerdown($event,'right')"></div>
          <div class="v-slider-progress v-slider-progress-left" :style="leftProgress"></div>
          <div class="v-slider-progress v-slider-progress-rtght" :style="rightProgress"></div>
       </div>
@@ -42,17 +42,17 @@ export default {
     };
   },
   methods: {
-    mousedown(ev, type) {
+    pointerdown(ev, type) {
       this.type = type;
       this.progress = this[type + "Progress"];
-      document.body.addEventListener("mousemove", this.mousemove);
-      document.body.addEventListener("mouseup", this.mouseup);
+      document.body.addEventListener("pointermove", this.pointermove);
+      document.body.addEventListener("pointerup", this.pointerup);
       this.startX = ev.pageX;
       this.target = ev.target;
       this.targetX = ev.target.offsetLeft;
       this.clientWidth = this.$el.clientWidth;
     },
-    mousemove(ev) {
+    pointermove(ev) {
       if (this.type === "left") {
         let moveX = this.targetX + (ev.pageX - this.startX);
         if (moveX >= 0 && moveX <= this.clientWidth) {
@@ -79,9 +79,9 @@ export default {
         }
       }
     },
-    mouseup(ev) {
-      document.body.removeEventListener("mousemove", this.mousemove);
-      document.body.removeEventListener("mouseup", this.mouseup);
+    pointerup(ev) {
+      document.body.removeEventListener("pointermove", this.pointermove);
+      document.body.removeEventListener("pointerup", this.pointerup);
     }
   },
   created() {

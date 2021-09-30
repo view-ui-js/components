@@ -49,12 +49,17 @@ export default {
     if (this.instance) {
       Object.assign(this.instance, data);
     } else {
-      this.instance = Adaptor.Component({
-        data() {
-          return data;
+      const el = document.createElement("section");
+      document.body.appendChild(el);
+      this.instance = Adaptor.Component(
+        {
+          data() {
+            return data;
+          },
+          ...this,
         },
-        ...this,
-      });
+        el
+      );
     }
   },
 };

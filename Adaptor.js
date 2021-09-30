@@ -2,20 +2,16 @@
  * V3版本接口兼容适配器，接口与V2一致
  */
 
-import * as Vue from "vue";
+import { createApp } from "vue";
 
 /**
  * 创建V3组件实例
- * @param {*} options 
+ * @param {Object} options 
+ * @param {String} id 
  * @returns 组件实例
  */
-function Component(options, id) {
-  const container = document.createElement('section');
-  if (id) {
-    container.id = id;
-  }
-  document.body.appendChild(container);
-  return Vue.createApp(options).mount(container);
+function Component(options, el) {
+  return createApp(options).mount(el);
 }
 
 export { Component };

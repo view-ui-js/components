@@ -194,7 +194,7 @@ export default {
           background-color: #f5f5f5;
         }
         &.active {
-          color: var(--v-active);
+          color: var(--c-active);
           background-color: #f5f5f5;
         }
         > ul {

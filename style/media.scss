@@ -2,15 +2,18 @@
 // mobile、pad、laptop、pc，表示仅适配指定设备
 // pad-、laptop-，表示向上适配，例如“pad-”可适配到pad、laptop、pc
 
-$lrpm: 4%;
+:root {
+  --media-padding: 4%;
+  --media-margin: 4%;
+}
 
 .media-padding {
-  padding-left: $lrpm;
-  padding-right: $lrpm;
+  padding-left: var(--media-padding);
+  padding-right: var(--media-padding);
 }
 .media-margin {
-  margin-left: $lrpm;
-  margin-right: $lrpm;
+  margin-left: var(--media-margin);
+  margin-right: var(--media-margin);
 }
 
 // mobile无边距
@@ -65,17 +68,4 @@ $lrpm: 4%;
   .pc {
     display: none !important;
   }
-}
-
-.Phone {
-  .col4 {
-    width: 25% !important;
-  }
-  .col5 {
-    width: 20% !important;
-  }
-}
-
-.Pc {
-
 }

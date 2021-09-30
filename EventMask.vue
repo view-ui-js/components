@@ -44,7 +44,10 @@ export default {
    */
   pointerdown(e) {
     if (this.instance === undefined) {
-      this.instance = Adaptor.Component(this, "v-events-mask-container");
+      const mask = document.createElement("section");
+      mask.id = "v-events-mask-container";
+      document.body.appendChild(mask);
+      this.instance = Adaptor.Component(this, mask);
     }
     this.instance.pointerdown(e);
   },

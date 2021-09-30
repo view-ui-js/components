@@ -72,7 +72,9 @@ export default {
     this.active = true;
     let { instance } = this;
     if (instance === undefined) {
-      instance = Adaptor.Component(this);
+      const el = document.createElement("section");
+      document.body.appendChild(el);
+      instance = Adaptor.Component(this, el);
       this.instance = instance;
       document.body.addEventListener("contextmenu", (e) => {
         if (this.active === true) {
@@ -121,7 +123,7 @@ export default {
       color: #666;
       &:hover {
         background-color: #f0f0f0;
-        color: var(--v-hover);
+        color: var(--c-hover);
       }
       &.disable {
         color: #bbb;

@@ -28,22 +28,22 @@ export default {
   > .group-top-enter-from,
   > .group-top-leave-to {
     opacity: 0;
-    transform: translate3d(0, -40%, 0);
+    transform: translate3d(0, -50%, 0);
   }
   > .group-bottom-enter-from,
   > .group-bottom-leave-to {
     opacity: 0;
-    transform: translate3d(0, 40%, 0);
+    transform: translate3d(0, 50%, 0);
   }
   > .group-left-enter-from,
   > .group-left-leave-to {
     opacity: 0;
-    transform: translate3d(-40%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
   > .group-right-enter-from,
   > .group-right-leave-to {
     opacity: 0;
-    transform: translate3d(40%, 0, 0);
+    transform: translate3d(50%, 0, 0);
   }
   > .group-left-leave-active,
   > .group-right-leave-active,

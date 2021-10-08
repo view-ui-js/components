@@ -4,9 +4,7 @@
     <i class="ficon-cha close center" @click="close" />
     <div v-if="body" class="body">{{ body }}</div>
     <div class="actions">
-      <button v-if="confirm" class="confirm" @click="confirm">
-        Confirm
-      </button>
+      <button v-if="confirm" class="confirm" @click="confirm">Confirm</button>
     </div>
   </div>
 </template>
@@ -33,7 +31,7 @@ export default {
       render: this.render,
       time,
     });
-  }
+  },
 };
 </script>
 
@@ -62,7 +60,7 @@ export default {
   }
   .close {
     position: absolute;
-    top: 0;
+    top: 8px;
     right: 0;
     padding: 10px;
     font-size: 14px;
@@ -78,8 +76,8 @@ export default {
   .actions {
     display: flex;
     justify-content: flex-end;
-    margin-top: 20px;
     .confirm {
+      margin-top: 20px;
       background-color: #1890ff;
       padding: 8px 10px;
       border-radius: 3px;

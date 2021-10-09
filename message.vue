@@ -12,7 +12,6 @@ import Message from "./common/message.vue";
 export default {
   add(options) {
     const { type = "", body = "", time = 3000 } = options;
-
     Message.add({
       data() {
         return {
@@ -53,7 +52,7 @@ export default {
 .v-message {
   position: relative;
   border-radius: 4px;
-  padding: 18px 20px;
+  padding: 16px 14px;
   font-size: 14px;
   border: 1px solid #fff;
   box-shadow: 0 4px 12px rgb(0 0 0 / 15%);

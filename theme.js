@@ -75,8 +75,6 @@ export default {
     * 添加动态样式函数
     */
    style(func) {
-      if (func) {
-         this.styleQueue.push(func);
-      }
+      if (func) this.styleQueue.push(func);
    },
 }

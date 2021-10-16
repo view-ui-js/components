@@ -64,7 +64,7 @@ export default {
     padding: 0 26px;
     &.active {
       background-color: #f0f0f0;
-      color: var(--vc-active);
+      color: var(--active-color);
       &:before {
         font-family: "vicon";
         content: "\e600";
@@ -79,7 +79,7 @@ export default {
     }
     &:hover {
       background-color: #f7f7f7;
-      color: var(--vc-hover);
+      color: var(--hover-color);
     }
   }
 }

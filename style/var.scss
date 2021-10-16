@@ -1,7 +1,19 @@
-:root {
-  --vc-active: #4fc08d;
-  --vc-hover: #44ac7d;
-  --vc-black: #3a3f51;
-  --vc-gules: #e44343;
-  --vc-warning: #ffa726;
+.vt-main {
+  color: var(--main-color);
+  background: var(--main-background);
+}
+
+.vt-active {
+  color: var(--active-color);
+  background: var(--active-background);
+}
+
+.vt-link-active {
+  color: var(--link-active-color);
+  background: var(--link-active-background);
+}
+
+.vt-sub {
+  color: var(--sub-color);
+  background: var(--sub-background);
 }

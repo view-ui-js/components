@@ -1,6 +1,6 @@
-import "./var.scss";
-
 import "./base.scss"
+
+import "./var.scss";
 
 import "./flex.scss"
 

@@ -103,7 +103,7 @@ export default {
   .v-slider-line {
     width: 100%;
     height: 5px;
-    background-color: var(--vc-active);
+    background-color: var(--active-background);
     position: absolute;
     .v-slider-button {
       position: absolute;
@@ -111,7 +111,7 @@ export default {
       top: -5px;
       width: 15px;
       height: 15px;
-      border: 2px solid var(--vc-active);
+      border: 2px solid var(--active-color);
       border-radius: 50%;
       display: inline-block;
       background-color: #fff;

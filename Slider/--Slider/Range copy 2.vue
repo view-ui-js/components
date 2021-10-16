@@ -174,7 +174,7 @@ export default {
       transform: translate(-50%, 0%);
       border: 2px solid var(--main-background);
       &:hover {
-        border: 2px solid var(--vc-active);
+        border: 2px solid var(--active-color);
       }
     }
     .v-slider-left {

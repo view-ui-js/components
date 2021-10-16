@@ -123,7 +123,7 @@ export default {
           background-color: #f5f5f5;
         }
         &.active {
-          color: var(--vc-active);
+          color: var(--active-color);
         }
         > ul {
           display: none;

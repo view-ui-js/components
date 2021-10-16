@@ -62,7 +62,7 @@ export default {
   padding: 10px;
   &:hover,
   .active {
-    color: var(--vc-active);
+    color: var(--active-color);
   }
   .v-dropdown-select {
     position: relative;

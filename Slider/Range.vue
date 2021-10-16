@@ -2,7 +2,10 @@
   <div class="v-slider">
     <div class="v-slider-range-track" @pointerdown="pointerdown">
       <div class="v-slider-baseline">
-        <div class="v-slider-progress vt-main" :style="{ left, right, transition }">
+        <div
+          class="v-slider-progress vt-main"
+          :style="{ left, right, transition }"
+        >
           <div class="v-slider-button v-slider-left">
             <!-- <Bubble
               v-if="bubble"
@@ -25,7 +28,7 @@
       </div>
     </div>
     <div v-if="step" ref="gauge" class="v-slider-gauge">
-      <span v-for="(value, key) in ruler" :key="key">{{value}}</span>
+      <span v-for="(value, key) in ruler" :key="key">{{ value }}</span>
     </div>
   </div>
 </template>
@@ -42,7 +45,7 @@ export default {
       pageLeft: 0, // 滑条相对文档左侧的距离
       transition: "",
       v1: 0,
-      v2: 0
+      v2: 0,
     };
   },
   methods: {
@@ -143,7 +146,7 @@ export default {
       this.$emit("input", this.scope);
       document.body.removeEventListener("pointermove", this.pointermove);
       document.body.removeEventListener("pointerup", this.pointerup);
-    }
+    },
   },
   mounted() {
     // 初始状态赋值
@@ -176,28 +179,6 @@ export default {
       }
     });
   },
-  style({ main }) {
-    return `
-      .v-slider-baseline .v-slider-button {
-        border: 2px solid ${main.background};
-      }
-      .v-slider-baseline .v-bubble-content{
-         background-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-right:after{
-         border-right-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-left:after{
-         border-left-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-top:after{
-         border-top-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-bottom:after{
-         border-bottom-color: ${main.background} !important;
-      }
-    `;
-  }
 };
 </script>
 
@@ -239,6 +220,24 @@ export default {
       .v-slider-right {
         left: 100%;
       }
+    }
+    .v-slider-button {
+      border: 2px solid var(--main-background);
+    }
+    .v-bubble-content {
+      background-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-right:after {
+      border-right-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-left:after {
+      border-left-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-top:after {
+      border-top-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-bottom:after {
+      border-bottom-color: var(--main-background) !important;
     }
   }
   &:hover {

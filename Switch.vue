@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import theme from "./theme.js";
 export default {
   name: "Switch",
   emits: ["click"],
@@ -54,19 +53,8 @@ export default {
       }
     },
   },
-  style({ active }) {
-    return `
-      .v-switch.v-switch-open {
-        background-color: ${active.color};
-      }
-      .v-switch-open .v-switch-circle {
-        border: 1px solid ${active.color};
-      }
-    `;
-  },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
   },
 };
 </script>
@@ -92,8 +80,10 @@ export default {
     border: 1px solid #e2e2e2;
     background-color: #ffffff;
     transition: all 0.1s ease;
+    border: 1px solid var(--active-color);
   }
   &.v-switch-open {
+    background-color: var(--active-color);
     .v-switch-circle {
       transform: translateX(80%);
     }

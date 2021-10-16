@@ -4,12 +4,12 @@
       class="v-menu-item flex"
       v-for="(item, k) of items"
       :key="k"
-      :class="{'active':k == key}"
+      :class="{ active: k == key }"
       @click="click(item, k)"
     >
       <div class="v-menu-content">
         <i v-if="item.icon" :class="item.icon" />
-        {{item.name}}
+        {{ item.name }}
       </div>
     </div>
   </div>
@@ -17,25 +17,20 @@
 
 <script>
 import base from "./base.js";
-import theme from "../theme.js";
 export default {
   name: "Menu",
   extends: base,
-  style({ main, active }) {
-    return `
-      .v-menu-default .active {
-          color: ${active.color};
-      }`;
-  },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
-  }
+  },
 };
 </script>
 
 <style lang="scss">
 .v-menu-default {
   cursor: pointer;
+  .active {
+    color: var(--active-color);
+  }
 }
 </style>

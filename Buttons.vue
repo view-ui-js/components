@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import theme from "./theme.js";
 export default {
   name: "Buttons",
   props: {

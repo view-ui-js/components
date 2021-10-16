@@ -4,10 +4,10 @@
       <div
         class="pointer"
         @click="click(item, k)"
-        :class="{'active gc-border-bottom-2px':k == key}"
+        :class="{ 'active gc-border-bottom-2px': k == key }"
       >
         <i v-if="item.icon" :class="item.icon" />
-        {{item.name}}
+        {{ item.name }}
       </div>
     </div>
   </div>
@@ -15,26 +15,12 @@
 
 <script>
 import base from "./base";
-import theme from "../theme.js";
 export default {
   name: "MenuLine",
   extends: base,
-  style({ active }) {
-    return `
-      .v-menu-line .active:before {
-        content: "";
-        width: 50%;
-        position: absolute;
-        bottom: 0;
-        height: 3px;
-        background-color: ${active.color};
-    }
-    `;
-  },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
-  }
+  },
 };
 </script>
 
@@ -47,6 +33,14 @@ export default {
     position: relative;
     height: 100%;
     padding: 0 15px;
+    .active:before {
+      content: "";
+      width: 50%;
+      position: absolute;
+      bottom: 0;
+      height: 3px;
+      background-color: var(--active-color);
+    }
   }
 }
 </style>

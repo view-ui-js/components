@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Message from "./common/message.vue";
+import Message from "./Globale/Message.vue";
 export default {
   add(options) {
     const { type = "", body = "", time = 3000 } = options;

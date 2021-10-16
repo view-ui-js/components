@@ -11,19 +11,19 @@
             ref="bubble"
             :border="false"
             :gap="14"
-          >{{ scope[0] + ' - ' + scope[1] + unit }}</v-bubble>
+            >{{ scope[0] + " - " + scope[1] + unit }}</v-bubble
+          >
         </div>
       </div>
     </div>
     <div v-if="step" ref="gauge" class="v-slider-gauge">
-      <span v-for="(value,key) in ruler" :key="key">{{value}}</span>
+      <span v-for="(value, key) in ruler" :key="key">{{ value }}</span>
     </div>
   </div>
 </template>
 
 <script>
 import base from "./base.js";
-import theme from "../theme.js";
 export default {
   name: "SliderRange",
   extends: base,
@@ -31,10 +31,10 @@ export default {
     return {
       progress: {
         left: 0,
-        right: 0
+        right: 0,
       },
       x1: 0,
-      x2: 0
+      x2: 0,
     };
   },
   methods: {
@@ -115,7 +115,7 @@ export default {
       this.$emit("input", this.scope);
       document.body.removeEventListener("pointermove", this.pointermove);
       document.body.removeEventListener("pointerup", this.pointerup);
-    }
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -145,32 +145,9 @@ export default {
       }
     });
   },
-  style({ main }) {
-    return `
-      .v-slider-baseline .v-slider-button {
-        border: 2px solid ${main.background};
-      }
-      .v-slider-baseline .v-bubble-content{
-         background-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-right:after{
-         border-right-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-left:after{
-         border-left-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-top:after{
-         border-top-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-bottom:after{
-         border-bottom-color: ${main.background} !important;
-      }
-    `;
-  },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
-  }
+  },
 };
 </script>
 
@@ -195,6 +172,7 @@ export default {
       display: inline-block;
       background-color: #fff;
       transform: translate(-50%, 0%);
+      border: 2px solid var(--main-background);
       &:hover {
         border: 2px solid var(--vc-active);
       }
@@ -210,6 +188,21 @@ export default {
       left: 0;
       right: 0;
       height: 4px;
+    }
+    .v-bubble-content {
+      background-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-right:after {
+      border-right-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-left:after {
+      border-left-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-top:after {
+      border-top-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-bottom:after {
+      border-bottom-color: var(--main-background) !important;
     }
   }
   &:hover {

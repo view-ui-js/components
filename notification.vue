@@ -4,13 +4,15 @@
     <i class="ficon-cha close center" @click="close" />
     <div v-if="body" class="body">{{ body }}</div>
     <div class="actions">
-      <button v-if="confirm" class="confirm" @click="confirm">Confirm</button>
+      <button v-if="showConfirm" class="confirm" @click="confirm">
+        Confirm
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import Message from "./common/message.vue";
+import Message from "./Globale/Message.vue";
 export default {
   add(options) {
     const { title = "", body = "", time, confirm } = options;
@@ -20,12 +22,15 @@ export default {
         return {
           title,
           body,
+          showConfirm: Boolean(confirm),
         };
       },
       methods: {
-        confirm,
         close() {
           Message.close(this.$options.id);
+        },
+        confirm() {
+          if (confirm) confirm();
         },
       },
       render: this.render,

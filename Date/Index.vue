@@ -2,7 +2,7 @@
   <div class="v-date" @click.stop>
     <div class="v-date-show">
       <i class="vicon" @click="switchMonth(-1)">&#xeb2a;</i>
-      <span>{{year}} 年 {{month}} 月</span>
+      <span>{{ year }} 年 {{ month }} 月</span>
       <i class="vicon" @click="switchMonth(1)">&#xe6b7;</i>
     </div>
     <div class="v-date-week">
@@ -16,8 +16,8 @@
     </div>
     <div class="v-date-days" @click="selectDate">
       <ul class="v-date-line" v-for="(date, key) of dates" :key="key">
-        <li v-for="(item,key) of date" :key="key" :class="item.class">
-          <span>{{item.date}}</span>
+        <li v-for="(item, key) of date" :key="key" :class="item.class">
+          <span>{{ item.date }}</span>
         </li>
       </ul>
     </div>
@@ -26,18 +26,17 @@
 
 <script>
 import "./style.scss";
-import theme from "../theme.js";
 export default {
   name: "Date",
   props: {
-    value: Array
+    value: Array,
   },
   data() {
     return {
       date: this.value,
       dates: {},
       year: "",
-      month: ""
+      month: "",
     };
   },
   methods: {
@@ -93,7 +92,7 @@ export default {
       for (let i = lastEndDate - prevMonth; i <= lastEndDate; i++) {
         dates.push({
           date: i,
-          class: "v-date-prev-month"
+          class: "v-date-prev-month",
         });
       }
 
@@ -133,7 +132,7 @@ export default {
         for (let i = 1; i <= nextMonth; i++) {
           dates.push({
             date: i,
-            class: "v-date-next-month"
+            class: "v-date-next-month",
           });
         }
       }
@@ -188,28 +187,32 @@ export default {
       this.setYear = year;
       this.setMonth = month;
       this.setDay = day;
-    }
+    },
   },
   created() {
     this.setCurrent(...this.date);
     this.generate(...this.date);
   },
-  style({ main }) {
-    return `
-      .v-date-show .vicon:hover {
-          color: ${main.background};
-      }
-      .v-date-days li:hover, .v-date-days li.v-date-select {
-          color: ${main.background};
-      }
-      .v-date-days .v-date-prominent span {
-          background-color: ${main.background};
-      }
-    `;
-  },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
-  }
+  },
 };
 </script>
+
+
+<style lang="scss">
+.v-date-show .vicon:hover {
+  color: var(--main-background);
+}
+.v-date-days {
+  li {
+    &:hover,
+    &.v-date-select {
+      color: var(--main-background);
+    }
+  }
+  .v-date-prominent span {
+    background-color: var(--main-background);
+  }
+}
+</style>

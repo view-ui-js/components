@@ -3,27 +3,33 @@
     <div class="v-tab-header">
       <ul>
         <li
-          v-for="(name,key) in tabsData"
+          v-for="(name, key) in tabsData"
           :key="key"
-          @click="tabKey=key"
-          :class="{'active':key===tabKey}"
-        >{{name}}</li>
+          @click="tabKey = key"
+          :class="{ active: key === tabKey }"
+        >
+          {{ name }}
+        </li>
       </ul>
     </div>
-    <div class="v-tab-body" v-for="(name,key) in tabsData" :key="name" v-show="key===tabKey">
+    <div
+      class="v-tab-body"
+      v-for="(name, key) in tabsData"
+      :key="name"
+      v-show="key === tabKey"
+    >
       <slot :name="key"></slot>
     </div>
   </div>
 </template>
 
 <script>
-import theme from "./theme.js";
 export default {
   name: "Tabs",
   props: {
     tabs: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   data() {
     let tabsData = {};
@@ -37,24 +43,12 @@ export default {
     }
     return {
       tabsData,
-      tabKey: Object.keys(tabsData)[0]
+      tabKey: Object.keys(tabsData)[0],
     };
-  },
-  style({ main }) {
-    return `
-      .v-tab-header li:hover {
-          color: ${main.background};
-      }
-      .v-tab-header li.active {
-          color: ${main.background};
-          border-bottom: 2px solid ${main.background};
-      }
-    `;
   },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
-  }
+  },
 };
 </script>
 
@@ -75,6 +69,13 @@ export default {
         list-style: none;
         cursor: pointer;
       }
+    }
+    li:hover {
+      color: var(--main-background);
+    }
+    li.active {
+      color: var(--main-background);
+      border-bottom: 2px solid var(--main-background);
     }
   }
   .v-tab-body {

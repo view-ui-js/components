@@ -1,6 +1,6 @@
 <template>
   <div class="v-radio" @click="click">
-    <div class="radio-circular" :class="{'radio-highlight':status}"></div>
+    <div class="radio-circular" :class="{ 'radio-highlight': status }"></div>
     <span class="radio-label">
       <slot />
     </span>
@@ -8,39 +8,30 @@
 </template>
 
 <script>
-import theme from "./theme.js";
 export default {
   name: "Radio",
   props: ["value", "label"],
   data() {
     return {
-      status: this.value == this.label
+      status: this.value == this.label,
     };
   },
   methods: {
     click() {
       this.status = true;
       this.$emit("input", this.label);
-    }
+    },
   },
   watch: {
     value(value) {
       if (value !== this.label) {
         this.status = false;
       }
-    }
-  },
-  style({ active }) {
-    return `
-      .v-radio .radio-highlight {
-         border: 5px solid ${active.color};
-      }
-    `;
+    },
   },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
-  }
+  },
 };
 </script>
 
@@ -58,6 +49,9 @@ export default {
     align-items: center;
     justify-content: center;
     transition: all 0.1s linear;
+  }
+  .radio-highlight {
+    border: 5px solid var(--active-color);
   }
   .radio-label {
     padding: 0 5px;

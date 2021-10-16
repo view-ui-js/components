@@ -9,21 +9,21 @@
             ref="bubble"
             :border="false"
             :gap="14"
-          >{{ scope[0] + ' - ' + scope[1] + unit }}</v-bubble>
+            >{{ scope[0] + " - " + scope[1] + unit }}</v-bubble
+          >
           <div class="v-slider-button v-slider-left"></div>
           <div class="v-slider-button v-slider-right"></div>
         </div>
       </div>
     </div>
     <div v-if="step" ref="gauge" class="v-slider-gauge">
-      <span v-for="(value, key) in ruler" :key="key">{{value}}</span>
+      <span v-for="(value, key) in ruler" :key="key">{{ value }}</span>
     </div>
   </div>
 </template>
 
 <script>
 import base from "./base.js";
-import theme from "../theme.js";
 export default {
   name: "SliderRange",
   extends: base,
@@ -33,7 +33,7 @@ export default {
       right: 0,
       pageLeft: 0, // 滑条相对文档左侧的距离
       v1: 0,
-      v2: 0
+      v2: 0,
     };
   },
   methods: {
@@ -67,7 +67,7 @@ export default {
       this.scope = this.getScope(this.p1, this.p2);
     },
     pointerdown(ev) {
-      this.Limiter(ev, value => {
+      this.Limiter(ev, (value) => {
         // 小于左滑块
         if (value <= this.p1) {
           this.p1 = value;
@@ -103,7 +103,7 @@ export default {
     pointermove(ev) {
       // 两个标点中只有一个为动态，以静态标点的位置作为换向点
       // 为了防止换向抖动，因该同时设置left和right值，并使用static值对其中一个值进行初始化
-      this.Limiter(ev, value => {
+      this.Limiter(ev, (value) => {
         if (value < this.static) {
           this.p1 = value;
           this.p2 = this.static;
@@ -121,7 +121,7 @@ export default {
       this.$emit("input", this.scope);
       document.body.removeEventListener("pointermove", this.pointermove);
       document.body.removeEventListener("pointerup", this.pointerup);
-    }
+    },
   },
   mounted() {
     // 初始状态赋值
@@ -153,32 +153,9 @@ export default {
       }
     });
   },
-  style({ main }) {
-    return `
-      .v-slider-baseline .v-slider-button {
-        border: 2px solid ${main.background};
-      }
-      .v-slider-baseline .v-bubble-content{
-         background-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-right:after{
-         border-right-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-left:after{
-         border-left-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-top:after{
-         border-top-color: ${main.background} !important;
-      }
-      .v-slider-baseline .v-bubble-arrow-bottom:after{
-         border-bottom-color: ${main.background} !important;
-      }
-    `;
-  },
   install(app) {
     app.component(this.name, this);
-    theme.style(this.style);
-  }
+  },
 };
 </script>
 
@@ -219,6 +196,24 @@ export default {
       .v-slider-right {
         left: 100%;
       }
+    }
+    .v-slider-button {
+      border: 2px solid var(--main-background);
+    }
+    .v-bubble-content {
+      background-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-right:after {
+      border-right-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-left:after {
+      border-left-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-top:after {
+      border-top-color: var(--main-background) !important;
+    }
+    .v-bubble-arrow-bottom:after {
+      border-bottom-color: var(--main-background) !important;
     }
   }
   &:hover {

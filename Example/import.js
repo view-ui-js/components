@@ -165,7 +165,3 @@ import menuLine from 'view-ui/menu/line';
 
 app.use(menu);
 app.use(menuLine);
-
-import theme from 'view-ui/theme.js';
-
-export default theme;

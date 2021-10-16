@@ -2,7 +2,6 @@
 
 import Single from "./Single.vue";
 import Range from "./Range.vue";
-import theme from "../theme.js";
 
 export default {
   functional: true,
@@ -21,8 +20,6 @@ export default {
     return createElement(Component, data, children);
   },
   install(app) {
-    theme.style(Single.style);
-    theme.style(Range.style);
     app.component("Slider", this);
   }
 };

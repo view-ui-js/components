@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import theme from "./theme.js";
 import Bubble from "./Bubble.vue";
 export default {
   name: "Tip",
@@ -43,28 +42,22 @@ export default {
   },
   install(app) {
     app.component(this.name, this);
-    theme.style(({ main }) => {
-      const { background } = main;
-      return `
-      .v-tip .v-bubble-content {
-         color: #fff;
-         padding: 8px 14px;
-         background-color: ${background} !important;
-      }
-      .v-tip .v-bubble-arrow i {
-         background-color: ${background} !important;
-      }
-      .v-tip .v-bubble-arrow i {
-         background-color: ${background} !important;
-      }
-      .v-tip .v-bubble-arrow i {
-         background-color: ${background} !important;
-      }
-      .v-tip .v-bubble-arrow i {
-         background-color: ${background} !important;
-      }
-    `;
-    });
   },
 };
 </script>
+
+
+<style lang="scss">
+.v-tip {
+  .v-bubble-content {
+    color: #fff;
+    padding: 8px 14px;
+    background-color: var(--main-background) !important;
+  }
+  .v-bubble-arrow {
+    i {
+      background-color: var(--main-background) !important;
+    }
+  }
+}
+</style>

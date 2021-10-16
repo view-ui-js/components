@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import theme from "./theme.js";
 export default {
   name: "Button",
   emits:["click"],
@@ -30,10 +29,6 @@ export default {
     const cssClass = [];
     const color = this.color;
     if (color) {
-      const { current } = theme;
-      if (current[color]) {
-        cssClass.push(`vt-${color}`);
-      }
       if (this.flat) {
         style.backgroundColor = "transparent";
       } else {

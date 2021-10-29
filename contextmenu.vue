@@ -10,7 +10,7 @@
         <li
           v-for="(item, key) of menu"
           :key="key"
-          :class="{ disable: item.disable }"
+          :class="{ disabled: item.disable }"
           @click="!item.disable && click(item)"
         >
           <i v-if="item.icon" :class="item.icon" />
@@ -124,10 +124,6 @@ export default {
       &:hover {
         background-color: #f0f0f0;
         color: var(--active-color);
-      }
-      &.disable {
-        color: #bbb;
-        cursor: not-allowed;
       }
       i {
         font-size: 15px;

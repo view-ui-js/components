@@ -3,9 +3,19 @@
   background: var(--main-background);
 }
 
+.vt-sub {
+  color: var(--sub-color);
+  background: var(--sub-background);
+}
+
 .vt-active {
   color: var(--active-color);
   background: var(--active-background);
+}
+
+.vt-hover:hover {
+  color: var(--hover-color);
+  background: var(--hover-background);
 }
 
 .vt-link-active {

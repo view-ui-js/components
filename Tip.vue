@@ -50,13 +50,13 @@ export default {
 <style lang="scss">
 .v-tip {
   .v-bubble-content {
-    color: #fff;
+    color: var(--sub-color);
     padding: 8px 14px;
-    background-color: var(--main-background) !important;
+    background-color: var(--sub-background) !important;
   }
   .v-bubble-arrow {
     i {
-      background-color: var(--main-background) !important;
+      background-color: var(--sub-background) !important;
     }
   }
 }

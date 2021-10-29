@@ -52,7 +52,7 @@ export default {
 .v-message {
   position: relative;
   border-radius: 4px;
-  padding: 16px 14px;
+  padding: 14px;
   font-size: 14px;
   border: 1px solid #fff;
   box-shadow: 0 4px 12px rgb(0 0 0 / 15%);

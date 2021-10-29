@@ -5,7 +5,7 @@
         <ul class="v-float-menu-items">
           <li
             v-for="(item, key) of options"
-            class="vt-hover2"
+            class="vt-sub vt-hover"
             :class="{ 'vt-active': current == key }"
             :key="key"
             @click="select(item)"

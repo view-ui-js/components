@@ -8,7 +8,7 @@ export default {
       click(events) {
          if (this.open === false) {
             this.open = true;
-            document.body.addEventListener("click", ev => (this.open = false), {
+            document.body.addEventListener("click", e => (this.open = false), {
                once: true
             });
          }

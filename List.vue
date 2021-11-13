@@ -15,12 +15,10 @@ export default {
   components: { Loading },
   props: {
     data: Array,
-    loading: String
+    loading: String,
   },
   data() {
-    return {
-      list: this.data
-    };
+    return { list: this.data };
   },
   methods: {},
   mounted() {},
@@ -28,11 +26,11 @@ export default {
     data(value) {
       this.list = value;
       // console.log(value);
-    }
+    },
   },
   install(app) {
     app.component(this.name, this);
-  }
+  },
 };
 </script>
 

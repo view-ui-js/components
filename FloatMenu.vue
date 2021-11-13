@@ -86,6 +86,7 @@ export default {
     padding: 0 15px 0 15px;
     cursor: pointer;
     list-style: none;
+    transition: all 0.1s ease;
     .vicon {
       font-size: 15px;
     }

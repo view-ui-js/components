@@ -2,9 +2,9 @@
   <transition name="fade" appear>
     <section class="v-float-mask" ref="maskBox" @pointerdown.stop>
       <div class="v-dialog-page vertical">
-        <header class="v-dialog-page-header">
+        <header v-if="title" class="v-dialog-page-header">
           <i :class="icon" />
-          {{title}}
+          {{ title }}
         </header>
         <main class="v-dialog-page-main">
           <slot />
@@ -23,7 +23,7 @@ export default {
   name: "DialogPage",
   props: {
     title: String,
-    icon: String
+    icon: String,
   },
   data() {
     return {};
@@ -31,14 +31,14 @@ export default {
   methods: {
     close() {
       this.$emit("close");
-    }
+    },
   },
   mounted() {
     document.body.appendChild(this.$el);
   },
   install(app) {
     app.component(this.name, this);
-  }
+  },
 };
 </script>
 
@@ -54,7 +54,6 @@ export default {
   height: 100%;
   background-color: #bdbdbdc4;
   backdrop-filter: blur(2px);
-  padding-top: 12px;
   // v-dialog-page容器过渡动画
   &.fade-enter .v-dialog-page,
   &.fade-leave-to .v-dialog-page {
@@ -71,12 +70,13 @@ export default {
   .v-dialog-page {
     position: relative;
     width: 800px;
-    height: 100%;
     pointer-events: auto;
     background-color: #fff;
-    border-radius: 3px 3px 0 0;
+    border-radius: 20px;
     transition: all 0.25s ease;
-    overflow: visible;
+    // overflow: visible;
+    overflow: hidden;
+    margin: 2px 0;
     .v-dialog-page-header {
       flex: none;
       padding: 15px;
@@ -117,10 +117,10 @@ export default {
     font-size: 24px;
     cursor: pointer;
     color: #565656;
-    transition: transform 0.5s;
     background-color: #e2e2e2;
     border-radius: 100%;
     padding: 5px;
+    transition: transform 0.5s;
     &:hover {
       transform: rotate(90deg);
     }

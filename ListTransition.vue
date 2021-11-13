@@ -1,5 +1,5 @@
 <template>
-  <transition-group class="v-transition-group" tag="div" :name="`group-${enter}`">
+  <transition-group class="v-transition-list" tag="div" :name="`group-${enter}`">
     <slot />
   </transition-group>
 </template>
@@ -21,7 +21,7 @@ export default {
 // item上避免使用margin属性，否则会出现偏移
 
 <style lang="scss">
-.v-transition-group {
+.v-transition-list {
   > * {
     transition: all 0.4s;
   }

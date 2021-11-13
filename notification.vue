@@ -15,9 +15,9 @@
 import Message from "./Globale/Message.vue";
 export default {
   add(options) {
-    const { title = "", body = "", time, confirm } = options;
+    const { title = "", body = "", time, confirm, close } = options;
 
-    Message.add({
+    return Message.add({
       data() {
         return {
           title,
@@ -28,8 +28,10 @@ export default {
       methods: {
         close() {
           Message.close(this.$options.id);
+          if (close) close();
         },
         confirm() {
+          Message.close(this.$options.id);
           if (confirm) confirm();
         },
       },

@@ -34,6 +34,7 @@ export default {
     width: String,
     height: String,
   },
+  emits: ["confirm", "close"],
   data() {
     const { onConfirm } = this.$attrs;
     const { width, height } = this;
@@ -82,7 +83,7 @@ export default {
   // v-dialog内部容器过渡动画
   &.fade-enter-active .v-dialog,
   &.fade-leave-active .v-dialog {
-    transition: transform 0.25s cubic-bezier(.59,1.25,.84,1.18);
+    transition: transform 0.25s cubic-bezier(0.59, 1.25, 0.84, 1.18);
   }
   &.fade-enter-from .v-dialog,
   &.fade-leave-to .v-dialog {
@@ -98,7 +99,8 @@ export default {
     min-height: 200px;
     pointer-events: auto;
     background-color: #fff;
-    border-radius: 4px;
+    border-radius: 6px;
+    overflow: hidden;
     transition: all 0.25s ease;
     .v-dialog-close {
       position: absolute;

@@ -47,18 +47,18 @@ export default {
       }
     },
   },
-  add(options) {
+  add(component) {
     if (this.instance === undefined) {
       this.instance = Adaptor.Component(this, Container);
     }
 
     const id = this.id++;
 
-    options.id = id;
+    component.id = id;
 
-    this.instance.components.unshift(markRaw(options));
+    this.instance.components.unshift(markRaw(component));
 
-    const { time } = options;
+    const { time } = component;
 
     if (time) {
       setTimeout(() => {
@@ -67,6 +67,8 @@ export default {
     }
 
     this.instance.show = true;
+
+    return id;
   },
   close(id) {
     this.instance.close(id);
@@ -87,21 +89,21 @@ export default {
   transition: all 0.25s;
   pointer-events: none;
 }
-
-@media screen and (min-width: 425px) {
-  .v-message-box {
-    width: 425px;
-  }
-}
 </style>
 
 <style lang="scss" scoped>
 .v-message-box {
   padding-top: 6px;
   position: relative;
+  width: 100%;
   .v-message-padding {
     padding: 6px;
     width: 100%;
+  }
+}
+@media screen and (min-width: 425px) {
+  .v-message-box {
+    width: 425px;
   }
 }
 </style>

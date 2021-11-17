@@ -96,7 +96,7 @@ export default {
   white-space: nowrap;
   position: relative;
   transform: translate3d(0, 0, 0);
-  // touch-action: pan-x;
+  touch-action: pan-x !important;
   &.scroll-snap {
     scroll-snap-type: x mandatory;
     > * {

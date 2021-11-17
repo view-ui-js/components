@@ -1,8 +1,12 @@
 /**
- * FLIP列表穿梭过渡封装
+ * FLIP 列表穿梭过渡封装
  */
 
 export default class Flip {
+  /**
+   * 
+   * @param {object} param0 
+   */
   constructor({ form, to }) {
     this.form = form;
     this.to = to;

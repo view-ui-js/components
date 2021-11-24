@@ -52,8 +52,8 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #bdbdbdc4;
-  backdrop-filter: blur(2px);
+  background-color: #bdbdbd85;
+  // backdrop-filter: blur(2px);
   // v-dialog-page容器过渡动画
   &.fade-enter .v-dialog-page,
   &.fade-leave-to .v-dialog-page {
@@ -69,14 +69,14 @@ export default {
   }
   .v-dialog-page {
     position: relative;
-    width: 800px;
+    width: 900px;
     pointer-events: auto;
     background-color: #fff;
     border-radius: 20px;
     transition: all 0.25s ease;
     // overflow: visible;
     overflow: hidden;
-    margin: 2px 0;
+    margin: 1px 0;
     .v-dialog-page-header {
       flex: none;
       padding: 15px;

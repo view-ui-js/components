@@ -47,17 +47,19 @@ export default {
   position: relative;
   padding: 16px 14px;
   font-size: 14px;
-  border: 1px solid #fff;
+  // border: 1px solid #fff;
   border-radius: 4px;
   box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
     0 9px 28px 8px #0000000d;
   // color: #fff;
-  background: #fff;
+  background: #ffffffa3;
+  backdrop-filter: blur(6px);
   pointer-events: auto;
   h4 {
     font-weight: unset;
     i {
       display: inline-block;
+      font-size: 18px;
       margin-right: 3px;
       &:before {
         content: "\e753";
@@ -71,7 +73,7 @@ export default {
     right: 0;
     padding: 10px;
     font-size: 14px;
-    color: #888;
+    color: #333;
     cursor: pointer;
     &:hover {
       color: #f80000;

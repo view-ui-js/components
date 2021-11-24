@@ -18,6 +18,7 @@
 <script>
 export default {
   name: "Bubble",
+  emits: ["mouseenter", "mouseleave"],
   props: {
     placement: {
       type: String,
@@ -28,7 +29,6 @@ export default {
       default: 6,
     },
   },
-  emits: ["mouseenter", "mouseleave"],
   data() {
     return {
       style: {},
@@ -174,6 +174,7 @@ export default {
     display: flex;
     justify-content: center;
     position: relative;
+    overflow: hidden;
     i {
       display: block;
       width: 8px;
@@ -181,6 +182,7 @@ export default {
       background-color: #fff;
       position: absolute;
       transform: rotate(45deg);
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
     }
   }
   &.left {

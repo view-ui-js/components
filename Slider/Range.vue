@@ -11,7 +11,6 @@
               v-if="bubble"
               class="v-slider-bubble"
               ref="bubble"
-              :border="false"
               :gap="14"
             >{{ scope[0] }}</Bubble>-->
           </div>
@@ -20,7 +19,6 @@
               v-if="bubble"
               class="v-slider-bubble"
               ref="bubble"
-              :border="false"
               :gap="14"
             >{{ scope[1] }}</Bubble>-->
           </div>

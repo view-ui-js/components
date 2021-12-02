@@ -3,8 +3,8 @@
     class="v-bubble"
     :class="[direction]"
     :style="style"
-    @mouseenter="$emit('mouseenter')"
-    @mouseleave="$emit('mouseleave')"
+    @pointerenter="$emit('pointerenter')"
+    @pointerleave="$emit('pointerleave')"
   >
     <div class="v-bubble-content">
       <slot />
@@ -18,7 +18,7 @@
 <script>
 export default {
   name: "Bubble",
-  emits: ["mouseenter", "mouseleave"],
+  emits: ["pointerenter", "pointerleave"],
   props: {
     placement: {
       type: String,
@@ -146,9 +146,7 @@ export default {
     this.init();
   },
   activated() {
-    if (this.isInit) {
-      this.init();
-    }
+    if (this.isInit) this.init();
   },
   install(app) {
     app.component(this.name, this);

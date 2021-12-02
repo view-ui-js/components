@@ -32,8 +32,7 @@ export default {
       type: [String, Number],
     },
     gap: {
-      type: Number,
-      default: 0,
+      type: Number
     },
   },
   data() {
@@ -44,11 +43,11 @@ export default {
       this.open = false;
       this.$emit("select", item);
     },
-    mouseenter() {
+    pointerenter() {
       clearTimeout(this.timeId);
       this.open = true;
     },
-    mouseleave() {
+    pointerleave() {
       clearTimeout(this.timeId);
       this.timeId = setTimeout(() => {
         this.open = false;
@@ -57,16 +56,16 @@ export default {
   },
   mounted() {
     const { parentNode } = this.$el;
-    parentNode.addEventListener("mouseenter", this.mouseenter);
-    parentNode.addEventListener("mouseleave", this.mouseleave);
+    parentNode.addEventListener("pointerenter", this.pointerenter);
+    parentNode.addEventListener("pointerleave", this.pointerleave);
   },
   watch: {
     open() {
       if (this.active === true) return;
       this.active = true;
       this.$nextTick(() => {
-        this.$el.addEventListener("mouseenter", this.mouseenter);
-        this.$el.addEventListener("mouseleave", this.mouseleave);
+        this.$el.addEventListener("pointerenter", this.pointerenter);
+        this.$el.addEventListener("pointerleave", this.pointerleave);
       });
     },
   },

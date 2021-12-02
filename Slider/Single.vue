@@ -9,7 +9,6 @@
               class="v-slider-bubble"
               ref="bubble"
               :gap="14"
-              :border="false"
               >{{ scope[1] + unit }}</Bubble
             >
           </div>

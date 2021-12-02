@@ -20,15 +20,15 @@ export default {
       {
         class: "v-tip",
         on: {
-          mouseenter: this.mouseenter,
-          mouseleave: this.mouseleave
+          pointerenter: this.pointerenter,
+          pointerleave: this.pointerleave
         }
       },
       [this.$slots.default, tip]
     );
   },
   methods: {
-    mouseenter(event) {
+    pointerenter(event) {
       const target = event.target;
       const left = target.getBoundingClientRect().left;
       const top = target.getBoundingClientRect().top;
@@ -39,7 +39,7 @@ export default {
       };
       this.status = true;
     },
-    mouseleave() {
+    pointerleave() {
       this.status = false;
     }
   },

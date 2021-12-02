@@ -1,7 +1,7 @@
 <template>
   <transition name="scale"
     ><keep-alive
-      ><Bubble v-if="open" class="v-tip" :border="false" :placement="placement"
+      ><Bubble v-if="open" class="v-tip" :placement="placement"
         ><slot /></Bubble></keep-alive
   ></transition>
 </template>
@@ -23,22 +23,18 @@ export default {
     };
   },
   methods: {
-    mouseenter() {
+    pointerenter() {
       this.open = true;
     },
-    mouseleave() {
+    pointerleave() {
       this.open = false;
-    },
+    }
   },
   mounted() {
-    this.$nextTick(() => {
-      const { parentNode } = this.$el;
-      parentNode.addEventListener("mouseenter", this.mouseenter);
-      parentNode.addEventListener("mouseleave", this.mouseleave);
-      parentNode.addEventListener("click", () => {
-        this.open = false;
-      });
-    });
+    const { parentNode } = this.$el;
+    parentNode.addEventListener("pointerenter", this.pointerenter);
+    parentNode.addEventListener("pointerleave", this.pointerleave);
+    parentNode.addEventListener("pointerup", this.pointerleave);
   },
   install(app) {
     app.component(this.name, this);

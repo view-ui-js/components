@@ -7,7 +7,6 @@
             v-if="bubble"
             class="v-slider-bubble"
             ref="bubble"
-            :border="false"
             :gap="14"
             >{{ scope[0] + " - " + scope[1] + unit }}</v-bubble
           >

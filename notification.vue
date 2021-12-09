@@ -48,11 +48,11 @@ export default {
   padding: 16px 14px;
   font-size: 14px;
   // border: 1px solid #fff;
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
     0 9px 28px 8px #0000000d;
   // color: #fff;
-  background: #ffffffa3;
+  background: #ffffff99;
   backdrop-filter: blur(6px);
   pointer-events: auto;
   h4 {

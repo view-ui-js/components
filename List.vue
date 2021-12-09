@@ -20,8 +20,8 @@ export default {
   data() {
     return { list: this.data };
   },
-  methods: {},
-  mounted() {},
+  // methods: {},
+  // mounted() {},
   watch: {
     data(value) {
       this.list = value;

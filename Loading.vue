@@ -8,7 +8,7 @@
       <div></div>
     </div>
   </div>
-  <div class="v-loading" v-else>
+  <div v-else class="v-loading">
     <div v-if="status!=='data'" class="empty center">暂无数据</div>
     <div class="v-loading-main">
       <slot />

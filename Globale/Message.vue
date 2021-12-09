@@ -1,5 +1,5 @@
 <template>
-  <ListTransition class="v-message-box" v-show="show">
+  <Transitions class="v-message-box" v-show="show">
     <div
       class="v-message-padding"
       v-for="component of components"
@@ -7,13 +7,13 @@
     >
       <component :is="component" />
     </div>
-  </ListTransition>
+  </Transitions>
 </template>
 
 <script>
 import { markRaw } from "vue";
 import Adaptor from "../Adaptor.js";
-import ListTransition from "../ListTransition.vue";
+import Transitions from "../Transitions.vue";
 // import EventMask from "./EventMask.vue";
 
 const Container = document.createElement("section");
@@ -29,7 +29,7 @@ document.body.appendChild(Container);
 export default {
   instance: undefined,
   id: 0,
-  components: { ListTransition },
+  components: { Transitions },
   data() {
     return {
       show: false,

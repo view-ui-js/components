@@ -1,57 +1,9 @@
 <template>
-  <div
-    class="scroll"
-    :class="{ 'scroll-snap': scrollSnap }"
-    @pointerdown="pointerdown"
-    @click.capture="click"
-    @scroll="scroll"
-  >
-    <slot />
-  </div>
+  <div class="scroll" :class="{ 'scroll-snap': scrollSnap }"><slot /></div>
 </template>
 
 <script>
-const target = {};
-const isTouch = "ontouchstart" in document;
-if (!isTouch) {
-  document.addEventListener("pointerdown", function (e) {
-    target.down = true;
-    target.move = false;
-    const { $el } = target;
-    if ($el) {
-      target.scrollLeft = $el.scrollLeft;
-      target.scrollMax = $el.scrollWidth - $el.clientWidth;
-      target.startX = e.x;
-      target.clientX = e.clientX;
-      e.preventDefault();
-    }
-  });
-  document.addEventListener("pointermove", function (e) {
-    const { down, $el } = target;
-    if (down && $el) {
-      if (!target.move) {
-        target.move = true;
-        // document.body.style.cursor = "grabbing";
-      }
-      const moveX = e.clientX - target.clientX;
-      const scrollLeft = target.scrollLeft - moveX;
-      if (scrollLeft < 0) {
-        target.clientX = e.clientX;
-        target.scrollLeft = 0;
-      } else if (scrollLeft > target.scrollMax) {
-        target.clientX = e.clientX;
-        target.scrollLeft = target.scrollMax;
-      }
-      $el.scroll(scrollLeft, 0);
-    }
-    e.preventDefault();
-  });
-  document.addEventListener("pointerup", function () {
-    target.down = false;
-    target.$el = null;
-    // document.body.style.cursor = "";
-  });
-}
+import EventMask from "./EventMask/EventMask.js";
 export default {
   name: "Scroll",
   props: {
@@ -61,26 +13,15 @@ export default {
     },
   },
   data() {
-    return { scrollSnap: isTouch && this.snap };
-  },
-  methods: {
-    // 按下鼠标时，切换目标滚动元素
-    pointerdown(e) {
-      target.$el = e.currentTarget;
-    },
-    click(e) {
-      if (target.move) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-    },
-    scroll() {
-      this.$emit("scroll", this.$el);
-    },
+    return { scrollSnap: this.snap };
   },
   mounted() {
-    // this.$el.scrollTo(0, 0);
-    // this.scroll();
+    const { $el } = this;
+    const eventMask = new EventMask($el);
+    eventMask.on("move", (e) => {
+      if (e.touches) return;
+      $el.scroll($el.scrollLeft - eventMask.move, 0);
+    });
   },
   install(app) {
     app.component(this.name, this);
@@ -95,8 +36,7 @@ export default {
   overflow-y: hidden;
   white-space: nowrap;
   position: relative;
-  transform: translate3d(0, 0, 0);
-  touch-action: pan-x !important;
+  touch-action: pan-x pan-y !important;
   &.scroll-snap {
     scroll-snap-type: x mandatory;
     > * {

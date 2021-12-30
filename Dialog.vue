@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" appear>
-    <div class="v-mask" ref="maskBox" @click="maskClick" @pointerdown.stop>
+    <div class="v-mask" ref="maskBox" @click="maskClick" @mousedown.stop>
       <div class="v-dialog col" :style="style">
         <i class="vicon v-dialog-close" @click="close">&#xe679;</i>
         <div v-if="title" class="v-dialog-header">{{ title }}</div>

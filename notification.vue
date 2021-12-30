@@ -45,15 +45,15 @@ export default {
 <style lang="scss">
 .v-notification {
   position: relative;
-  padding: 16px 14px;
+  padding: 18px 14px;
   font-size: 14px;
   // border: 1px solid #fff;
   border-radius: 12px;
   box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
     0 9px 28px 8px #0000000d;
   // color: #fff;
+  backdrop-filter: blur(16px);
   background: #ffffff99;
-  backdrop-filter: blur(6px);
   pointer-events: auto;
   h4 {
     font-weight: unset;
@@ -69,7 +69,7 @@ export default {
   }
   .close {
     position: absolute;
-    top: 8px;
+    top: 10px;
     right: 0;
     padding: 10px;
     font-size: 14px;

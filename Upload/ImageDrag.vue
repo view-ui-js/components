@@ -54,24 +54,24 @@ export default {
   }
 };
 
-window.onload = function() {
-  document.addEventListener(
-    "dragover",
-    function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-    },
-    false
-  );
-  document.addEventListener(
-    "drop",
-    function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-    },
-    false
-  );
-};
+// window.onload = function() {
+//   document.addEventListener(
+//     "dragover",
+//     function(e) {
+//       e.stopPropagation();
+//       e.preventDefault();
+//     },
+//     false
+//   );
+//   document.addEventListener(
+//     "drop",
+//     function(e) {
+//       e.stopPropagation();
+//       e.preventDefault();
+//     },
+//     false
+//   );
+// };
 </script>
 
 <style lang="scss">

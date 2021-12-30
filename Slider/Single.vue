@@ -1,6 +1,6 @@
 <template>
   <div class="v-slider">
-    <div class="v-slider-track" @pointerdown="pointerdown">
+    <div class="v-slider-track" @mousedown="mousedown">
       <dir class="v-slider-baseline">
         <div class="v-slider-progress vt-main" :style="progress">
           <div class="v-slider-button"></div>
@@ -34,7 +34,7 @@ export default {
     };
   },
   methods: {
-    pointerdown(event) {
+    mousedown(event) {
       const { pageX } = event;
 
       this.lastPageX = pageX;
@@ -43,10 +43,10 @@ export default {
       this.progress.right = this.clientWidth - this.x + "px";
       this.scope = this.getScope(this.x);
 
-      document.body.addEventListener("pointermove", this.pointermove);
-      document.body.addEventListener("pointerup", this.pointerup);
+      document.body.addEventListener("mousemove", this.mousemove);
+      document.body.addEventListener("mouseup", this.mouseup);
     },
-    pointermove(ev) {
+    mousemove(ev) {
       this.x += ev.pageX - this.lastPageX;
       this.lastPageX = ev.pageX;
       if (this.x >= 0 && this.x <= this.clientWidth) {
@@ -61,11 +61,11 @@ export default {
         this.scope = { min, max };
       }
     },
-    pointerup(ev) {
+    mouseup(ev) {
       this.$emit("input", this.scope);
       this.$emit("change", this.scope);
-      document.body.removeEventListener("pointermove", this.pointermove);
-      document.body.removeEventListener("pointerup", this.pointerup);
+      document.body.removeEventListener("mousemove", this.mousemove);
+      document.body.removeEventListener("mouseup", this.mouseup);
     },
     getScope(x) {
       const { min, max } = this;

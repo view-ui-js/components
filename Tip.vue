@@ -34,7 +34,7 @@ export default {
     const { parentNode } = this.$el;
     parentNode.addEventListener("pointerenter", this.pointerenter);
     parentNode.addEventListener("pointerleave", this.pointerleave);
-    parentNode.addEventListener("pointerup", this.pointerleave);
+    parentNode.addEventListener("mouseup", this.pointerleave);
   },
   install(app) {
     app.component(this.name, this);

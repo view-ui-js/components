@@ -1,6 +1,6 @@
 <template>
   <div class="v-slider">
-    <div class="v-slider-range-track" @pointerdown="pointerdown">
+    <div class="v-slider-range-track" @mousedown="mousedown">
       <div class="v-slider-baseline">
         <div
           class="v-slider-progress vt-main"
@@ -56,7 +56,7 @@ export default {
     /**
      * 按下鼠标时确定静态点和动态点
      */
-    pointerdown(ev) {
+    mousedown(ev) {
       this.transition = "all 0.2s";
       const value = Math.floor(ev.pageX - this.pageLeft);
       // 限定区域内
@@ -100,14 +100,14 @@ export default {
       this.right = this.width - this.p2 + "px";
 
       this.scope = this.getScope(this.p1, this.p2);
-      document.body.addEventListener("pointermove", this.pointermove);
-      document.body.addEventListener("pointerup", this.pointerup);
+      document.body.addEventListener("mousemove", this.mousemove);
+      document.body.addEventListener("mouseup", this.mouseup);
     },
     /**
      * 两个坐标点中只有一个为动态，另外一个在鼠标释放前始终为静态
      * 静态点和动态点都需要且进行同步换向，否则会出现换向点抖动和错位问题
      */
-    pointermove(ev) {
+    mousemove(ev) {
       this.transition = "none";
       const value = Math.floor(ev.pageX - this.pageLeft);
       // 限定区域内
@@ -138,12 +138,12 @@ export default {
 
       this.scope = this.getScope(this.p1, this.p2);
     },
-    pointerup(ev) {
+    mouseup(ev) {
       // change优先级高于input
       this.$emit("change", this.scope);
       this.$emit("input", this.scope);
-      document.body.removeEventListener("pointermove", this.pointermove);
-      document.body.removeEventListener("pointerup", this.pointerup);
+      document.body.removeEventListener("mousemove", this.mousemove);
+      document.body.removeEventListener("mouseup", this.mouseup);
     },
   },
   mounted() {

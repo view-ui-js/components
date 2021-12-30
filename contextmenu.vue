@@ -4,7 +4,7 @@
       class="v-contextmenu"
       v-show="show"
       :style="style"
-      @pointerdown.capture.stop
+      @mousedown.capture.stop
     >
       <ul>
         <li
@@ -76,27 +76,34 @@ export default {
       document.body.appendChild(el);
       instance = Adaptor.Component(this, el);
       this.instance = instance;
-      document.body.addEventListener("contextmenu", (e) => {
-        if (this.active === true) {
-          instance.show = true;
-          instance.$nextTick(() => {
-            instance.position(e);
-          });
-        } else if (instance) {
-          instance.show = false;
-        }
-        this.active = false;
-        e.preventDefault();
-      });
+      // document.body.addEventListener("contextmenu", (e) => {
+      //   if (this.active === true) {
+      //     instance.show = true;
+      //     instance.$nextTick(() => {
+      //       instance.position(e);
+      //     });
+      //   } else if (instance) {
+      //     instance.show = false;
+      //   }
+      //   this.active = false;
+      //   e.preventDefault();
+      // });
     }
-    Object.assign(instance, { menu });
-    document.body.addEventListener(
-      "pointerdown",
-      (e) => {
-        instance.show = false;
-      },
-      { once: true }
-    );
+    // Object.assign(instance, { menu });
+    // document.body.addEventListener(
+    //   "mousedown",
+    //   (e) => {
+    //     instance.show = false;
+    //   },
+    //   { once: true }
+    // );
+    // document.body.addEventListener(
+    //   "contextmenu",
+    //   (e) => {
+    //     instance.show = false;
+    //   },
+    //   { once: true }
+    // );
   },
 };
 </script>

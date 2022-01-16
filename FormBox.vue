@@ -22,7 +22,6 @@ export default {
 <style lang="scss">
 .v-form-box {
   position: relative;
-  width: 49%;
   .v-form-box-header {
     padding: 10px 0 5px 2px;
     display: block;

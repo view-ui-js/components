@@ -1,6 +1,17 @@
 <template>
-  <div v-if="edit" class="v-images">
-    <Draggable v-if="images.length" v-model="images" v-slot="{ index, item }" @click="preview">
+  <div
+    v-if="edit"
+    class="v-images"
+    @mousedown.capture.stop
+    @mousemove.capture.stop
+    @mouseup.capture.stop
+  >
+    <Draggable
+      v-if="images.length"
+      :value="images"
+      v-slot="{ index, item }"
+      @click="preview"
+    >
       <div class="v-images-item">
         <slot :item="item">
           <img draggable="false" :src="item.src" :title="item.name" />
@@ -30,7 +41,12 @@
   </div>
   <div v-else class="v-images v-images-preview">
     <template v-if="value.length">
-      <div class="v-images-item" v-for="(item, key) of value" :key="key" @click="preview(key)">
+      <div
+        class="v-images-item"
+        v-for="(item, key) of value"
+        :key="key"
+        @click="preview(key)"
+      >
         <img :src="item.src" />
       </div>
     </template>
@@ -46,26 +62,27 @@ import imagePreview from "./imagePreview.vue";
 export default {
   name: "Images",
   components: { Draggable },
+  emits: ["input", "change"],
   props: {
     value: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     read: Boolean,
     max: {
       type: Number,
-      default: 20
+      default: 20,
     },
     title: String,
-    placeholder: String
+    placeholder: String,
   },
   data() {
     this.count = this.value.length;
     return {
       edit: this.read ? false : true,
-      images: this.value
+      images: this.value,
     };
   },
   methods: {
@@ -78,7 +95,7 @@ export default {
           // 将file转换为DataURL格式，可以通过<img src>直接显示
           const reader = new FileReader();
           reader.readAsDataURL(file);
-          const src = await new Promise(function(resolve) {
+          const src = await new Promise(function (resolve) {
             reader.onload = () => {
               resolve(reader.result);
             };
@@ -119,7 +136,7 @@ export default {
 
       if (itemsFile.length) {
         // 文件提交
-        await this.$options.network(url, formData).then(result => {
+        await this.$options.network(url, formData).then((result) => {
           const { images } = result;
           for (const key in images) {
             const src = images[key];
@@ -130,7 +147,7 @@ export default {
           this.$emit("input", this.images);
         });
       }
-    }
+    },
   },
   watch: {
     value(value) {
@@ -138,17 +155,17 @@ export default {
     },
     images() {
       this.$emit("input", this.images);
-    }
+    },
   },
   install(app, network) {
     this.network = network;
     app.component(this.name, this);
-  }
+  },
 };
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-images {
   display: flex;
   user-select: none;

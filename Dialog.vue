@@ -27,6 +27,7 @@ import Button from "./Button.vue";
 export default {
   name: "Dialog",
   components: { Button },
+  emits: ["confirm", "close"],
   props: {
     title: String,
     mask: Boolean,
@@ -34,7 +35,6 @@ export default {
     width: String,
     height: String,
   },
-  emits: ["confirm", "close"],
   data() {
     const { onConfirm } = this.$attrs;
     const { width, height } = this;

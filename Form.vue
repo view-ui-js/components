@@ -17,8 +17,10 @@
 </template>
 
 <script>
+import Button from "./Button.vue";
 export default {
   name: "Form",
+  components: { Button },
   props: {
     name: {
       type: String,
@@ -32,9 +34,9 @@ export default {
     },
   },
   data() {
-    const { confirm } = this._events;
+    // const { confirm } = this._events;
     return {
-      confirm,
+      confirm: false,
       status: true,
     };
   },
@@ -45,8 +47,8 @@ export default {
     setEdit(status) {
       if (this.edit) status = this.edit;
       this.status = status;
-      for (const item of this.$children) {
-        item.edit = status;
+      for (const name in this.$refs) {
+        // item.edit = status;
       }
     },
   },
@@ -92,7 +94,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 0px 20px;
+    margin: 0px 10px;
   }
   .v-form-footer {
     padding: 8px 20px;

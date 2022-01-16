@@ -17,16 +17,16 @@ pre {
 input,
 select,
 textarea {
-  padding: 10px 8px;
+  padding: 10px;
   outline: none;
   color: #555;
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  background-color: #fff;
 }
 
 textarea {
-  border-radius: 2px;
-  border: 1px solid #eaeaea;
   font-size: 14px;
-  line-height: 28px;
 }
 
 button {

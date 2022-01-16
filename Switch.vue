@@ -12,7 +12,7 @@
 <script>
 export default {
   name: "Switch",
-  emits: ["click"],
+  emits: ["click", "input"],
   props: {
     value: {
       type: Boolean,
@@ -41,14 +41,14 @@ export default {
     },
   },
   methods: {
-    click(event) {
-      this.$emit("click", this.status);
+    click() {
       if (this.disable) return;
-      const { confirm } = this.$listeners;
-      if (confirm) {
-        this.$emit("confirm", !this.status);
+      this.status = !this.status;
+      this.$emit("click", this.status);
+      const { $attrs } = this;
+      if ($attrs.onConfirm) {
+        $attrs.onConfirm(!this.status);
       } else {
-        this.status = !this.status;
         this.$emit("input", this.status);
       }
     },
@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-switch {
   width: 36px;
   height: 20px;

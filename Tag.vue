@@ -1,13 +1,11 @@
 <template>
-  <FormBox class="w100" v-if="edit" :label="label" :error="error">
+  <FormBox v-if="edit" class="w100" :label="label" :error="error">
     <div class="v-tag">
       <transition-group class="v-tag-group" tag="div" name="fade">
-        <template v-for="(item, index) of tags">
-          <span class="v-tag-item" :key="item">
-            {{item}}
-            <i class="vicon" @click="destroy(index)">&#xe679;</i>
-          </span>
-        </template>
+        <span class="v-tag-item" v-for="(item, index) of tags" :key="item">
+          {{ item }}
+          <i class="vicon" @click="destroy(index)">&#xe679;</i>
+        </span>
       </transition-group>
       <input
         class="v-tag-input"
@@ -21,38 +19,43 @@
     </div>
   </FormBox>
   <div v-else-if="value.length" class="v-tag-preview">
-    <span v-if="label" class="v-tag-preview-label">{{label}}：</span>
-    <span class="v-tag-preview-item" v-for="item of value" :key="item">{{item}}</span>
+    <span v-if="label" class="v-tag-preview-label">{{ label }}：</span>
+    <span class="v-tag-preview-item" v-for="item of value" :key="item">{{
+      item
+    }}</span>
   </div>
 </template>
 
 <script>
+import FormBox from "./FormBox.vue";
 export default {
   name: "Tag",
+  components: { FormBox },
+  emits: ["input"],
   props: {
     value: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     label: {
-      type: String
+      type: String,
     },
     name: {
-      type: String
+      type: String,
     },
     placeholder: {
       type: String,
-      default: "输入自定义标签名"
-    }
+      default: "输入自定义标签名",
+    },
   },
   data() {
     return {
       tags: this.value,
       input: "",
       edit: true,
-      error: ""
+      error: "",
     };
   },
   methods: {
@@ -60,29 +63,29 @@ export default {
       this.tags.splice(key, 1);
       this.$emit("input", this.tags);
     },
-    enter(ev) {
-      ev.target.blur();
-      ev.target.focus();
+    enter(e) {
+      e.target.blur();
+      e.target.focus();
       this.$emit("input", this.tags);
     },
-    blur(ev) {
-      const value = ev.target.value;
+    blur(e) {
+      const value = e.target.value;
       if (value === "") return;
       if (this.tags.includes(value)) {
-        return this.$error(`"${value}"标签已存在`);
+        // return this.$error(`"${value}"标签已存在`);
       }
       this.tags.push(value);
       this.input = "";
       this.$emit("input", this.tags);
-    }
+    },
   },
   install(app) {
     app.component(this.name, this);
-  }
+  },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-tag {
   display: flex;
   user-select: none;

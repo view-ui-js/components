@@ -1,8 +1,13 @@
 <template>
   <FormBox v-if="edit" :label="label" :error="error">
     <div class="v-cascader" @click.stop="click">
-      <input autocomplete="off" readonly="readonly" :placeholder="placeholder" :value="showValue" />
-      <i class="vicon arrow" :class="{'arrow_up':open}">&#xe678;</i>
+      <input
+        autocomplete="off"
+        readonly="readonly"
+        :placeholder="placeholder"
+        :value="showValue"
+      />
+      <i class="vicon arrow" :class="{ arrow_up: open }">&#xe678;</i>
       <transition name="drop">
         <div v-if="open" class="cascader-drop" @click.stop>
           <template v-for="(column, index) of cascader">
@@ -10,10 +15,10 @@
               <li
                 v-for="(value, key) in column"
                 :key="key"
-                :class="{'active': value.active}"
+                :class="{ active: value.active }"
                 @click.stop="select(index, key, value)"
               >
-                {{value.label || value}}
+                {{ value.label || value }}
                 <i v-if="value.children" class="vicon arrow">&#xeb24;</i>
               </li>
             </ul>
@@ -23,8 +28,10 @@
     </div>
   </FormBox>
   <div v-else class="v-form-box-preview">
-    <span v-if="showLabel" class="v-cascader-preview-label">{{showLabel}}: </span>
-    <span class="v-cascader-preview-value">{{showValue || '-'}}</span>
+    <span v-if="showLabel" class="v-cascader-preview-label"
+      >{{ showLabel }}:
+    </span>
+    <span class="v-cascader-preview-value">{{ showValue || "-" }}</span>
     <slot />
   </div>
 </template>
@@ -32,6 +39,7 @@
 <script>
 export default {
   name: "Cascader",
+  emits: ["input"],
   props: {
     options: {
       type: Array,

@@ -110,7 +110,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-image {
   display: flex;
   user-select: none;

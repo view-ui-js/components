@@ -26,7 +26,7 @@ export default {
     },
     gap: {
       type: Number,
-      default: 6,
+      default: 0,
     },
   },
   data() {
@@ -184,6 +184,7 @@ export default {
     }
   }
   &.left {
+    transform-origin: 100% 50%;
     .v-bubble-arrow {
       @include arrow;
       flex-direction: column;
@@ -194,6 +195,7 @@ export default {
     }
   }
   &.right {
+    transform-origin: 0% 50%;
     flex-direction: row-reverse;
     .v-bubble-arrow {
       @include arrow;
@@ -205,6 +207,7 @@ export default {
     }
   }
   &.top {
+    transform-origin: 50% 100%;
     flex-direction: column;
     .v-bubble-arrow {
       @include arrow;
@@ -215,6 +218,7 @@ export default {
     }
   }
   &.bottom {
+    transform-origin: 50% 0%;
     flex-direction: column-reverse;
     .v-bubble-arrow {
       @include arrow;

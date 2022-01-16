@@ -5,10 +5,10 @@
       draggable="true"
       v-for="(item, index) of value"
       :key="index"
-      @dragstart="dragstart($event, index)"
-      @dragover="dragover($event, index)"
-      @dragenter="dragenter($event, index)"
-      @dragend="dragend($event, index)"
+      @dragstart.stop="dragstart($event, index)"
+      @dragover.stop="dragover($event, index)"
+      @dragenter.stop="dragenter($event, index)"
+      @dragend.stop="dragend($event, index)"
       @click="$emit('click', index, item)"
     >
       <slot :index="index" :item="item"></slot>

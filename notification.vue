@@ -55,6 +55,7 @@ export default {
   backdrop-filter: blur(16px);
   background: #ffffff99;
   pointer-events: auto;
+  user-select: none;
   h4 {
     font-weight: unset;
     i {

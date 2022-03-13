@@ -1,35 +1,26 @@
 <template>
-  <Transitions class="v-message-box" v-show="show">
+  <transition-group name="tg-top">
     <div
-      class="v-message-padding"
+      class="v-message-item"
       v-for="component of components"
       :key="component.id"
     >
       <component :is="component" />
     </div>
-  </Transitions>
+  </transition-group>
 </template>
 
 <script>
 import { markRaw } from "vue";
 import Adaptor from "../Adaptor.js";
-import Transitions from "../Transitions.vue";
-// import EventMask from "./EventMask.vue";
-
-const Container = document.createElement("section");
 
 // Container.addEventListener("click", () => {
 //   Container.style.display = "none";
 // });
 
-Container.id = "v-message-container";
-
-document.body.appendChild(Container);
-
 export default {
   instance: undefined,
   id: 0,
-  components: { Transitions },
   data() {
     return {
       show: false,
@@ -49,6 +40,9 @@ export default {
   },
   add(component) {
     if (this.instance === undefined) {
+      const Container = document.createElement("section");
+      Container.id = "v-message-layer";
+      document.body.appendChild(Container);
       this.instance = Adaptor.Component(this, Container);
     }
 
@@ -77,33 +71,26 @@ export default {
 </script>
 
 <style lang="scss">
-#v-message-container {
+#v-message-layer {
   position: fixed;
-  z-index: 100000;
+  z-index: 1000000;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: center;
-  transition: all 0.25s;
-  pointer-events: none;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+@media screen and (min-width: 390px) {
+  #v-message-layer {
+    width: 390px;
+  }
 }
 </style>
 
 <style lang="scss" scoped>
-.v-message-box {
-  padding-top: 6px;
-  position: relative;
+.v-message-item {
+  padding: 6px;
   width: 100%;
-  .v-message-padding {
-    padding: 6px;
-    width: 100%;
-  }
-}
-@media screen and (min-width: 425px) {
-  .v-message-box {
-    width: 425px;
-  }
+  transition: all 0.4s;
 }
 </style>

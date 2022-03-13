@@ -5,7 +5,7 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
 
 .drop-enter-from,
@@ -98,3 +98,53 @@
 // .nav-goto-leave-to {
 //   transform: translate3d(-30%, 0, 0);
 // }
+
+.tg-left-enter-active,
+.tg-right-enter-active,
+.tg-top-enter-active,
+.tg-bottom-enter-active {
+  z-index: 0 !important; // 过渡期间
+}
+.tg-left-leave-active,
+.tg-right-leave-active,
+.tg-top-leave-active,
+.tg-bottom-leave-active {
+  position: absolute !important; // 通过将 position 属性设置为 absolute， 可使元素脱离文档流
+}
+
+// .tg-top-move,
+// .tg-bottom-move,
+// .tg-left-move,
+// .tg-right-move {
+// }
+
+.tg-left-enter-from {
+  opacity: 0;
+  transform: translate3d(-30%, 0, 0);
+}
+
+.tg-left-leave-to {
+  opacity: 0;
+  transform: translate3d(30%, 0, 0);
+}
+
+.tg-right-enter-from {
+  opacity: 0;
+  transform: translate3d(-30%, 0, 0);
+}
+.tg-right-leave-to {
+  opacity: 0;
+  transform: translate3d(30%, 0, 0);
+}
+
+.tg-top-enter-from,
+.tg-top-leave-to {
+  opacity: 0;
+  transform: translate3d(0, -50%, 0);
+}
+
+.tg-bottom-enter-from,
+.tg-bottom-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 50%, 0);
+}

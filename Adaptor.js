@@ -10,10 +10,8 @@ import { createApp } from "vue";
  * @param {String} id 
  * @returns 组件实例
  */
-function Component(options, el) {
+export function Component(options, el) {
   return createApp(options).mount(el);
 }
-
-export { Component };
 
 export default { Component };

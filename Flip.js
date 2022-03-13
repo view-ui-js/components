@@ -11,9 +11,9 @@ export default class Flip {
   constructor(form, to) {
     this.form = form;
     this.to = to;
-    this.queue = [form, to];
-    for (const item of this.queue) {
-      for (const element of item.children) {
+    this.queue = [form.children, to.children];
+    for (const list of this.queue) {
+      for (const element of list) {
         const { offsetLeft, offsetTop } = element;
         element.data = { offsetLeft, offsetTop };
       }
@@ -24,27 +24,28 @@ export default class Flip {
    * @param {Element} el 目标元素
    * @param {Element} reference  迁移参照元素
    */
-  insert(el, reference) {
-    this.el = el;
-    const { left, top } = el.getBoundingClientRect();
-    el.data = { left, top };
+  insert(target, reference) {
+    this.target = target;
+    const { left, top } = target.getBoundingClientRect();
+    target.data = { left, top };
     const { to } = this;
     if (reference) {
-      to.insertBefore(el, reference);
+      to.insertBefore(target, reference);
     } else {
-      to.appendChild(el);
+      to.appendChild(target);
     }
     this.keep();
   }
   /**
-   * 保持在之前的位置
+   * 将队列保持在之前的位置
    * 受新插入元素的影响，周围的同级元素可能会出现空缺位移，需要为偏移元素添加过渡动效
    */
   keep() {
 
     const moves = [];
-    for (const { children } of this.queue) {
-      for (const element of children) {
+
+    for (const list of this.queue) {
+      for (const element of list) {
         const { data, offsetLeft, offsetTop, style } = element;
         const left = data.offsetLeft - offsetLeft;
         const top = data.offsetTop - offsetTop;
@@ -59,10 +60,10 @@ export default class Flip {
 
     this.moves = moves;
 
-    // 插入元素保持
-    const { el } = this;
-    const { data, style } = el;
-    const current = el.getBoundingClientRect();
+    // 新插入元素保持原位
+    const { target } = this;
+    const { data, style } = target;
+    const current = target.getBoundingClientRect();
     const left = data.left - current.left;
     const top = data.top - current.top;
     style.zIndex = 1;
@@ -71,7 +72,7 @@ export default class Flip {
     
   }
   /**
-   * 应用动效，复原原位
+   * 应用动效，过渡到新的位置
    */
   play() {
     // 下一帧移除 transition、transform属性，让元素恢复原位
@@ -80,7 +81,7 @@ export default class Flip {
         style.transition = "";
         style.transform = "";
       }
-      const { style } = this.el;
+      const { style } = this.target;
       style.transition = "";
       style.transform = "";
     });

@@ -51,11 +51,13 @@ export default {
 <style lang="scss">
 .v-message {
   position: relative;
-  border-radius: 4px;
   padding: 14px;
   font-size: 14px;
   border: 1px solid #fff;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  border-radius: 10px;
+  // box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
+    0 9px 28px 8px #0000000d;
   background: #fff;
   pointer-events: auto;
   .vicon {

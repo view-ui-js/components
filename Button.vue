@@ -32,7 +32,8 @@ export default {
       if (this.flat) {
         style.backgroundColor = "transparent";
       } else {
-        style.color = "#fff";
+        style.color = `var(--${color}-color)`;
+        style.backgroundColor = `var(--${color}-background)`;
       }
     } else {
       if (this.flat) {
@@ -75,7 +76,7 @@ export default {
   cursor: pointer;
   margin: 0 3px;
   outline: none;
-  color: #8c8c8c;
+  color: #555;
   background-color: #fff;
   border: 1px solid #eaeaea;
   user-select: none;

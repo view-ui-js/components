@@ -21,7 +21,7 @@ export default {
         class: "v-tip",
         on: {
           pointerenter: this.pointerenter,
-          pointerleave: this.pointerleave
+          mouseleave: this.mouseleave
         }
       },
       [this.$slots.default, tip]
@@ -39,7 +39,7 @@ export default {
       };
       this.status = true;
     },
-    pointerleave() {
+    mouseleave() {
       this.status = false;
     }
   },

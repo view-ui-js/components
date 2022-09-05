@@ -1,6 +1,8 @@
 import "./style.scss";
+import Bubble from "../Bubble.vue";
 
 export default {
+  components: { Bubble },
   props: {
     min: {
       type: Number,
@@ -30,10 +32,7 @@ export default {
     }
   },
   data() {
-    return {
-      scope: this.value,
-      ruler: []
-    };
+    return { scope: this.value, ruler: [] };
   },
   updated() {
     if (this.$refs.bubble) {

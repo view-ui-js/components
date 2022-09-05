@@ -1,21 +1,3 @@
-<template>
-  <div class="v-form">
-    <div class="v-form-header">
-      <h4 v-if="name">
-        {{ name }}
-        <span v-if="status === true" class="remark">{{ remark }}</span>
-      </h4>
-    </div>
-    <div class="v-form-main">
-      <slot />
-    </div>
-    <div v-if="confirm" class="v-form-footer">
-      <!-- <Button @click="close">取消</Button> -->
-      <Button color="success" @click="$emit('confirm')">确认</Button>
-    </div>
-  </div>
-</template>
-
 <script>
 import Button from "./Button.vue";
 export default {
@@ -34,7 +16,6 @@ export default {
     },
   },
   data() {
-    // const { confirm } = this._events;
     return {
       confirm: false,
       status: true,
@@ -60,6 +41,24 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div class="v-form">
+    <div class="v-form-header">
+      <h4 v-if="name">
+        {{ name }}
+        <span v-if="status === true" class="remark">{{ remark }}</span>
+      </h4>
+    </div>
+    <div class="v-form-main">
+      <slot />
+    </div>
+    <div v-if="confirm" class="v-form-footer">
+      <!-- <Button @click="close">取消</Button> -->
+      <Button color="success" @click="$emit('confirm')">确认</Button>
+    </div>
+  </div>
+</template>
 
 <style lang="scss">
 .v-form {

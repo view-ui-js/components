@@ -1,32 +1,3 @@
-<template>
-  <FormBox v-if="edit" :label="label">
-    <div class="v-selects" @click="click">
-      <div v-if="input.length" class="input-box">
-        <span v-for="(item, key) of input" :key="key">
-          {{ item }}
-          <i class="vicon" @click="destroy(key, item)">&#xe679;</i>
-        </span>
-      </div>
-      <div v-else class="input-box placeholder">{{placeholder}}</div>
-      <i class="vicon arrow" :class="{ 'arrow_up': drop }">&#xe678;</i>
-      <transition name="drop" appear>
-        <ul v-if="drop">
-          <li
-            v-for="(value, key) in options"
-            :key="key"
-            :class="{'vt-active': active[value] }"
-            @click="select(value)"
-          >{{value}}</li>
-        </ul>
-      </transition>
-    </div>
-  </FormBox>
-  <div v-else class="v-selects-preview">
-    <span class="v-selects-preview-name">{{label}}：</span>
-    <span v-for="(item, key) of input" :key="key">{{ item }}</span>
-  </div>
-</template>
-
 <script>
 import "./select.scss";
 export default {
@@ -36,18 +7,18 @@ export default {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     value: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     label: { type: String },
     placeholder: {
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     const active = {};
@@ -59,7 +30,7 @@ export default {
       drop: false,
       edit: true,
       input: value,
-      active
+      active,
     };
   },
   methods: {
@@ -89,13 +60,44 @@ export default {
       this.input.splice(key, 1);
       this.active[value] = false;
       this.$emit("input", this.input);
-    }
+    },
   },
   install(app) {
     app.component(this.name, this);
-  }
+  },
 };
 </script>
+
+<template>
+  <FormBox v-if="edit" :label="label">
+    <div class="v-selects" @click="click">
+      <div v-if="input.length" class="input-box">
+        <span v-for="(item, key) of input" :key="key">
+          {{ item }}
+          <i class="vicon" @click="destroy(key, item)">&#xe679;</i>
+        </span>
+      </div>
+      <div v-else class="input-box placeholder">{{ placeholder }}</div>
+      <i class="vicon arrow" :class="{ arrow_up: drop }">&#xe678;</i>
+      <transition name="drop" appear>
+        <ul v-if="drop">
+          <li
+            v-for="(value, key) in options"
+            :key="key"
+            :class="{ 'vt-active': active[value] }"
+            @click="select(value)"
+          >
+            {{ value }}
+          </li>
+        </ul>
+      </transition>
+    </div>
+  </FormBox>
+  <div v-else class="v-selects-preview">
+    <span class="v-selects-preview-name">{{ label }}：</span>
+    <span v-for="(item, key) of input" :key="key">{{ item }}</span>
+  </div>
+</template>
 
 <style lang="scss">
 .v-selects {

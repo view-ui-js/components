@@ -1,11 +1,11 @@
 ## view-ui
 
-基于vue 3.x的轻量化的ui组件库
+基于 vue 3.x 的轻量化的 ui 组件库
 
 ### Install
 
 ```
-npm install view-ui@3
+npm install view-ui@latest
 ```
 
 ### Usage
@@ -13,15 +13,15 @@ npm install view-ui@3
 按需引入，可参考配置示例代码"./import_example.js"，进行批量配置。
 
 ```js
-import app from 'vue'
-import tabs from 'view-ui/tabs.vue'
-import button from 'view-ui/button.vue'
-import theme from 'view-ui/theme.js'
+import app from "vue";
+import tabs from "view-ui/tabs.vue";
+import button from "view-ui/button.vue";
+import theme from "view-ui/theme.js";
 
 app.use(tabs);
 app.use(button);
 
-theme.use('black'); // 必须先添加组件，后定义主题，否则初始状态下无法获取动态样式
+theme.use("black"); // 必须先添加组件，后定义主题，否则初始状态下无法获取动态样式
 ```
 
 <!-- ## 安装说明
@@ -38,9 +38,9 @@ theme.use('black'); // 必须先添加组件，后定义主题，否则初始状
       }
  -->
 
- ### 主题配色
+### 主题配色
 
-view-ui采用分级颜色主题配置方案，支持直接在组件内使用动态样式或扩展自定义主题配色方案
+view-ui 采用分级颜色主题配置方案，支持直接在组件内使用动态样式或扩展自定义主题配色方案
 
 #### 示例
 

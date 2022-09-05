@@ -1,16 +1,3 @@
-<template>
-  <Dialog v-show="open" class="v-confirm" @close="onClose">
-    <template v-slot:header
-      ><i class="vicon-bangzhu-plus-copy" />{{ title }}</template
-    >
-    {{ body }}
-    <template v-slot:footer>
-      <Button @click="onClose">{{ cancelButton }}</Button>
-      <Button :color="color" @click="onConfirm">{{ confirmButton }}</Button>
-    </template>
-  </Dialog>
-</template>
-
 <script>
 import Dialog from "./Dialog.vue";
 import Button from "./Button.vue";
@@ -65,11 +52,22 @@ export default {
 };
 </script>
 
+<template>
+  <Dialog v-show="open" class="v-confirm" @close="onClose">
+    <template v-slot:header>{{ title }}</template>
+    {{ body }}
+    <template v-slot:footer>
+      <Button @click="onClose">{{ cancelButton }}</Button>
+      <Button :color="color" @click="onConfirm">{{ confirmButton }}</Button>
+    </template>
+  </Dialog>
+</template>
+
 <style lang="scss" scoped>
 .v-confirm {
-  .v-dialog {
+  :deep(.v-dialog) {
     .v-dialog-main {
-      padding: 20px 15px;
+      padding: 8px 15px 0px 15px;
       background-color: #fff;
     }
   }

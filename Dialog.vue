@@ -116,9 +116,11 @@ export default {
       }
     }
     .v-dialog-header {
+      display: flex;
+      align-items: center;
       padding: 12px;
-      font-size: 16px;
-      color: #828282;
+      font-size: 14px;
+      // color: #666;
       flex: none;
       z-index: 1;
       i {

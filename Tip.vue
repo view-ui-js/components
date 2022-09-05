@@ -18,23 +18,28 @@ export default {
     },
   },
   data() {
+    this.timeStamp = 0;
     return {
       open: false,
     };
   },
   methods: {
-    pointerenter() {
-      this.open = true;
+    mouseenter({ timeStamp }) {
+      if (timeStamp - this.timeStamp > 200) {
+        this.open = true;
+      }
+      this.timeStamp = timeStamp;
     },
-    pointerleave() {
+    mouseleave({ timeStamp }) {
+      this.timeStamp = timeStamp;
       this.open = false;
-    }
+    },
   },
   mounted() {
     const { parentNode } = this.$el;
-    parentNode.addEventListener("pointerenter", this.pointerenter);
-    parentNode.addEventListener("pointerleave", this.pointerleave);
-    parentNode.addEventListener("mouseup", this.pointerleave);
+    parentNode.addEventListener("mouseenter", this.mouseenter);
+    parentNode.addEventListener("mouseleave", this.mouseleave);
+    // parentNode.addEventListener("mouseup", this.mouseleave);
   },
   install(app) {
     app.component(this.name, this);
@@ -42,9 +47,9 @@ export default {
 };
 </script>
 
-
 <style lang="scss">
 .v-tip {
+  pointer-events: none;
   .v-bubble-content {
     color: var(--sub-color);
     padding: 8px 14px;

@@ -1,4 +1,5 @@
 import "./style.scss";
+import { h } from 'vue';
 import Select from "./Select.vue";
 import Selects from "./Selects.vue";
 import SelectEdit from "./SelectEdit.vue";
@@ -6,22 +7,13 @@ import Option from "./Option.vue";
 
 export default {
   name: "Select",
-  functional: true,
-  props: {
-    edit: Boolean,
-    multiple: Boolean
-  },
-  render(h, context) {
-    const { props, data, children } = context;
-    const { edit, multiple } = props;
-    if (edit) {
-      return h(SelectEdit, data, children);
+  render() {
+    const { edit, multiple } = this.$attrs;
+    if (edit === true) {
+      return h(SelectEdit);
     } else {
-      return h(Select, data, children);
+      return h(Select, this.$attrs, this.$slots);
     }
   },
-  install(app) {
-    app.component("Select", this);
-    app.component(Option.name, Option);
-  }
+  Option,
 };

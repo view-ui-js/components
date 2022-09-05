@@ -1,7 +1,6 @@
 /**
  * FLIP 跨元素列表穿梭过渡动效
  */
-
 export default class Flip {
   /**
    * 过渡前保存元素的初始位置
@@ -69,7 +68,7 @@ export default class Flip {
     style.zIndex = 1;
     style.transition = 'unset';
     style.transform = `translate(${left}px, ${top}px)`;
-    
+
   }
   /**
    * 应用动效，过渡到新的位置

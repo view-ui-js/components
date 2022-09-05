@@ -38,6 +38,10 @@ export default {
       }
     },
   },
+  /**
+   * 添加消息
+   * @param component 
+   */
   add(component) {
     if (this.instance === undefined) {
       const Container = document.createElement("section");
@@ -55,15 +59,17 @@ export default {
     const { time } = component;
 
     if (time) {
-      setTimeout(() => {
-        this.instance.close(id);
-      }, time);
+      setTimeout(() => this.instance.close(id), time);
     }
 
     this.instance.show = true;
 
     return id;
   },
+  /**
+   * 删除消息
+   * @param id 
+   */
   close(id) {
     this.instance.close(id);
   },

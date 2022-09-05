@@ -14,8 +14,8 @@ export default {
   name: "List",
   components: { Loading },
   props: {
-    data: Array,
     loading: String,
+    data: Array,
   },
   data() {
     return { list: this.data };

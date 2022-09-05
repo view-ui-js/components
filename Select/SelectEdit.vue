@@ -1,8 +1,8 @@
 <template>
-  <FormBox v-if="edit" ref="FormBox" :label="label">
+  <FormBox ref="FormBox" :label="label">
     <div class="v-select" @click="click">
       <input :placeholder="placeholder" v-model="current" @change="change" />
-      <i class="vicon arrow" :class="{'arrow_up':drop}">&#xe678;</i>
+      <i class="vicon arrow" :class="{ arrow_up: drop }">&#xe678;</i>
       <transition name="drop" appear>
         <ul v-show="drop">
           <slot />
@@ -10,17 +10,12 @@
       </transition>
     </div>
   </FormBox>
-  <div v-else class="v-select-preview">
-    <span class="v-select-preview-name">{{label}}：</span>
-    <span>{{current || '-'}}</span>
-  </div>
 </template>
 
 <script>
-import mixing from "./mixing.js";
+import extend from "./extends.js";
 export default {
-  name: "SelectEdit",
-  extends: mixing,
+  extends: extend,
   methods: {
     change() {
       this.$emit("input", this.input);

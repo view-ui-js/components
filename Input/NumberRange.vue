@@ -62,9 +62,6 @@ export default {
     //   this.jsIcon = this.jsIcon.replace(/;/, "");
     //   this.jsIcon = eval('"' + this.jsIcon + '"');
     // }
-  },
-  install(app) {
-    app.component(this.name, this);
   }
 };
 </script>

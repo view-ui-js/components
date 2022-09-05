@@ -1,3 +1,34 @@
+<script>
+import FormBox from "../FormBox.vue";
+export default {
+  // name: "NumberText",
+  emits: ["click"],
+  components: { FormBox },
+  props: {
+    value: Number,
+    readonly: Boolean,
+    name: String,
+    label: String,
+    icon: String,
+    unit: String,
+    placeholder: String,
+  },
+  data() {
+    return {
+      input: this.value,
+      edit: true,
+      showLabel: this.name || this.label,
+      error: "",
+    };
+  },
+  watch: {
+    value(value) {
+      this.input = value;
+    },
+  }
+};
+</script>
+
 <template>
   <FormBox v-if="edit" :label="label" :error="error">
     <div class="v-input">
@@ -32,38 +63,3 @@
     <span v-if="unit" class="v-input-preview-unit">{{ unit }}</span>
   </div>
 </template>
-
-<script>
-import FormBox from "../FormBox.vue";
-export default {
-  name: "NumberText",
-  emits: ["click"],
-  components: { FormBox },
-  props: {
-    value: Number,
-    readonly: Boolean,
-    name: String,
-    label: String,
-    icon: String,
-    unit: String,
-    placeholder: String,
-  },
-  data() {
-    return {
-      input: this.value,
-      edit: true,
-      showLabel: this.name || this.label,
-      error: "",
-    };
-  },
-  methods: {},
-  watch: {
-    value(value) {
-      this.input = value;
-    },
-  },
-  install(app) {
-    app.component(this.name, this);
-  },
-};
-</script>

@@ -1,26 +1,3 @@
-<template>
-  <div class="v-slider">
-    <div class="v-slider-track" @mousedown="mousedown">
-      <dir class="v-slider-baseline">
-        <div class="v-slider-progress vt-main" :style="progress">
-          <div class="v-slider-button"></div>
-          <div class="v-slider-right">
-            <Bubble
-              class="v-slider-bubble"
-              ref="bubble"
-              :gap="14"
-              >{{ scope[1] + unit }}</Bubble
-            >
-          </div>
-        </div>
-      </dir>
-    </div>
-    <div v-if="step" ref="gauge" class="v-slider-gauge">
-      <span v-for="(value, key) in ruler" :key="key">{{ value }}</span>
-    </div>
-  </div>
-</template>
-
 <script>
 import mixing from "./mixing.js";
 export default {
@@ -28,9 +5,7 @@ export default {
   extends: mixing,
   data() {
     return {
-      progress: {
-        right: 0,
-      },
+      progress: { right: 0 },
     };
   },
   methods: {
@@ -160,3 +135,23 @@ export default {
   }
 }
 </style>
+
+<template>
+  <div class="v-slider">
+    <div class="v-slider-track" @mousedown.stop="mousedown">
+      <dir class="v-slider-baseline">
+        <div class="v-slider-progress vt-main" :style="progress">
+          <div class="v-slider-button"></div>
+          <div class="v-slider-right">
+            <Bubble class="v-slider-bubble" ref="bubble" :gap="14">{{
+              scope[1] + unit
+            }}</Bubble>
+          </div>
+        </div>
+      </dir>
+    </div>
+    <div v-if="step" ref="gauge" class="v-slider-gauge">
+      <span v-for="(value, key) in ruler" :key="key">{{ value }}</span>
+    </div>
+  </div>
+</template>

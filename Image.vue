@@ -32,17 +32,17 @@ import imagePreview from "./imagePreview.vue";
 export default {
   name: "Image",
   props: {
-    value: {
+    src: {
       type: String,
-      default: ""
+      default: "",
     },
     read: Boolean,
-    round: Boolean
+    round: Boolean,
   },
   data() {
     return {
       edit: this.read ? false : true,
-      image: { src: this.value }
+      image: { src: this.src },
     };
   },
   methods: {
@@ -55,15 +55,12 @@ export default {
           // 将file转换为DataURL格式，通过img src直接显示
           const reader = new FileReader();
           reader.readAsDataURL(file);
-          const src = await new Promise(function(resolve) {
+          const src = await new Promise(function (resolve) {
             reader.onload = () => {
               resolve(reader.result);
             };
           });
-          this.image = {
-            file,
-            src
-          };
+          this.image = { file, src };
         }
       }
       this.$refs.input.value = ""; // 初始化input值
@@ -76,7 +73,7 @@ export default {
       const { image } = this;
       imagePreview.open({
         images: [image],
-        index: 0
+        index: 0,
       });
     },
     /**
@@ -87,26 +84,26 @@ export default {
       if (file) {
         const formData = new FormData(); // 生成FormData表单
         formData.append("image", file);
-        await this.$options.network(url, formData).then(data => {
+        await this.$options.network(url, formData).then((data) => {
           const [src] = data.image;
           this.image = { src };
           this.$emit("input", src);
         });
       }
-    }
+    },
   },
   watch: {
-    value(src) {
+    src(src) {
       this.image = { src };
     },
     read(value) {
       this.edit = value ? false : true;
-    }
+    },
   },
   install(app, network) {
     this.network = network;
     app.component(this.name, this);
-  }
+  },
 };
 </script>
 
@@ -115,8 +112,8 @@ export default {
   display: flex;
   user-select: none;
   flex-wrap: wrap;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   .v-image-edit {
     flex: none;
     position: relative;
@@ -152,7 +149,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #f3f3f3c7;
     border-radius: 3px;
     cursor: pointer;
     width: 100%;

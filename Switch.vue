@@ -35,11 +35,6 @@ export default {
       status: this.value,
     };
   },
-  watch: {
-    value(value) {
-      this.status = value;
-    },
-  },
   methods: {
     click() {
       if (this.disable) return;
@@ -80,7 +75,7 @@ export default {
     border: 1px solid #e2e2e2;
     background-color: #ffffff;
     transition: all 0.1s ease;
-    border: 1px solid var(--active-color);
+    // border: 1px solid var(--active-color);
   }
   &.v-switch-open {
     background-color: var(--active-color);

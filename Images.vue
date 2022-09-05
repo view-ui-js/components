@@ -164,7 +164,6 @@ export default {
 };
 </script>
 
-
 <style lang="scss" scoped>
 .v-images {
   display: flex;
@@ -174,7 +173,7 @@ export default {
   .v-draggable {
     display: contents;
     position: relative;
-    .v-draggable-item {
+    :deep(.v-draggable-item) {
       position: relative;
       box-sizing: border-box;
       background-color: #eee;
@@ -185,8 +184,8 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
         overflow: hidden;
         img {
           width: 100%;
@@ -197,11 +196,11 @@ export default {
           bottom: 0;
           left: 0;
           width: 100%;
-          background-color: #75757587;
+          background-color: #dbdbdbcc;
           font-size: 12px;
-          color: #fff;
+          color: #3c3c3c;
           box-sizing: border-box;
-          padding: 5px 5px;
+          padding: 2px 4px;
           border: none;
           text-align: center;
           outline-style: none;
@@ -233,11 +232,11 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #f3f3f3c7;
     border-radius: 3px;
     cursor: pointer;
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     margin: 0 10px 10px 0;
     &:hover {
       background-color: #eeeeee;

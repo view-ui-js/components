@@ -1,21 +1,3 @@
-<template>
-  <FormBox v-if="edit" :label="label" :error="error">
-    <div class="v-date-picker" @click.stop="click">
-      <div class="v-input">
-        <input v-model="input" :placeholder="placeholder" readonly />
-        <i class="vicon-riqi1" />
-      </div>
-      <Bubble v-if="open" placement="bottom">
-        <Date :value="ymd" @change="change"></Date>
-      </Bubble>
-    </div>
-  </FormBox>
-  <div v-else-if="value" class="v-input-preview">
-    <span class="v-input-preview-label">{{ label }}：</span>
-    <span class="v-input-preview-value">{{ setInput(value) }}</span>
-  </div>
-</template>
-
 <script>
 import dayjs from "dayjs";
 import mixing from "./mixingDate.js";
@@ -70,6 +52,24 @@ export default {
   },
 };
 </script>
+
+<template>
+  <FormBox v-if="edit" :label="label" :error="error">
+    <div class="v-date-picker" @click.stop="click">
+      <div class="v-input">
+        <input v-model="input" :placeholder="placeholder" readonly />
+        <i class="vicon-riqi1" />
+      </div>
+      <Bubble v-if="open" placement="bottom">
+        <Date :value="ymd" @change="change"></Date>
+      </Bubble>
+    </div>
+  </FormBox>
+  <div v-else-if="value" class="v-input-preview">
+    <span class="v-input-preview-label">{{ label }}：</span>
+    <span class="v-input-preview-value">{{ setInput(value) }}</span>
+  </div>
+</template>
 
 <style lang="scss">
 .v-date-picker {

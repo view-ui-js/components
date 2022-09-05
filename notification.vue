@@ -44,7 +44,7 @@ export default {
 <style lang="scss">
 .v-notification {
   position: relative;
-  padding: 18px 14px;
+  padding: 14px;
   font-size: 14px;
   // border: 1px solid #fff;
   border-radius: 10px;
@@ -69,7 +69,7 @@ export default {
   }
   .close {
     position: absolute;
-    top: 12px;
+    top: 8px;
     right: 5px;
     padding: 10px;
     font-size: 14px;

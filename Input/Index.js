@@ -1,45 +1,52 @@
-import "./common.scss";
-import Text from "./Text.vue";
-import Date from "./Date.vue";
-import DateRange from "./DateRange.vue";
-import Number from "./Number.vue";
-import NumberRange from "./NumberRange.vue";
 import { h } from 'vue';
+import "./common.scss";
+import text from "./Text.vue";
+import date from "./Date.vue";
+import daterange from "./DateRange.vue";
+import number from "./Number.vue";
+import numberrange from "./NumberRange.vue";
+import password from "./Password.vue";
+import radio from "./Radio.vue";
+
+const types = {
+  text,
+  date,
+  daterange,
+  number,
+  numberrange,
+  password,
+  radio
+};
 
 export default {
   name: "Input",
-  props: {
-    type: {
-      type: String,
-      default: "text",
-    },
-    range: Boolean,
-  },
   render() {
-    const { $props } = this;
-    const { type, range } = $props;
-    let Component;
-    if (type === 'text') {
-      Component = Text;
-    } else if (type === 'date') {
+    const { type, range } = this.$attrs;
+    let Component = types[type];
+    if (Component) {
       if (range) {
-        Component = DateRange;
-      } else {
-        Component = Date;
-      }
-    } else if (type === 'number') {
-      if (range) {
-        Component = NumberRange;
-      } else {
-        Component = Number;
+        Component = types[type + range]
       }
     } else {
       Component = Text;
     }
-    const { data, children } = this;
-    return h(Component, data, children);
-  },
-  install(app) {
-    app.component("Input", this);
+
+    // if (type === 'text') {
+    //   Component = Text;
+    // } else if (type === 'date') {
+    //   if (range) {
+    //     Component = DateRange;
+    //   } else {
+    //     Component = Date;
+    //   }
+    // } else if (type === 'number') {
+    //   if (range) {
+    //     Component = NumberRange;
+    //   } else {
+    //     Component = Number;
+    //   }
+    // }
+
+    return h(Component);
   }
 };

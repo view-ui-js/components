@@ -1,16 +1,16 @@
+import FormBox from "../FormBox.vue";
+
 export default {
+  components: { FormBox },
   props: {
-    value: {
-      type: [String, Number, Boolean]
-    },
-    label: { type: String },
-    placeholder: { type: String },
-    ready: { type: Boolean },
+    value: [String, Number, Boolean],
+    label: String,
+    placeholder: String,
+    ready: Boolean,
   },
   data() {
     return {
       drop: false,
-      edit: true,
       current: '',
     };
   },
@@ -24,21 +24,25 @@ export default {
       }
     },
     close() {
+
       this.drop = false;
+
     },
     select(value) {
-      
+
       const { FormBox } = this.$refs;
-      
+
+      // console.log(FormBox);
+
       this.$nextTick(() => {
-        for (const item of FormBox.$children) {
-          if (item.value === value) {
-            item.active = true;
-            this.current = item.label || value;
-          } else {
-            item.active = false;
-          }
-        }
+        // for (const item of FormBox.$children) {
+        //   if (item.value === value) {
+        //     item.active = true;
+        //     this.current = item.label || value;
+        //   } else {
+        //     item.active = false;
+        //   }
+        // }
       });
 
       this.$emit("input", value);
@@ -48,6 +52,7 @@ export default {
   watch: {
     ready() {
       this.select(this.value);
+
     }
   },
 };

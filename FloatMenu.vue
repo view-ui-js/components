@@ -43,11 +43,11 @@ export default {
       this.open = false;
       this.$emit("select", item);
     },
-    pointerenter() {
+    mouseenter() {
       clearTimeout(this.timeId);
       this.open = true;
     },
-    pointerleave() {
+    mouseleave() {
       clearTimeout(this.timeId);
       this.timeId = setTimeout(() => {
         this.open = false;
@@ -56,16 +56,16 @@ export default {
   },
   mounted() {
     const { parentNode } = this.$el;
-    parentNode.addEventListener("pointerenter", this.pointerenter);
-    parentNode.addEventListener("pointerleave", this.pointerleave);
+    parentNode.addEventListener("mouseenter", this.mouseenter);
+    parentNode.addEventListener("mouseleave", this.mouseleave);
   },
   watch: {
     open() {
       if (this.active === true) return;
       this.active = true;
       this.$nextTick(() => {
-        this.$el.addEventListener("pointerenter", this.pointerenter);
-        this.$el.addEventListener("pointerleave", this.pointerleave);
+        this.$el.addEventListener("mouseenter", this.mouseenter);
+        this.$el.addEventListener("mouseleave", this.mouseleave);
       });
     },
   },

@@ -1,31 +1,3 @@
-<template>
-  <FormBox v-if="edit" class="w100" :label="label" :error="error">
-    <div class="v-tag">
-      <transition-group class="v-tag-group" tag="div" name="fade">
-        <span class="v-tag-item" v-for="(item, index) of tags" :key="item">
-          {{ item }}
-          <i class="vicon" @click="destroy(index)">&#xe679;</i>
-        </span>
-      </transition-group>
-      <input
-        class="v-tag-input"
-        :placeholder="placeholder"
-        ref="input"
-        type="text"
-        v-model="input"
-        @keyup.enter="enter"
-        @blur="blur"
-      />
-    </div>
-  </FormBox>
-  <div v-else-if="value.length" class="v-tag-preview">
-    <span v-if="label" class="v-tag-preview-label">{{ label }}：</span>
-    <span class="v-tag-preview-item" v-for="item of value" :key="item">{{
-      item
-    }}</span>
-  </div>
-</template>
-
 <script>
 import FormBox from "./FormBox.vue";
 export default {
@@ -85,42 +57,79 @@ export default {
 };
 </script>
 
+<template>
+  <FormBox v-if="edit" class="w100" :label="label" :error="error">
+    <div class="v-tag">
+      <transition-group class="v-tag-group" tag="div" name="fade">
+        <span class="v-tag-item" v-for="(item, index) of tags" :key="item">
+          {{ item }}
+          <i class="vicon" @click="destroy(index)">&#xe679;</i>
+        </span>
+      </transition-group>
+      <input
+        class="v-tag-input"
+        :placeholder="placeholder"
+        ref="input"
+        type="text"
+        v-model="input"
+        @keyup.enter="enter"
+        @blur="blur"
+      />
+    </div>
+  </FormBox>
+  <div v-else-if="value.length" class="v-tag-preview">
+    <span v-if="label" class="v-tag-preview-label">{{ label }}：</span>
+    <span class="v-tag-preview-item" v-for="item of value" :key="item">{{
+      item
+    }}</span>
+  </div>
+</template>
+
 <style lang="scss" scoped>
 .v-tag {
   display: flex;
+  justify-content: flex-end;
   user-select: none;
+  padding: 3px;
   background-color: #fff;
   border: 1px solid #eaeaea;
-  border-radius: 3px;
+  border-radius: 4px;
   height: 40px;
   overflow: hidden;
   width: 100%;
   .v-tag-group {
+    display: flex;
     white-space: nowrap;
     // overflow-x: scroll;
     .v-tag-item {
-      display: inline-block;
-      margin: 4px;
+      display: flex;
+      align-items: center;
+      margin-right: 3px;
       padding: 0 10px;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
       color: #8c8c8c;
       border-radius: 3px;
       user-select: none;
-      background-color: #eee;
+      background-color: #f3f3f3;
       .vicon {
+        display: block;
+        width: 14px;
+        height: 14px;
+        margin: 4px;
+        padding: 1px;
         cursor: pointer;
-        font-size: 13px;
+        font-size: 12px;
         border-radius: 100%;
         background-color: #ffffff;
       }
     }
   }
   .v-tag-input {
-    width: 125px;
     flex: 1;
+    min-width: 100px;
+    padding: 10px;
     border: none;
+    font-size: 13px;
+    background-color: #f3f3f3;
   }
 }
 .v-tag-preview {

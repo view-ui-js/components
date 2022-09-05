@@ -1,24 +1,6 @@
-<template>
-  <div
-    class="v-bubble"
-    :class="[direction]"
-    :style="style"
-    @pointerenter="$emit('pointerenter')"
-    @pointerleave="$emit('pointerleave')"
-  >
-    <div class="v-bubble-content">
-      <slot />
-    </div>
-    <div class="v-bubble-arrow">
-      <i :style="arrow" />
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
   name: "Bubble",
-  emits: ["pointerenter", "pointerleave"],
   props: {
     placement: {
       type: String,
@@ -141,8 +123,19 @@ export default {
     },
   },
   mounted() {
-    this.$parentNode = this.$el.parentNode;
-    document.body.appendChild(this.$el);
+    const { $el, $attrs } = this;
+
+    this.$parentNode = $el.parentNode;
+
+    if ($attrs.onMouseenter) {
+      $el.addEventListener("mouseenter", (e) => $attrs.onMouseenter(e));
+    }
+    if ($attrs.onMouseleave) {
+      $el.addEventListener("mouseleave", (e) => $attrs.onMouseleave(e));
+    }
+
+    document.body.appendChild($el);
+
     this.init();
   },
   activated() {
@@ -154,6 +147,17 @@ export default {
 };
 </script>
 
+<template>
+  <div class="v-bubble" :class="[direction]" :style="style">
+    <div class="v-bubble-content">
+      <slot />
+    </div>
+    <div class="v-bubble-arrow">
+      <i :style="arrow" />
+    </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
 .v-bubble {
   position: fixed;
@@ -162,7 +166,9 @@ export default {
   color: #999;
   line-height: normal;
   .v-bubble-content {
+    max-width: 200px;
     font-size: 12px;
+    line-height: 20px;
     background-color: #fff;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
     border-radius: 3px;

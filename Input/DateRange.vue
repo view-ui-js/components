@@ -108,10 +108,7 @@ export default {
         }
       }
     },
-  },
-  install(app) {
-    app.component(this.name, this);
-  },
+  }
 };
 </script>
 
